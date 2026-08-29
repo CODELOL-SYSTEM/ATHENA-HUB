@@ -16,11 +16,11 @@
 :root{
   --bg:#03060b;
   --card:#0b111b;
-  --border:rgba(110,190,255,.16);
   --blue:#238cff;
-  --cyan:#72d5ff;
-  --muted:#8997aa;
-  --white:#f7fbff;
+  --cyan:#65c9ff;
+  --text:#f5f8ff;
+  --muted:#8290a5;
+  --border:rgba(100,180,255,.16);
 }
 
 html{
@@ -30,10 +30,10 @@ html{
 body{
   min-height:100vh;
   background:
-    radial-gradient(circle at 50% -15%,rgba(0,130,255,.28),transparent 38%),
-    radial-gradient(circle at 0% 100%,rgba(0,70,255,.13),transparent 30%),
+    radial-gradient(circle at 50% -10%,rgba(0,120,255,.22),transparent 35%),
+    radial-gradient(circle at 100% 50%,rgba(0,80,255,.08),transparent 30%),
     var(--bg);
-  color:var(--white);
+  color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
   overflow-x:hidden;
 }
@@ -43,12 +43,13 @@ body{
 .bg-grid{
   position:fixed;
   inset:0;
-  z-index:-2;
-  opacity:.11;
+  pointer-events:none;
+  opacity:.08;
   background-image:
-    linear-gradient(rgba(70,160,255,.15) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(70,160,255,.15) 1px,transparent 1px);
-  background-size:55px 55px;
+    linear-gradient(rgba(60,150,255,.3) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(60,150,255,.3) 1px,transparent 1px);
+  background-size:50px 50px;
+  z-index:0;
 }
 
 #particles{
@@ -56,7 +57,7 @@ body{
   inset:0;
   pointer-events:none;
   overflow:hidden;
-  z-index:-1;
+  z-index:0;
 }
 
 .particle{
@@ -64,7 +65,7 @@ body{
   width:3px;
   height:3px;
   border-radius:50%;
-  background:#6bcfff;
+  background:#54c5ff;
   box-shadow:0 0 14px #168cff;
   animation:float linear infinite;
 }
@@ -74,8 +75,15 @@ body{
     transform:translateY(110vh);
     opacity:0;
   }
-  15%{opacity:.7}
-  85%{opacity:.7}
+
+  15%{
+    opacity:.7;
+  }
+
+  85%{
+    opacity:.7;
+  }
+
   to{
     transform:translateY(-10vh);
     opacity:0;
@@ -86,72 +94,49 @@ body{
 
 header{
   position:relative;
+  z-index:1;
   text-align:center;
-  padding:95px 20px 80px;
-  border-bottom:1px solid rgba(100,170,255,.12);
-  overflow:hidden;
-}
-
-.header-glow{
-  position:absolute;
-  width:800px;
-  height:500px;
-  left:50%;
-  top:-360px;
-  transform:translateX(-50%);
-  background:radial-gradient(circle,rgba(0,130,255,.42),transparent 70%);
-  filter:blur(25px);
-  animation:pulse 5s ease-in-out infinite;
-}
-
-@keyframes pulse{
-  0%,100%{
-    opacity:.5;
-    transform:translateX(-50%) scale(1);
-  }
-  50%{
-    opacity:1;
-    transform:translateX(-50%) scale(1.15);
-  }
+  padding:90px 20px 70px;
+  border-bottom:1px solid var(--border);
 }
 
 .badge{
-  position:relative;
   display:inline-flex;
   align-items:center;
   gap:9px;
-  padding:10px 18px;
-  border:1px solid rgba(80,175,255,.35);
+  padding:9px 17px;
+  border:1px solid rgba(80,170,255,.3);
   border-radius:50px;
   color:var(--cyan);
   font-size:11px;
-  font-weight:700;
+  font-weight:bold;
   letter-spacing:3px;
 }
 
-.badge-dot{
+.badge i{
   width:7px;
   height:7px;
   border-radius:50%;
   background:#39aaff;
-  box-shadow:0 0 10px #39aaff;
+  box-shadow:0 0 15px #39aaff;
   animation:blink 2s infinite;
 }
 
 @keyframes blink{
-  50%{opacity:.3}
+  50%{
+    opacity:.3;
+  }
 }
 
 .logo{
-  position:relative;
   margin-top:22px;
-  font-size:clamp(48px,10vw,92px);
+  font-size:clamp(48px,10vw,90px);
   font-weight:900;
   letter-spacing:5px;
   background:linear-gradient(
     90deg,
     #fff,
-    #91ddff,
+    #7ddcff,
     #258cff,
     #fff
   );
@@ -162,13 +147,14 @@ header{
 }
 
 @keyframes shine{
-  to{background-position:-300% center}
+  to{
+    background-position:-300%;
+  }
 }
 
 .subtitle{
-  position:relative;
   margin:16px auto 0;
-  max-width:520px;
+  max-width:550px;
   color:var(--muted);
   font-size:14px;
 }
@@ -176,19 +162,21 @@ header{
 /* MAIN */
 
 main{
-  width:min(1050px,calc(100% - 30px));
+  position:relative;
+  z-index:1;
+  width:min(1000px,calc(100% - 24px));
   margin:auto;
-  padding:70px 0 100px;
+  padding:65px 0 100px;
 }
 
 .section{
   display:flex;
   align-items:center;
   gap:15px;
-  margin-bottom:30px;
-  color:#8290a4;
+  margin-bottom:28px;
+  color:#7e8da2;
   font-size:11px;
-  font-weight:700;
+  font-weight:bold;
   letter-spacing:3px;
 }
 
@@ -196,7 +184,7 @@ main{
   content:"";
   height:1px;
   flex:1;
-  background:rgba(100,170,255,.18);
+  background:var(--border);
 }
 
 /* PRODUCTS */
@@ -204,395 +192,258 @@ main{
 .products{
   display:flex;
   flex-direction:column;
-  gap:28px;
+  gap:25px;
 }
 
 /* CARD */
 
 .product{
   position:relative;
-  min-height:430px;
   padding:42px;
+  min-height:400px;
   border:1px solid var(--border);
-  border-radius:26px;
+  border-radius:25px;
   background:
     linear-gradient(
       145deg,
-      rgba(17,29,45,.98),
-      rgba(5,9,16,.99)
+      rgba(15,27,44,.98),
+      rgba(4,9,16,.99)
     );
-  box-shadow:
-    0 25px 80px rgba(0,0,0,.5),
-    inset 0 1px rgba(255,255,255,.025);
+  box-shadow:0 25px 80px rgba(0,0,0,.45);
   overflow:visible;
   transition:.35s ease;
+  animation:appear .7s ease both;
+}
+
+.product:nth-child(1){
+  animation-delay:.1s;
+}
+
+.product:nth-child(2){
+  animation-delay:.2s;
+}
+
+.product:nth-child(3){
+  animation-delay:.3s;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(35px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .product:hover{
   transform:translateY(-7px);
-  border-color:rgba(50,165,255,.55);
+  border-color:rgba(50,160,255,.5);
   box-shadow:
-    0 35px 100px rgba(0,0,0,.65),
-    0 0 50px rgba(20,130,255,.12);
+    0 30px 90px rgba(0,0,0,.65),
+    0 0 45px rgba(20,130,255,.1);
 }
 
 .product:before{
   content:"";
   position:absolute;
-  width:420px;
-  height:420px;
-  right:-220px;
-  top:-250px;
+  width:350px;
+  height:350px;
+  right:-160px;
+  top:-180px;
   background:radial-gradient(
     circle,
-    rgba(20,140,255,.25),
+    rgba(20,130,255,.22),
     transparent 70%
   );
   pointer-events:none;
-  border-radius:50%;
 }
 
-.product:after{
-  content:"";
-  position:absolute;
-  top:0;
-  left:10%;
-  right:10%;
-  height:1px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    #48baff,
-    transparent
-  );
-  opacity:.65;
-}
+/* NUMBER */
 
 .number{
   position:absolute;
-  top:25px;
   right:30px;
+  top:25px;
   color:rgba(100,190,255,.25);
   font-size:13px;
-  font-weight:700;
+  font-weight:bold;
   letter-spacing:2px;
 }
 
-/* MYTHOLOGICAL HELMET */
+/* HELMET */
+
+.icon{
+  position:relative;
+  width:76px;
+  height:76px;
+  margin-bottom:27px;
+  border:1px solid rgba(70,180,255,.35);
+  border-radius:18px;
+  background:rgba(20,130,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:
+    inset 0 0 30px rgba(30,140,255,.08),
+    0 0 30px rgba(30,140,255,.08);
+}
 
 .helmet{
   position:relative;
-  width:100px;
-  height:105px;
-  margin:0 auto 28px;
-  filter:drop-shadow(0 0 18px rgba(45,170,255,.4));
+  width:43px;
+  height:39px;
+  border:3px solid #61c9ff;
+  border-radius:50% 50% 35% 35%;
+  box-shadow:0 0 18px rgba(70,190,255,.8);
 }
 
-.helmet-main{
-  position:absolute;
-  width:64px;
-  height:66px;
-  left:18px;
-  top:25px;
-  border:3px solid #63caff;
-  border-radius:45% 45% 28% 28%;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(70,190,255,.2),
-      rgba(5,20,35,.9)
-    );
-  box-shadow:
-    inset 0 0 20px rgba(80,190,255,.15),
-    0 0 20px rgba(40,160,255,.35);
-}
-
-.helmet-main:before{
+.helmet:before{
   content:"";
   position:absolute;
-  width:28px;
-  height:48px;
-  left:15px;
-  top:8px;
-  border-left:2px solid #a1e5ff;
-  border-right:2px solid #168cff;
-  border-radius:50%;
+  width:56px;
+  height:8px;
+  left:-10px;
+  top:3px;
+  border-top:3px solid #9be0ff;
+  transform:skewX(-25deg);
 }
 
-.helmet-main:after{
+.helmet:after{
   content:"";
   position:absolute;
-  width:12px;
-  height:25px;
-  right:-8px;
-  top:28px;
-  border-right:3px solid #51bfff;
+  width:15px;
+  height:20px;
+  right:-10px;
+  top:13px;
+  border-right:3px solid #258cff;
+  border-bottom:3px solid #258cff;
   transform:skewY(-20deg);
 }
 
-.wing{
-  position:absolute;
-  width:42px;
-  height:23px;
-  top:20px;
-  border-top:3px solid #72d5ff;
-  border-radius:80% 20%;
-  box-shadow:0 -7px 10px rgba(40,170,255,.25);
-}
-
-.wing.left{
-  left:-1px;
-  transform:rotate(-25deg) skewX(-15deg);
-}
-
-.wing.right{
-  right:-1px;
-  transform:scaleX(-1) rotate(-25deg) skewX(-15deg);
-}
-
-.crest{
-  position:absolute;
-  width:6px;
-  height:30px;
-  left:47px;
-  top:-7px;
-  background:linear-gradient(#a7eaff,#168cff);
-  border-radius:10px;
-  box-shadow:0 0 12px #39aaff;
-  transform:rotate(8deg);
-}
-
-/* CONTENT */
+/* TEXT */
 
 .product h2{
   position:relative;
-  text-align:center;
-  font-size:30px;
+  font-size:29px;
   margin-bottom:12px;
 }
 
 .description{
   position:relative;
-  max-width:850px;
-  margin:0 auto 30px;
-  color:#8d9aac;
+  max-width:800px;
+  color:#8997aa;
   font-size:14px;
-  line-height:1.8;
-  text-align:center;
+  line-height:1.7;
   white-space:pre-line;
 }
 
-.description b{
-  color:#fff;
-}
+/* BOTTOM */
 
-/* SELECTOR */
-
-.selector-area{
+.bottom{
   position:relative;
-  z-index:20;
   display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  margin:0 auto 30px;
-}
-
-.select-box{
-  position:relative;
-  width:270px;
-}
-
-.select-display{
-  width:100%;
-  height:52px;
-  padding:0 18px;
-  border:1px solid rgba(80,170,255,.3);
-  border-radius:12px;
-  background:#f7f9fc;
-  color:#111;
-  display:flex;
-  align-items:center;
   justify-content:space-between;
-  cursor:pointer;
-  font-size:14px;
-  font-weight:700;
-  transition:.25s;
+  align-items:flex-end;
+  gap:25px;
+  margin-top:32px;
 }
-
-.select-display:hover{
-  border-color:#3daeff;
-  box-shadow:0 0 25px rgba(30,150,255,.15);
-}
-
-.arrow{
-  width:10px;
-  height:10px;
-  border-right:2px solid #111;
-  border-bottom:2px solid #111;
-  transform:rotate(45deg) translateY(-3px);
-  transition:.25s;
-}
-
-.select-box.open .arrow{
-  transform:rotate(225deg) translateY(-1px);
-}
-
-.options{
-  position:absolute;
-  left:0;
-  right:0;
-  top:calc(100% + 8px);
-  background:#fff;
-  border:1px solid rgba(80,170,255,.35);
-  border-radius:13px;
-  padding:6px;
-  box-shadow:
-    0 20px 50px rgba(0,0,0,.65),
-    0 0 25px rgba(30,140,255,.15);
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(-8px);
-  transition:.2s ease;
-  z-index:9999;
-}
-
-.select-box.open .options{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
-}
-
-.option{
-  padding:14px 15px;
-  border-radius:9px;
-  color:#111 !important;
-  background:#fff;
-  cursor:pointer;
-  font-size:14px;
-  font-weight:700;
-  transition:.2s;
-}
-
-.option:hover{
-  background:#eaf5ff;
-  color:#006bd6 !important;
-}
-
-/* PRICE */
 
 .price{
-  position:relative;
-  text-align:center;
-  font-size:42px;
+  font-size:40px;
   font-weight:900;
-  margin-bottom:25px;
+  white-space:nowrap;
 }
 
 .price span{
-  color:#8491a2;
+  color:#8491a3;
   font-size:13px;
-  font-weight:500;
+  font-weight:normal;
+}
+
+/* SELECT */
+
+.selector{
+  position:relative;
+  z-index:20;
+}
+
+.select-box{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+select{
+  appearance:none;
+  -webkit-appearance:none;
+  width:220px;
+  padding:15px 45px 15px 17px;
+  border:1px solid rgba(80,170,255,.3);
+  border-radius:11px;
+  background:#101a29;
+  color:#fff;
+  font-size:14px;
+  font-weight:bold;
+  outline:none;
+  cursor:pointer;
+  box-shadow:0 8px 25px rgba(0,0,0,.3);
+}
+
+select:hover{
+  border-color:#3b9dff;
+}
+
+select:focus{
+  border-color:#55baff;
+  box-shadow:0 0 25px rgba(40,150,255,.2);
+}
+
+select option{
+  background:#101a29;
+  color:#fff;
+  padding:10px;
+}
+
+.arrow{
+  position:absolute;
+  right:17px;
+  pointer-events:none;
+  color:#67caff;
+  font-size:16px;
 }
 
 /* PAYMENT */
 
-.buttons{
-  position:relative;
+.pay{
+  margin-top:15px;
+  width:100%;
   display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
+  justify-content:flex-end;
 }
 
-.button{
-  min-width:210px;
-  padding:16px 24px;
-  border:0;
-  border-radius:11px;
-  font-size:13px;
-  font-weight:800;
-  cursor:pointer;
-  text-decoration:none;
+.stripe{
   display:inline-flex;
-  align-items:center;
   justify-content:center;
-  transition:.25s;
-}
-
-.paypal{
-  background:#ffc439;
-  color:#003087;
-}
-
-.paypal:hover{
-  transform:translateY(-3px) scale(1.02);
-  box-shadow:0 14px 40px rgba(255,196,57,.35);
-}
-
-.transfer{
-  background:#1769e8;
+  align-items:center;
+  min-width:220px;
+  padding:16px 25px;
+  border-radius:11px;
+  background:#635bff;
   color:white;
+  font-size:14px;
+  font-weight:bold;
+  text-decoration:none;
+  transition:.25s ease;
+  box-shadow:0 10px 30px rgba(99,91,255,.2);
 }
 
-.transfer:hover{
+.stripe:hover{
   transform:translateY(-3px);
-  box-shadow:0 14px 40px rgba(23,105,232,.4);
-}
-
-/* BANK */
-
-.bank{
-  max-height:0;
-  opacity:0;
-  overflow:hidden;
-  margin-top:0;
-  padding:0 20px;
-  border:1px solid transparent;
-  border-radius:14px;
-  background:rgba(20,130,255,.04);
-  transition:.45s ease;
-}
-
-.bank.open{
-  max-height:250px;
-  opacity:1;
-  margin-top:25px;
-  padding:20px;
-  border-color:rgba(50,160,255,.22);
-}
-
-.bank-title{
-  margin-bottom:10px;
-  color:#70d0ff;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:2px;
-}
-
-.bank-row{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  padding:10px 0;
-  border-bottom:1px dashed rgba(255,255,255,.08);
-  color:#c6d0dc;
-  font-size:13px;
-}
-
-.bank-row:last-child{
-  border-bottom:0;
-}
-
-/* FOOTER */
-
-footer{
-  padding:35px 20px;
-  border-top:1px solid rgba(100,170,255,.12);
-  text-align:center;
-  color:#667286;
-  font-size:11px;
-  letter-spacing:2px;
+  box-shadow:0 15px 40px rgba(99,91,255,.4);
 }
 
 /* MOBILE */
@@ -600,51 +451,46 @@ footer{
 @media(max-width:700px){
 
   header{
-    padding:75px 18px 65px;
+    padding:70px 16px 60px;
   }
 
   main{
-    width:calc(100% - 22px);
-    padding:55px 0 80px;
+    width:calc(100% - 20px);
+    padding:50px 0 75px;
   }
 
   .product{
-    padding:35px 20px;
+    padding:30px 22px;
     min-height:0;
   }
 
-  .product h2{
-    font-size:25px;
+  .bottom{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .selector{
+    width:100%;
+  }
+
+  select{
+    width:100%;
+  }
+
+  .pay{
+    justify-content:stretch;
+  }
+
+  .stripe{
+    width:100%;
   }
 
   .description{
     font-size:13px;
   }
 
-  .selector-area{
-    width:100%;
-  }
-
-  .select-box{
-    width:100%;
-  }
-
-  .buttons{
-    flex-direction:column;
-  }
-
-  .button{
-    width:100%;
-    min-width:0;
-  }
-
   .price{
-    font-size:36px;
-  }
-
-  .bank-row{
-    flex-direction:column;
-    gap:4px;
+    font-size:34px;
   }
 }
 </style>
@@ -657,23 +503,27 @@ footer{
 <div id="particles"></div>
 
 <header>
-  <div class="header-glow"></div>
 
   <div class="badge">
-    <span class="badge-dot"></span>
-    BOUTIQUE EN LIGNE
+    <i></i>
+    ATHENA HUB
   </div>
 
-  <div class="logo">ATHENA HUB</div>
+  <div class="logo">
+    ATHENA HUB
+  </div>
 
   <p class="subtitle">
-    Une expérience simple, rapide et sécurisée
+    Choisis ton accès et effectue ton paiement en toute simplicité
   </p>
+
 </header>
 
 <main>
 
-  <div class="section">NOS PRODUITS</div>
+  <div class="section">
+    NOS ACCÈS
+  </div>
 
   <div class="products">
 
@@ -681,157 +531,136 @@ footer{
 <!-- PRODUIT 1 -->
 
 <div class="product">
+
   <div class="number">01</div>
 
-  <div class="helmet">
-    <div class="crest"></div>
-    <div class="wing left"></div>
-    <div class="wing right"></div>
-    <div class="helmet-main"></div>
+  <div class="icon">
+    <div class="helmet"></div>
   </div>
 
-  <h2>AutoJoiner</h2>
+  <h2>Autojoiner</h2>
 
-  <p class="description">Quick panel / Lua autojoin / Drop brainrot / Auto grab / Invisible / AP spam owner / AP spam nearest</p>
+  <p class="description">Quick panel
+```
 
-  <div class="selector-area">
-    <div class="select-box" id="select1">
-      <div class="select-display" onclick="toggleSelect(1)">
-        <span id="selected1">Select option</span>
-        <span class="arrow"></span>
+Lua autojoin
+Drop brainrot
+Auto grab
+Invisible
+AP spam owner
+AP spam nearest</p>
+
+```
+  <div class="bottom">
+
+    <div class="price" id="price1">
+      10,99 <span>EUR</span>
+    </div>
+
+    <div class="selector">
+
+      <div class="select-box">
+
+        <select id="select1" onchange="changePlan(1)">
+
+          <option value="base">Select option</option>
+          <option value="day">1 Day</option>
+          <option value="week">1 Week</option>
+          <option value="lifetime">Lifetime</option>
+
+        </select>
+
+        <div class="arrow">⌄</div>
+
       </div>
 
-      <div class="options">
-        <div class="option" onclick="chooseOption(1,'1 Day',2.99)">1 Day</div>
-        <div class="option" onclick="chooseOption(1,'1 Week',5.99)">1 Week</div>
-        <div class="option" onclick="chooseOption(1,'Lifetime',10.99)">Lifetime</div>
+      <div class="pay">
+
+        <a
+          id="pay1"
+          class="stripe"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Payer avec Stripe
+        </a>
+
       </div>
-    </div>
-  </div>
 
-  <div class="price">
-    <span id="price1">--</span>
-    <span>EUR</span>
-  </div>
-
-  <div class="buttons">
-    <a
-      id="paypal1"
-      class="button paypal"
-      href="https://www.paypal.com/paypalme/athenahubscript/2.99"
-      target="_blank"
-      rel="noopener noreferrer">
-      Payer avec PayPal
-    </a>
-
-    <button class="button transfer" onclick="toggleBank('bank1')">
-      Payer par virement
-    </button>
-  </div>
-
-  <div class="bank" id="bank1">
-    <div class="bank-title">COORDONNÉES BANCAIRES</div>
-
-    <div class="bank-row">
-      <span>IBAN</span>
-      <span>FRXX XXXX XXXX XXXX XXXX XXXX XXX</span>
     </div>
 
-    <div class="bank-row">
-      <span>BIC</span>
-      <span>XXXXXXXX</span>
-    </div>
-
-    <div class="bank-row">
-      <span>Référence</span>
-      <span>Votre nom + Commande</span>
-    </div>
   </div>
+
 </div>
 
 
 <!-- PRODUIT 2 -->
 
 <div class="product">
+
   <div class="number">02</div>
 
-  <div class="helmet">
-    <div class="crest"></div>
-    <div class="wing left"></div>
-    <div class="wing right"></div>
-    <div class="helmet-main"></div>
+  <div class="icon">
+    <div class="helmet"></div>
   </div>
 
   <h2>Auto Redeem</h2>
 
   <p class="description">Lua for activate</p>
 
-  <div class="selector-area">
-    <div class="select-box" id="select2">
-      <div class="select-display" onclick="toggleSelect(2)">
-        <span id="selected2">Select option</span>
-        <span class="arrow"></span>
+  <div class="bottom">
+
+    <div class="price" id="price2">
+      10,99 <span>EUR</span>
+    </div>
+
+    <div class="selector">
+
+      <div class="select-box">
+
+        <select id="select2" onchange="changePlan(2)">
+
+          <option value="base">Select option</option>
+          <option value="day">1 Day</option>
+          <option value="week">1 Week</option>
+          <option value="lifetime">Lifetime</option>
+
+        </select>
+
+        <div class="arrow">⌄</div>
+
       </div>
 
-      <div class="options">
-        <div class="option" onclick="chooseOption(2,'1 Day',2.99)">1 Day</div>
-        <div class="option" onclick="chooseOption(2,'1 Week',5.99)">1 Week</div>
-        <div class="option" onclick="chooseOption(2,'Lifetime',10.99)">Lifetime</div>
+      <div class="pay">
+
+        <a
+          id="pay2"
+          class="stripe"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Payer avec Stripe
+        </a>
+
       </div>
-    </div>
-  </div>
 
-  <div class="price">
-    <span id="price2">--</span>
-    <span>EUR</span>
-  </div>
-
-  <div class="buttons">
-    <a
-      id="paypal2"
-      class="button paypal"
-      href="https://www.paypal.com/paypalme/athenahubscript/2.99"
-      target="_blank"
-      rel="noopener noreferrer">
-      Payer avec PayPal
-    </a>
-
-    <button class="button transfer" onclick="toggleBank('bank2')">
-      Payer par virement
-    </button>
-  </div>
-
-  <div class="bank" id="bank2">
-    <div class="bank-title">COORDONNÉES BANCAIRES</div>
-
-    <div class="bank-row">
-      <span>IBAN</span>
-      <span>FRXX XXXX XXXX XXXX XXXX XXXX XXX</span>
     </div>
 
-    <div class="bank-row">
-      <span>BIC</span>
-      <span>XXXXXXXX</span>
-    </div>
-
-    <div class="bank-row">
-      <span>Référence</span>
-      <span>Votre nom + Commande</span>
-    </div>
   </div>
+
 </div>
 
 
 <!-- PRODUIT 3 -->
 
 <div class="product">
+
   <div class="number">03</div>
 
-  <div class="helmet">
-    <div class="crest"></div>
-    <div class="wing left"></div>
-    <div class="wing right"></div>
-    <div class="helmet-main"></div>
+  <div class="icon">
+    <div class="helmet"></div>
   </div>
 
   <h2>Athena Hub</h2>
@@ -839,119 +668,118 @@ footer{
   <p class="description">🟢 STEALING
 ```
 
-* Auto Steal Best / Nearest / Priority
-* Priority lets you pick one exact brainrot
-* Semi Instant
-* Instant steal / setup desync / auto desync
-* Auto giant potion
-* Auto walk after steal
-* Auto spam after steal
-* Auto TP on unlock / allow / timer end
-* Flash TP
+Auto Steal Best / Nearest / Priority
+
+Semi Instant
+
+More Settings
+
+Flash TP
 
 🔵 PLAYER
 
-* Speed
-* Infinite Jump
-* Aimbot
-* Auto destroy turret
-* Anti gummy bear
-* Anti paintball
-* Anti bee
-* Anti boogie bomb
-* Anti ragdoll
-* Anti admin panel
+Speed
+
+Infinite Jump
+
+Aimbot
+
+Anti turret
+
+Anti gummy bear
+
+Anti paintball
+
+Anti bee
+
+Anti boogie bomb
+
+Anti ragdoll
+
+Anti admin panel
 
 🟣 VISUALS
 
-* Brainrot ESP
-* Rarity filter
-* Boxes / highlight / name / generation / distance
-* Player ESP
-* Base ESP
-* Mine ESP
-* Clone ESP
-* Custom FOV + stretch sliders
+Brainrot ESP
+
+Player ESP
+
+Base ESP
+
+Mine ESP
+
+Clone ESP
+
+Custom FOV
 
 🔴 ADMIN
 
-* Auto Defense
-* Safety kick
-* Full command config
-* Anti TP scam
-* TP protector
-* Admin Panel
-* Admin Spammer
+Auto Defense
+
+Admin Panel
+
+Admin Spammer
 
 ⚡ QUICK BUTTONS
 
-* Self Ragdoll
-* Instant Reset
-* Allow / Disallow
-* Rejoin
-* Leave
+Self Ragdoll
+
+Instant Reset
+
+Allow / Disallow
+
+Rejoin
+
+Leave
 
 ⚙️ EXTRAS
 
-* Fully recolorable GUI + ESP</p>
+Fully recolorable GUI + ESP</p>
 
-  ```
-  <div class="selector-area">
-    <div class="select-box" id="select3">
-      <div class="select-display" onclick="toggleSelect(3)">
-        <span id="selected3">Select option</span>
-        <span class="arrow"></span>
+```
+  <div class="bottom">
+
+    <div class="price" id="price3">
+      10,99 <span>EUR</span>
+    </div>
+
+    <div class="selector">
+
+      <div class="select-box">
+
+        <select id="select3" onchange="changePlan(3)">
+
+          <option value="base">Select option</option>
+          <option value="day">1 Day</option>
+          <option value="week">1 Week</option>
+          <option value="lifetime">Lifetime</option>
+
+        </select>
+
+        <div class="arrow">⌄</div>
+
       </div>
 
-      <div class="options">
-        <div class="option" onclick="chooseOption(3,'1 Day',2.99)">1 Day</div>
-        <div class="option" onclick="chooseOption(3,'1 Week',5.99)">1 Week</div>
-        <div class="option" onclick="chooseOption(3,'Lifetime',10.99)">Lifetime</div>
+      <div class="pay">
+
+        <a
+          id="pay3"
+          class="stripe"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Payer avec Stripe
+        </a>
+
       </div>
+
     </div>
+
   </div>
 
-  <div class="price">
-    <span id="price3">--</span>
-    <span>EUR</span>
-  </div>
-
-  <div class="buttons">
-    <a
-      id="paypal3"
-      class="button paypal"
-      href="https://www.paypal.com/paypalme/athenahubscript/2.99"
-      target="_blank"
-      rel="noopener noreferrer">
-      Payer avec PayPal
-    </a>
-
-    <button class="button transfer" onclick="toggleBank('bank3')">
-      Payer par virement
-    </button>
-  </div>
-
-  <div class="bank" id="bank3">
-    <div class="bank-title">COORDONNÉES BANCAIRES</div>
-
-    <div class="bank-row">
-      <span>IBAN</span>
-      <span>FRXX XXXX XXXX XXXX XXXX XXXX XXX</span>
-    </div>
-
-    <div class="bank-row">
-      <span>BIC</span>
-      <span>XXXXXXXX</span>
-    </div>
-
-    <div class="bank-row">
-      <span>Référence</span>
-      <span>Votre nom + Commande</span>
-    </div>
-  </div>
-  ```
-
-    </div>
+</div>
+```
 
   </div>
 
@@ -963,15 +791,100 @@ footer{
 
 <script>
 
+/* PLANS */
+
+const plans = {
+  day:{
+    name:"1 Day",
+    price:"2,99"
+  },
+
+  week:{
+    name:"1 Week",
+    price:"5,99"
+  },
+
+  lifetime:{
+    name:"Lifetime",
+    price:"10,99"
+  }
+};
+
+
+/*
+  REMPLACE LES # PAR TES VRAIS LIENS STRIPE
+*/
+
+const stripeLinks = {
+
+  1:{
+    day:"#",
+    week:"#",
+    lifetime:"#"
+  },
+
+  2:{
+    day:"#",
+    week:"#",
+    lifetime:"#"
+  },
+
+  3:{
+    day:"#",
+    week:"#",
+    lifetime:"#"
+  }
+
+};
+
+
+/* CHANGEMENT DU PLAN */
+
+function changePlan(product){
+
+  const select =
+    document.getElementById("select" + product);
+
+  const price =
+    document.getElementById("price" + product);
+
+  const pay =
+    document.getElementById("pay" + product);
+
+  const value = select.value;
+
+  if(value === "base"){
+
+    price.innerHTML =
+      '10,99 <span>EUR</span>';
+
+    pay.href = "#";
+
+    return;
+  }
+
+  const plan = plans[value];
+
+  price.innerHTML =
+    plan.price + ' <span>EUR</span>';
+
+  pay.href =
+    stripeLinks[product][value];
+}
+
+
 /* PARTICULES */
 
-const particles = document.getElementById("particles");
+const particles =
+  document.getElementById("particles");
 
-for(let i = 0; i < 65; i++){
+for(let i = 0; i < 60; i++){
 
-  const particle = document.createElement("div");
+  const particle =
+    document.createElement("div");
 
-  particle.className = "particle";
+  particle.className =
+    "particle";
 
   particle.style.left =
     Math.random() * 100 + "%";
@@ -993,74 +906,6 @@ for(let i = 0; i < 65; i++){
 
   particles.appendChild(particle);
 }
-
-
-/* SELECT */
-
-function toggleSelect(number){
-
-  const box =
-    document.getElementById("select" + number);
-
-  document.querySelectorAll(".select-box").forEach(item => {
-
-    if(item !== box){
-      item.classList.remove("open");
-    }
-
-  });
-
-  box.classList.toggle("open");
-}
-
-
-function chooseOption(number,name,price){
-
-  document.getElementById(
-    "selected" + number
-  ).textContent = name;
-
-  document.getElementById(
-    "price" + number
-  ).textContent = price.toFixed(2).replace(".",",");
-
-  const paypal =
-    document.getElementById("paypal" + number);
-
-  paypal.href =
-    "https://www.paypal.com/paypalme/athenahubscript/" +
-    price.toFixed(2);
-
-  document.getElementById(
-    "select" + number
-  ).classList.remove("open");
-}
-
-
-/* VIREMENT */
-
-function toggleBank(id){
-
-  const bank =
-    document.getElementById(id);
-
-  bank.classList.toggle("open");
-}
-
-
-/* FERME LES MENUS EN CLIQUANT AILLEURS */
-
-document.addEventListener("click",function(event){
-
-  if(!event.target.closest(".select-box")){
-
-    document.querySelectorAll(".select-box").forEach(box => {
-      box.classList.remove("open");
-    });
-
-  }
-
-});
 
 </script>
 
