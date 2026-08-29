@@ -4,29 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Athena Hub</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
-:root{
-  --bg:#03050a;
-  --card:#0b1019;
-  --blue:#248cff;
-  --cyan:#75d7ff;
-  --text:#f7faff;
-  --muted:#8c98aa;
-  --border:rgba(100,170,255,.15);
-  --glow:rgba(36,140,255,.3);
-}
-
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
 }
 
 html{
@@ -35,44 +19,53 @@ html{
 
 body{
   min-height:100vh;
-  background:
-    radial-gradient(circle at 50% -10%,rgba(20,120,255,.2),transparent 32%),
-    radial-gradient(circle at 10% 50%,rgba(0,80,255,.07),transparent 30%),
-    var(--bg);
-  color:var(--text);
-  font-family:Inter,sans-serif;
+  background:#04070c;
+  color:#fff;
+  font-family:Arial, sans-serif;
   overflow-x:hidden;
+}
+
+/* FOND */
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(30,130,255,.22),transparent 35%),
+    radial-gradient(circle at 0% 100%,rgba(20,70,255,.08),transparent 30%);
 }
 
 /* PARTICULES */
 
-.particles{
+#particles{
   position:fixed;
   inset:0;
-  pointer-events:none;
   overflow:hidden;
+  pointer-events:none;
   z-index:0;
 }
 
 .particle{
   position:absolute;
-  width:2px;
-  height:2px;
+  width:3px;
+  height:3px;
+  background:#55bfff;
   border-radius:50%;
-  background:#70cfff;
-  box-shadow:0 0 12px #248cff;
+  box-shadow:0 0 12px #168cff;
   animation:float linear infinite;
 }
 
 @keyframes float{
   from{
-    transform:translateY(110vh);
+    transform:translateY(105vh);
     opacity:0;
   }
   15%{
     opacity:.7;
   }
-  85%{
+  80%{
     opacity:.7;
   }
   to{
@@ -87,111 +80,70 @@ header{
   position:relative;
   z-index:1;
   text-align:center;
-  padding:105px 20px 90px;
-  border-bottom:1px solid var(--border);
-  overflow:hidden;
+  padding:100px 20px 80px;
+  border-bottom:1px solid rgba(100,170,255,.12);
 }
 
-.glow{
-  position:absolute;
-  width:800px;
-  height:550px;
-  left:50%;
-  top:-360px;
-  transform:translateX(-50%);
-  background:radial-gradient(
-    circle,
-    rgba(25,135,255,.4),
-    transparent 68%
-  );
-  filter:blur(20px);
-  animation:pulse 5s ease-in-out infinite;
-}
-
-@keyframes pulse{
-  0%,100%{
-    opacity:.55;
-    transform:translateX(-50%) scale(1);
-  }
-  50%{
-    opacity:1;
-    transform:translateX(-50%) scale(1.15);
-  }
-}
-
-.eyebrow{
-  position:relative;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:10px 18px;
-  border:1px solid rgba(70,160,255,.3);
-  border-radius:999px;
-  color:var(--cyan);
+.badge{
+  display:inline-block;
+  padding:9px 17px;
+  border:1px solid rgba(80,170,255,.35);
+  border-radius:50px;
+  color:#7dd3fc;
   font-size:11px;
-  font-weight:700;
-  letter-spacing:.2em;
+  font-weight:bold;
+  letter-spacing:3px;
   text-transform:uppercase;
-  animation:fadeDown .8s ease both;
+  animation:appear .8s ease;
 }
 
-.eyebrow::before{
+.badge:before{
   content:"";
+  display:inline-block;
   width:7px;
   height:7px;
+  margin-right:8px;
+  background:#38aaff;
   border-radius:50%;
-  background:#36aaff;
-  box-shadow:
-    0 0 8px #36aaff,
-    0 0 18px #36aaff;
-  animation:blink 2s infinite;
+  box-shadow:0 0 12px #38aaff;
 }
 
-@keyframes blink{
-  0%,100%{opacity:1}
-  50%{opacity:.35}
-}
-
-.brand{
-  position:relative;
+h1{
   margin-top:22px;
-  font-family:"Space Grotesk",sans-serif;
-  font-size:clamp(48px,10vw,92px);
-  font-weight:700;
-  letter-spacing:.04em;
-  background:
-    linear-gradient(
-      90deg,
-      #fff,
-      #8bddff,
-      #268cff,
-      #fff
-    );
+  font-size:clamp(48px,10vw,90px);
+  font-weight:900;
+  letter-spacing:3px;
+  background:linear-gradient(
+    90deg,
+    #fff,
+    #7dd3fc,
+    #258cff,
+    #fff
+  );
   background-size:300%;
   -webkit-background-clip:text;
-  color:transparent;
+  -webkit-text-fill-color:transparent;
   animation:
-    fadeUp .8s .1s ease both,
+    appear 1s ease,
     shine 5s linear infinite;
 }
 
 @keyframes shine{
   to{
-    background-position:-300% center;
+    background-position:-300%;
   }
 }
 
-.tagline{
-  position:relative;
-  max-width:520px;
+.subtitle{
   margin:18px auto 0;
-  color:var(--muted);
+  max-width:500px;
+  color:#8b97a9;
   font-size:15px;
-  line-height:1.7;
-  animation:fadeUp .8s .2s ease both;
+  line-height:1.6;
+  animation:appear 1.2s ease;
 }
 
-@keyframes fadeUp{
+@keyframes appear{
   from{
     opacity:0;
     transform:translateY(25px);
@@ -202,51 +154,36 @@ header{
   }
 }
 
-@keyframes fadeDown{
-  from{
-    opacity:0;
-    transform:translateY(-20px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* MAIN */
+/* CONTENU */
 
 .container{
   position:relative;
   z-index:1;
-  width:min(900px,calc(100% - 36px));
+  width:min(900px,calc(100% - 30px));
   margin:auto;
-  padding:80px 0 110px;
+  padding:70px 0 100px;
 }
 
-.section{
+.section-title{
   display:flex;
   align-items:center;
-  gap:18px;
-  margin-bottom:32px;
-  color:#9ba7b8;
+  gap:15px;
+  margin-bottom:30px;
+  color:#8995a7;
   font-size:11px;
-  font-weight:700;
-  letter-spacing:.2em;
+  font-weight:bold;
+  letter-spacing:3px;
   text-transform:uppercase;
 }
 
-.section::after{
+.section-title:after{
   content:"";
-  height:1px;
   flex:1;
-  background:linear-gradient(
-    90deg,
-    rgba(100,170,255,.25),
-    transparent
-  );
+  height:1px;
+  background:rgba(100,170,255,.15);
 }
 
-/* PRODUITS */
+/* 3 GROSSES CARTES */
 
 .products{
   display:flex;
@@ -254,51 +191,40 @@ header{
   gap:25px;
 }
 
-/* GROSSE CARTE */
-
-.produit{
+.product{
   position:relative;
-  min-height:310px;
-  padding:45px;
-  border:1px solid var(--border);
+  min-height:330px;
+  padding:42px;
+  border:1px solid rgba(100,170,255,.14);
   border-radius:24px;
-  overflow:hidden;
-
   background:
     linear-gradient(
       145deg,
-      rgba(19,28,42,.95),
+      rgba(20,31,48,.96),
       rgba(5,9,16,.98)
     );
-
-  box-shadow:
-    0 20px 70px rgba(0,0,0,.3);
-
-  opacity:0;
-  animation:cardIn .8s ease forwards;
-
-  transition:
-    transform .35s ease,
-    border-color .35s ease,
-    box-shadow .35s ease;
+  overflow:hidden;
+  box-shadow:0 20px 70px rgba(0,0,0,.35);
+  transition:.35s ease;
+  animation:card .8s ease both;
 }
 
-.produit:nth-child(1){
-  animation-delay:.15s;
+.product:nth-child(1){
+  animation-delay:.1s;
 }
 
-.produit:nth-child(2){
-  animation-delay:.3s;
+.product:nth-child(2){
+  animation-delay:.25s;
 }
 
-.produit:nth-child(3){
-  animation-delay:.45s;
+.product:nth-child(3){
+  animation-delay:.4s;
 }
 
-@keyframes cardIn{
+@keyframes card{
   from{
     opacity:0;
-    transform:translateY(45px);
+    transform:translateY(35px);
   }
   to{
     opacity:1;
@@ -306,38 +232,21 @@ header{
   }
 }
 
-.produit::before{
+.product:before{
   content:"";
   position:absolute;
   width:400px;
   height:400px;
-  right:-200px;
+  right:-220px;
   top:-250px;
   background:radial-gradient(
     circle,
     rgba(30,140,255,.25),
-    transparent 68%
+    transparent 70%
   );
-  pointer-events:none;
 }
 
-.produit::after{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:100%;
-  height:1px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(80,180,255,.8),
-    transparent
-  );
-  opacity:.5;
-}
-
-.produit:hover{
+.product:hover{
   transform:translateY(-8px);
   border-color:rgba(50,150,255,.5);
   box-shadow:
@@ -347,15 +256,14 @@ header{
 
 /* NUMERO */
 
-.numero{
+.number{
   position:absolute;
   top:25px;
   right:30px;
-  color:rgba(125,211,252,.25);
-  font-family:"Space Grotesk",sans-serif;
+  color:rgba(100,190,255,.25);
   font-size:13px;
-  font-weight:700;
-  letter-spacing:.15em;
+  font-weight:bold;
+  letter-spacing:2px;
 }
 
 /* ICONE */
@@ -364,51 +272,47 @@ header{
   position:relative;
   width:65px;
   height:65px;
-  margin-bottom:28px;
+  margin-bottom:25px;
   border:1px solid rgba(70,170,255,.4);
   border-radius:16px;
-  background:rgba(30,130,255,.07);
-  box-shadow:
-    inset 0 0 25px rgba(30,130,255,.08),
-    0 0 25px rgba(30,130,255,.08);
+  background:rgba(30,130,255,.06);
   display:flex;
   align-items:center;
   justify-content:center;
+  box-shadow:0 0 30px rgba(30,130,255,.08);
 }
 
-.icon::before{
+.icon:after{
   content:"";
   width:25px;
   height:25px;
-  border:2px solid #50baff;
+  border:2px solid #4bb9ff;
   transform:rotate(45deg);
-  box-shadow:
-    0 0 15px rgba(50,180,255,.7);
-  animation:iconFloat 3s ease-in-out infinite;
+  box-shadow:0 0 18px rgba(50,180,255,.7);
+  animation:icon 3s ease-in-out infinite;
 }
 
-@keyframes iconFloat{
+@keyframes icon{
   0%,100%{
     transform:rotate(45deg) translateY(0);
   }
   50%{
-    transform:rotate(45deg) translateY(-4px);
+    transform:rotate(45deg) translateY(-5px);
   }
 }
 
 /* TEXTE */
 
-.produit h2{
+.product h2{
   position:relative;
-  font-family:"Space Grotesk",sans-serif;
   font-size:28px;
   margin-bottom:10px;
 }
 
-.desc{
+.description{
   position:relative;
   max-width:600px;
-  color:var(--muted);
+  color:#8b97a9;
   font-size:14px;
   line-height:1.7;
   margin-bottom:28px;
@@ -420,134 +324,100 @@ header{
   align-items:center;
   justify-content:space-between;
   gap:25px;
-  flex-wrap:wrap;
 }
 
-.prix{
-  font-family:"Space Grotesk",sans-serif;
+.price{
   font-size:38px;
-  font-weight:700;
+  font-weight:800;
 }
 
-.prix span{
-  color:var(--muted);
+.price span{
+  color:#8793a5;
   font-size:13px;
-  font-weight:500;
+  font-weight:normal;
 }
 
 /* BOUTONS */
 
-.actions{
+.buttons{
   display:flex;
-  gap:10px;
+  gap:12px;
 }
 
-.btn{
-  position:relative;
+.button{
   border:0;
   border-radius:11px;
-  padding:15px 24px;
-  min-width:190px;
+  padding:16px 25px;
   font-size:13px;
-  font-weight:700;
-  text-decoration:none;
+  font-weight:bold;
   cursor:pointer;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
+  text-decoration:none;
   transition:.25s ease;
 }
 
-.btn::after{
-  content:"";
-  position:absolute;
-  left:-120%;
-  top:0;
-  width:70%;
-  height:100%;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.4),
-    transparent
-  );
-  transform:skewX(-20deg);
-  transition:.65s;
-}
-
-.btn:hover::after{
-  left:140%;
-}
-
-.btn-paypal{
+.paypal{
   background:#ffc439;
   color:#003087;
-  box-shadow:
-    0 8px 30px rgba(255,196,57,.15);
+  box-shadow:0 8px 30px rgba(255,196,57,.15);
 }
 
-.btn-paypal:hover{
+.paypal:hover{
   transform:translateY(-3px);
-  box-shadow:
-    0 12px 40px rgba(255,196,57,.35);
+  box-shadow:0 12px 40px rgba(255,196,57,.35);
 }
 
-.btn-virement{
+.transfer{
   background:#1769e8;
   color:white;
-  box-shadow:
-    0 8px 30px rgba(23,105,232,.18);
+  box-shadow:0 8px 30px rgba(23,105,232,.2);
 }
 
-.btn-virement:hover{
+.transfer:hover{
   transform:translateY(-3px);
-  box-shadow:
-    0 12px 40px rgba(23,105,232,.4);
+  box-shadow:0 12px 40px rgba(23,105,232,.4);
 }
 
 /* VIREMENT */
 
-.infos-virement{
+.bank{
   max-height:0;
   opacity:0;
   overflow:hidden;
   margin-top:0;
-  padding:0 22px;
+  padding:0 20px;
   border:1px solid transparent;
-  border-radius:14px;
-  background:rgba(30,120,230,.04);
-  transition:.5s ease;
+  border-radius:13px;
+  background:rgba(30,130,255,.04);
+  transition:.45s ease;
 }
 
-.infos-virement.open{
-  max-height:300px;
+.bank.open{
+  max-height:250px;
   opacity:1;
   margin-top:25px;
-  padding:22px;
-  border-color:rgba(50,150,255,.2);
+  padding:20px;
+  border-color:rgba(60,160,255,.2);
 }
 
-.infos-virement strong{
-  display:block;
-  margin-bottom:13px;
-  color:var(--cyan);
+.bank-title{
+  color:#70d0ff;
   font-size:11px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
+  font-weight:bold;
+  letter-spacing:2px;
+  margin-bottom:12px;
 }
 
-.ligne{
+.bank-row{
   display:flex;
   justify-content:space-between;
   gap:20px;
-  padding:11px 0;
+  padding:10px 0;
   border-bottom:1px dashed rgba(255,255,255,.08);
-  color:#c8d0dc;
+  color:#c5cfdb;
   font-size:13px;
 }
 
-.ligne:last-child{
+.bank-row:last-child{
   border-bottom:0;
 }
 
@@ -556,12 +426,12 @@ header{
 footer{
   position:relative;
   z-index:1;
-  border-top:1px solid var(--border);
-  text-align:center;
   padding:35px 20px;
-  color:#667184;
+  border-top:1px solid rgba(100,170,255,.12);
+  text-align:center;
+  color:#667286;
   font-size:11px;
-  letter-spacing:.12em;
+  letter-spacing:2px;
 }
 
 /* MOBILE */
@@ -573,53 +443,35 @@ footer{
   }
 
   .container{
-    width:min(100% - 24px,900px);
+    width:calc(100% - 24px);
     padding:55px 0 80px;
   }
 
-  .produit{
-    padding:32px 24px;
-    min-height:0;
+  .product{
+    padding:30px 23px;
   }
 
   .bottom{
+    flex-direction:column;
     align-items:stretch;
+  }
+
+  .buttons{
     flex-direction:column;
   }
 
-  .prix{
-    font-size:34px;
-  }
-
-  .actions{
+  .button{
     width:100%;
-    flex-direction:column;
+    text-align:center;
   }
 
-  .btn{
-    width:100%;
-    min-width:0;
-  }
-
-  .ligne{
+  .bank-row{
     flex-direction:column;
     gap:4px;
   }
 
-  .numero{
-    top:20px;
-    right:20px;
-  }
-}
-
-@media(prefers-reduced-motion:reduce){
-
-  *,
-  *::before,
-  *::after{
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    transition:none !important;
+  .price{
+    font-size:34px;
   }
 }
 </style>
@@ -627,21 +479,19 @@ footer{
 
 <body>
 
-<div class="particles" id="particles"></div>
+<div id="particles"></div>
 
 <header>
 
-  <div class="glow"></div>
-
-  <div class="eyebrow">
+  <div class="badge">
     Boutique en ligne
   </div>
 
-  <div class="brand">
+  <h1>
     ATHENA HUB
-  </div>
+  </h1>
 
-  <p class="tagline">
+  <p class="subtitle">
     Une expérience simple, rapide et sécurisée.
   </p>
 
@@ -649,7 +499,7 @@ footer{
 
 <main class="container">
 
-  <div class="section">
+  <div class="section-title">
     Nos produits
   </div>
 
@@ -657,28 +507,28 @@ footer{
 
     <!-- PRODUIT 1 -->
 
-    <div class="produit">
+    <div class="product">
 
-      <div class="numero">01</div>
+      <div class="number">01</div>
 
       <div class="icon"></div>
 
       <h2>Nom du produit</h2>
 
-      <p class="desc">
+      <p class="description">
         Description courte du produit ou du service que tu proposes.
       </p>
 
       <div class="bottom">
 
-        <div class="prix">
+        <div class="price">
           29,99 <span>EUR</span>
         </div>
 
-        <div class="actions">
+        <div class="buttons">
 
           <a
-            class="btn btn-paypal"
+            class="button paypal"
             href="https://www.paypal.com/paypalme/athenahubscript/29.99"
             target="_blank"
             rel="noopener noreferrer"
@@ -687,8 +537,8 @@ footer{
           </a>
 
           <button
-            class="btn btn-virement"
-            onclick="toggleBank('virement1')"
+            class="button transfer"
+            onclick="toggleBank('bank1')"
           >
             Payer par virement
           </button>
@@ -697,21 +547,23 @@ footer{
 
       </div>
 
-      <div class="infos-virement" id="virement1">
+      <div class="bank" id="bank1">
 
-        <strong>Coordonnées bancaires</strong>
+        <div class="bank-title">
+          COORDONNÉES BANCAIRES
+        </div>
 
-        <div class="ligne">
+        <div class="bank-row">
           <span>IBAN</span>
           <span>FRXX XXXX XXXX XXXX XXXX XXXX XXX</span>
         </div>
 
-        <div class="ligne">
+        <div class="bank-row">
           <span>BIC</span>
           <span>XXXXXXXX</span>
         </div>
 
-        <div class="ligne">
+        <div class="bank-row">
           <span>Référence</span>
           <span>Votre nom + Commande</span>
         </div>
@@ -723,28 +575,28 @@ footer{
 
     <!-- PRODUIT 2 -->
 
-    <div class="produit">
+    <div class="product">
 
-      <div class="numero">02</div>
+      <div class="number">02</div>
 
       <div class="icon"></div>
 
       <h2>Nom du produit</h2>
 
-      <p class="desc">
+      <p class="description">
         Description courte du produit ou du service que tu proposes.
       </p>
 
       <div class="bottom">
 
-        <div class="prix">
+        <div class="price">
           29,99 <span>EUR</span>
         </div>
 
-        <div class="actions">
+        <div class="buttons">
 
           <a
-            class="btn btn-paypal"
+            class="button paypal"
             href="https://www.paypal.com/paypalme/athenahubscript/29.99"
             target="_blank"
             rel="noopener noreferrer"
@@ -753,8 +605,8 @@ footer{
           </a>
 
           <button
-            class="btn btn-virement"
-            onclick="toggleBank('virement2')"
+            class="button transfer"
+            onclick="toggleBank('bank2')"
           >
             Payer par virement
           </button>
@@ -763,21 +615,23 @@ footer{
 
       </div>
 
-      <div class="infos-virement" id="virement2">
+      <div class="bank" id="bank2">
 
-        <strong>Coordonnées bancaires</strong>
+        <div class="bank-title">
+          COORDONNÉES BANCAIRES
+        </div>
 
-        <div class="ligne">
+        <div class="bank-row">
           <span>IBAN</span>
           <span>FRXX XXXX XXXX XXXX XXXX XXXX XXX</span>
         </div>
 
-        <div class="ligne">
+        <div class="bank-row">
           <span>BIC</span>
           <span>XXXXXXXX</span>
         </div>
 
-        <div class="ligne">
+        <div class="bank-row">
           <span>Référence</span>
           <span>Votre nom + Commande</span>
         </div>
@@ -789,28 +643,28 @@ footer{
 
     <!-- PRODUIT 3 -->
 
-    <div class="produit">
+    <div class="product">
 
-      <div class="numero">03</div>
+      <div class="number">03</div>
 
       <div class="icon"></div>
 
       <h2>Nom du produit</h2>
 
-      <p class="desc">
+      <p class="description">
         Description courte du produit ou du service que tu proposes.
       </p>
 
       <div class="bottom">
 
-        <div class="prix">
+        <div class="price">
           29,99 <span>EUR</span>
         </div>
 
-        <div class="actions">
+        <div class="buttons">
 
           <a
-            class="btn btn-paypal"
+            class="button paypal"
             href="https://www.paypal.com/paypalme/athenahubscript/29.99"
             target="_blank"
             rel="noopener noreferrer"
@@ -819,8 +673,8 @@ footer{
           </a>
 
           <button
-            class="btn btn-virement"
-            onclick="toggleBank('virement3')"
+            class="button transfer"
+            onclick="toggleBank('bank3')"
           >
             Payer par virement
           </button>
@@ -829,21 +683,23 @@ footer{
 
       </div>
 
-      <div class="infos-virement" id="virement3">
+      <div class="bank" id="bank3">
 
-        <strong>Coordonnées bancaires</strong>
+        <div class="bank-title">
+          COORDONNÉES BANCAIRES
+        </div>
 
-        <div class="ligne">
+        <div class="bank-row">
           <span>IBAN</span>
           <span>FRXX XXXX XXXX XXXX XXXX XXXX XXX</span>
         </div>
 
-        <div class="ligne">
+        <div class="bank-row">
           <span>BIC</span>
           <span>XXXXXXXX</span>
         </div>
 
-        <div class="ligne">
+        <div class="bank-row">
           <span>Référence</span>
           <span>Votre nom + Commande</span>
         </div>
@@ -864,9 +720,9 @@ footer{
 
 /* PARTICULES */
 
-const container = document.getElementById("particles");
+const particles = document.getElementById("particles");
 
-for(let i = 0; i < 55; i++){
+for(let i = 0; i < 60; i++){
 
   const particle = document.createElement("div");
 
@@ -884,13 +740,10 @@ for(let i = 0; i < 55; i++){
   const size =
     1 + Math.random() * 3;
 
-  particle.style.width =
-    size + "px";
+  particle.style.width = size + "px";
+  particle.style.height = size + "px";
 
-  particle.style.height =
-    size + "px";
-
-  container.appendChild(particle);
+  particles.appendChild(particle);
 }
 
 
@@ -900,7 +753,9 @@ function toggleBank(id){
 
   const box = document.getElementById(id);
 
-  box.classList.toggle("open");
+  if(box){
+    box.classList.toggle("open");
+  }
 
 }
 
