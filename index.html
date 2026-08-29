@@ -2,274 +2,179 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ATHENA HUB</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
-html{scroll-behavior:smooth}
-
 body{
-min-height:100vh;
-background:#02050a;
-color:#fff;
-font-family:Arial,Helvetica,sans-serif;
+background:#03060b;
+color:white;
+font-family:Arial,sans-serif;
 overflow-x:hidden;
 }
 
-/* BACKGROUND */
-
-.background{
+.bg{
 position:fixed;
 inset:0;
-overflow:hidden;
-z-index:-10;
+z-index:-2;
 background:
-radial-gradient(circle at 50% 0%,rgba(0,145,255,.22),transparent 35%),
-radial-gradient(circle at 0 100%,rgba(0,80,255,.18),transparent 35%),
-#02050a;
+radial-gradient(circle at 50% -10%,rgba(0,130,255,.3),transparent 38%),
+radial-gradient(circle at 0 100%,rgba(0,70,255,.15),transparent 30%),
+#03060b;
 }
 
 .grid{
-position:absolute;
-inset:-100px;
+position:fixed;
+inset:0;
+z-index:-1;
+opacity:.13;
 background-image:
-linear-gradient(rgba(30,150,255,.08) 1px,transparent 1px),
-linear-gradient(90deg,rgba(30,150,255,.08) 1px,transparent 1px);
-background-size:55px 55px;
-transform:perspective(500px) rotateX(55deg) scale(1.5);
-transform-origin:center bottom;
-animation:gridMove 8s linear infinite;
+linear-gradient(rgba(50,150,255,.12) 1px,transparent 1px),
+linear-gradient(90deg,rgba(50,150,255,.12) 1px,transparent 1px);
+background-size:50px 50px;
 }
 
-@keyframes gridMove{
-from{
-transform:perspective(500px) rotateX(55deg) scale(1.5) translateY(0);
-}
-to{
-transform:perspective(500px) rotateX(55deg) scale(1.5) translateY(55px);
-}
-}
-
-.glow{
-position:absolute;
-width:600px;
-height:600px;
-border-radius:50%;
-background:#008cff;
-filter:blur(180px);
-opacity:.08;
-left:50%;
-top:30%;
-transform:translate(-50%,-50%);
-animation:glowMove 7s ease-in-out infinite;
+#particles{
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+z-index:0;
 }
 
-@keyframes glowMove{
-0%,100%{
-transform:translate(-50%,-50%) scale(1);
-opacity:.07;
-}
-50%{
-transform:translate(-45%,-55%) scale(1.4);
-opacity:.15;
-}
-}
-
-/* PARTICULES */
-
-.orb{
+.particle{
 position:absolute;
 border-radius:50%;
-background:rgba(45,175,255,.8);
-box-shadow:
-0 0 20px rgba(0,150,255,.8),
-0 0 60px rgba(0,120,255,.4);
-animation:orbFloat linear infinite;
+background:#58caff;
+box-shadow:0 0 15px #168cff;
+animation:float linear infinite;
 }
 
-.orb:nth-child(3){
-width:4px;height:4px;left:12%;
-animation-duration:9s;
+@keyframes float{
+from{transform:translateY(110vh);opacity:0}
+15%,85%{opacity:.8}
+to{transform:translateY(-10vh);opacity:0}
 }
-
-.orb:nth-child(4){
-width:3px;height:3px;left:25%;
-animation-duration:13s;
-animation-delay:2s;
-}
-
-.orb:nth-child(5){
-width:5px;height:5px;left:42%;
-animation-duration:11s;
-animation-delay:4s;
-}
-
-.orb:nth-child(6){
-width:3px;height:3px;left:61%;
-animation-duration:15s;
-animation-delay:1s;
-}
-
-.orb:nth-child(7){
-width:5px;height:5px;left:78%;
-animation-duration:10s;
-animation-delay:3s;
-}
-
-.orb:nth-child(8){
-width:3px;height:3px;left:91%;
-animation-duration:12s;
-animation-delay:5s;
-}
-
-@keyframes orbFloat{
-0%{
-transform:translateY(110vh) translateX(0);
-opacity:0;
-}
-15%{opacity:.8}
-50%{
-transform:translateY(50vh) translateX(80px);
-}
-85%{opacity:.8}
-100%{
-transform:translateY(-10vh) translateX(-80px);
-opacity:0;
-}
-}
-
-/* LIGHTS */
-
-.light{
-position:absolute;
-width:400px;
-height:1px;
-background:linear-gradient(
-90deg,
-transparent,
-#159cff,
-transparent
-);
-opacity:.35;
-transform:rotate(-25deg);
-animation:lightMove 6s linear infinite;
-}
-
-.light.one{
-top:25%;
-left:-450px;
-}
-
-.light.two{
-top:65%;
-left:-500px;
-animation-delay:3s;
-}
-
-@keyframes lightMove{
-0%{
-transform:translateX(0) rotate(-25deg);
-opacity:0;
-}
-20%{opacity:.5}
-80%{opacity:.5}
-100%{
-transform:translateX(1800px) rotate(-25deg);
-opacity:0;
-}
-}
-
-/* HEADER */
 
 header{
 position:relative;
-padding:100px 20px 75px;
+z-index:2;
 text-align:center;
-border-bottom:1px solid rgba(100,180,255,.12);
-overflow:hidden;
+padding:75px 20px 65px;
+border-bottom:1px solid rgba(100,170,255,.14);
 }
 
 .badge{
 display:inline-flex;
 align-items:center;
-gap:9px;
-padding:10px 18px;
-border:1px solid rgba(70,180,255,.35);
+gap:8px;
+padding:9px 16px;
+border:1px solid rgba(80,180,255,.35);
 border-radius:50px;
-color:#74d5ff;
+color:#72d2ff;
 font-size:11px;
 font-weight:bold;
 letter-spacing:3px;
-background:rgba(0,100,200,.04);
-box-shadow:0 0 30px rgba(0,130,255,.08);
 }
 
 .dot{
 width:7px;
 height:7px;
 border-radius:50%;
-background:#35adff;
-box-shadow:
-0 0 10px #35adff,
-0 0 25px #008cff;
-animation:blink 1.8s infinite;
-}
-
-@keyframes blink{
-0%,100%{opacity:1}
-50%{opacity:.25}
+background:#38aaff;
+box-shadow:0 0 14px #168cff;
 }
 
 .logo{
-margin-top:25px;
-font-size:clamp(45px,10vw,92px);
-font-weight:1000;
-letter-spacing:5px;
-background:
-linear-gradient(
-90deg,
-#fff,
-#8be0ff,
-#168cff,
-#fff,
-#65caff,
-#fff
-);
-background-size:400%;
+margin-top:20px;
+font-size:clamp(48px,10vw,88px);
+font-weight:900;
+letter-spacing:4px;
+background:linear-gradient(90deg,#fff,#80d9ff,#258cff,#fff);
+background-size:300%;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:logoShine 5s linear infinite;
-filter:drop-shadow(0 0 25px rgba(0,145,255,.3));
+animation:shine 5s linear infinite;
 }
 
-@keyframes logoShine{
-to{background-position:400% center}
+@keyframes shine{
+to{background-position:-300% center}
 }
 
 .subtitle{
-margin:18px auto 0;
-max-width:500px;
-color:#7e8ca0;
+margin:15px auto 0;
+color:#8793a6;
 font-size:14px;
-line-height:1.7;
 }
 
-/* MAIN */
-
 main{
+position:relative;
+z-index:2;
 width:min(900px,calc(100% - 24px));
 margin:auto;
-padding:65px 0 100px;
+padding:55px 0 100px;
+}
+
+.emailBox{
+display:flex;
+align-items:center;
+gap:10px;
+padding:7px;
+margin-bottom:35px;
+border:1px solid rgba(100,170,255,.18);
+border-radius:15px;
+background:rgba(9,17,28,.95);
+box-shadow:0 10px 40px rgba(0,0,0,.3);
+}
+
+.emailIcon{
+width:45px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+color:#69d1ff;
+transition:.3s;
+}
+
+.emailInput{
+flex:1;
+min-width:0;
+background:transparent;
+border:0;
+outline:0;
+color:white;
+font-size:14px;
+}
+
+.emailInput::placeholder{
+color:#718096;
+}
+
+.send{
+border:0;
+border-radius:10px;
+padding:14px 25px;
+background:#20c875;
+color:#03130b;
+font-weight:900;
+cursor:pointer;
+transition:.25s;
+}
+
+.send:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 30px rgba(32,200,117,.25);
 }
 
 .section{
 display:flex;
 align-items:center;
-gap:15px;
-margin-bottom:28px;
-color:#758296;
+gap:14px;
+margin-bottom:25px;
+color:#7d899b;
 font-size:11px;
 font-weight:bold;
 letter-spacing:3px;
@@ -279,90 +184,53 @@ letter-spacing:3px;
 content:"";
 height:1px;
 flex:1;
-background:linear-gradient(
-90deg,
-rgba(70,160,255,.25),
-transparent
-);
+background:rgba(100,170,255,.16);
 }
-
-/* PRODUCTS */
 
 .products{
 display:flex;
 flex-direction:column;
-gap:28px;
+gap:25px;
 }
 
 .product{
 position:relative;
 padding:38px;
-border:1px solid rgba(80,170,255,.18);
-border-radius:25px;
-background:
-linear-gradient(
-145deg,
-rgba(13,28,45,.96),
-rgba(3,8,15,.98)
-);
-box-shadow:
-0 25px 80px rgba(0,0,0,.55),
-inset 0 1px rgba(255,255,255,.03);
+border:1px solid rgba(100,170,255,.17);
+border-radius:24px;
+background:linear-gradient(145deg,#0e1b2b,#050a11);
+box-shadow:0 25px 70px rgba(0,0,0,.45);
 overflow:visible;
-transition:.4s ease;
-}
-
-.product:before{
-content:"";
-position:absolute;
-inset:0;
-border-radius:25px;
-background:
-radial-gradient(
-circle at 100% 0%,
-rgba(0,145,255,.18),
-transparent 35%
-);
-pointer-events:none;
+transition:.3s;
 }
 
 .product:hover{
-transform:translateY(-8px);
-border-color:rgba(60,175,255,.55);
+transform:translateY(-6px);
+border-color:rgba(50,165,255,.5);
 box-shadow:
-0 35px 100px rgba(0,0,0,.7),
-0 0 50px rgba(0,130,255,.12);
+0 30px 90px rgba(0,0,0,.65),
+0 0 40px rgba(20,130,255,.12);
 }
 
 .number{
 position:absolute;
-top:22px;
-right:25px;
-color:rgba(90,190,255,.3);
+top:23px;
+right:27px;
+color:rgba(100,190,255,.25);
 font-size:12px;
 font-weight:bold;
-letter-spacing:2px;
 }
 
-/* HELMET */
-
 .helmet{
+width:76px;
+height:76px;
+margin-bottom:23px;
 position:relative;
-width:78px;
-height:78px;
-margin-bottom:25px;
-border:2px solid #52caff;
-border-radius:48% 48% 38% 38%;
-background:
-linear-gradient(
-145deg,
-rgba(50,190,255,.2),
-rgba(0,30,60,.3)
-);
-box-shadow:
-0 0 20px rgba(30,160,255,.3),
-inset 0 0 25px rgba(50,170,255,.08);
-animation:helmetFloat 3.5s ease-in-out infinite;
+border:2px solid #51c8ff;
+border-radius:45% 45% 35% 35%;
+background:linear-gradient(145deg,rgba(50,180,255,.18),rgba(5,30,55,.2));
+box-shadow:0 0 25px rgba(30,150,255,.4);
+animation:helmet 3s ease-in-out infinite;
 }
 
 .helmet:before{
@@ -370,236 +238,169 @@ content:"";
 position:absolute;
 left:17px;
 top:13px;
-width:38px;
+width:36px;
 height:46px;
-border-left:3px solid #9ce9ff;
-border-right:3px solid #9ce9ff;
-border-bottom:3px solid #59caff;
+border-left:3px solid #9be4ff;
+border-right:3px solid #9be4ff;
 border-radius:0 0 20px 20px;
 }
 
 .helmet:after{
 content:"";
 position:absolute;
-width:58px;
-height:16px;
+width:55px;
+height:12px;
 left:8px;
-top:-12px;
-border-top:4px solid #65d4ff;
+top:-10px;
+border-top:4px solid #67d1ff;
 border-radius:50%;
-transform:rotate(-8deg);
-box-shadow:0 0 15px #168cff;
+transform:rotate(-12deg);
 }
 
-@keyframes helmetFloat{
-0%,100%{
-transform:translateY(0) rotate(0);
+@keyframes helmet{
+50%{transform:translateY(-7px) rotate(2deg)}
 }
-50%{
-transform:translateY(-7px) rotate(2deg);
-}
-}
-
-/* TEXT */
 
 h2{
-position:relative;
-font-size:29px;
-margin-bottom:11px;
+font-size:28px;
+margin-bottom:10px;
 }
 
 .description{
-position:relative;
-color:#8a98ab;
+color:#8996a9;
 font-size:14px;
-line-height:1.7;
-margin-bottom:27px;
+line-height:1.65;
+margin-bottom:25px;
 }
 
-/* SELECT */
-
 .selectArea{
-position:relative;
-z-index:50;
 display:flex;
 align-items:center;
-gap:12px;
+gap:10px;
+position:relative;
+z-index:20;
 }
 
 .select{
-appearance:auto;
-width:270px;
-padding:15px 16px;
-border:1px solid rgba(70,175,255,.35);
-border-radius:12px;
-outline:none;
-background:#07111d;
+width:260px;
+padding:15px;
+border-radius:11px;
+border:1px solid rgba(70,170,255,.35);
+background:#08111d;
 color:white;
-font-size:14px;
 font-weight:bold;
+outline:0;
 cursor:pointer;
-box-shadow:
-inset 0 0 20px rgba(0,120,255,.04),
-0 0 20px rgba(0,100,255,.04);
-}
-
-.select:focus{
-border-color:#3eb8ff;
-box-shadow:0 0 25px rgba(0,145,255,.15);
 }
 
 .select option{
-background:#fff;
-color:#000;
-font-weight:bold;
+background:white;
+color:black;
 }
 
 .arrow{
-font-size:25px;
-color:#55caff;
-animation:arrowPulse 1.8s ease-in-out infinite;
+color:#68d1ff;
+font-size:21px;
 }
-
-@keyframes arrowPulse{
-0%,100%{
-transform:translateX(0);
-opacity:.7;
-}
-50%{
-transform:translateX(6px);
-opacity:1;
-}
-}
-
-/* PRICE */
 
 .price{
 display:flex;
 align-items:center;
 gap:12px;
 margin:25px 0;
-min-height:48px;
 }
 
-.priceDefault{
-color:#778496;
-font-size:16px;
+.old{
+position:relative;
+color:#737f91;
+font-size:21px;
+font-weight:bold;
 }
 
-/* PAYPAL */
+.new{
+font-size:38px;
+font-weight:900;
+}
+
+.eur{
+color:#7b8799;
+font-size:12px;
+font-weight:normal;
+}
 
 .paypal{
 display:inline-flex;
-align-items:center;
+width:220px;
+padding:16px;
 justify-content:center;
-width:235px;
-padding:16px 20px;
-border-radius:12px;
+align-items:center;
+border-radius:11px;
 background:#ffc439;
 color:#003087;
-font-size:14px;
-font-weight:900;
 text-decoration:none;
-transition:.3s ease;
-box-shadow:0 8px 25px rgba(255,196,57,.08);
+font-weight:900;
+font-size:14px;
+transition:.25s;
 }
 
 .paypal:hover{
-transform:translateY(-4px) scale(1.02);
-box-shadow:
-0 15px 40px rgba(255,196,57,.3);
+transform:translateY(-3px) scale(1.02);
+box-shadow:0 14px 40px rgba(255,196,57,.35);
 }
-
-/* FOOTER */
 
 footer{
 border-top:1px solid rgba(100,170,255,.12);
-padding:32px 20px;
+padding:30px;
 text-align:center;
-color:#657286;
-font-size:10px;
-letter-spacing:2px;
+color:#667286;
+font-size:11px;
 }
-
-/* MOBILE */
 
 @media(max-width:650px){
-
-header{
-padding:80px 18px 60px;
-}
-
-main{
-padding-top:50px;
-}
 
 .product{
 padding:30px 22px;
 }
 
-.selectArea{
+.emailBox{
+flex-wrap:wrap;
+}
+
+.emailInput{
+min-width:130px;
+}
+
+.send{
+height:45px;
 width:100%;
 }
 
 .select{
-width:calc(100% - 38px);
+width:100%;
+}
+
+.price{
+flex-wrap:wrap;
 }
 
 .paypal{
 width:100%;
 }
-
-.logo{
-letter-spacing:2px;
-}
-
-}
-
-/* SCROLLBAR */
-
-::-webkit-scrollbar{
-width:7px;
-}
-
-::-webkit-scrollbar-track{
-background:#02050a;
-}
-
-::-webkit-scrollbar-thumb{
-background:#123a5c;
-border-radius:20px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-background:#168cff;
 }
 </style>
 </head>
 
 <body>
 
-<div class="background">
-
+<div class="bg"></div>
 <div class="grid"></div>
-<div class="glow"></div>
-
-<div class="orb"></div>
-<div class="orb"></div>
-<div class="orb"></div>
-<div class="orb"></div>
-<div class="orb"></div>
-<div class="orb"></div>
-
-<div class="light one"></div>
-<div class="light two"></div>
-
-</div>
+<div id="particles"></div>
 
 <header>
 
 <div class="badge">
 <span class="dot"></span>
-ATHENA HUB
+BOUTIQUE EN LIGNE
 </div>
 
 <div class="logo">
@@ -607,7 +408,7 @@ ATHENA HUB
 </div>
 
 <p class="subtitle">
-Premium tools and powerful features
+Une expérience simple, rapide et sécurisée.
 </p>
 
 </header>
@@ -615,17 +416,36 @@ Premium tools and powerful features
 <main>
 
 <div class="section">
+CONTACT
+</div>
+
+<div class="emailBox">
+
+<div class="emailIcon" id="emailIcon">✉</div>
+
+<input
+id="email"
+class="emailInput"
+type="email"
+placeholder="Email"
+autocomplete="email"
+>
+
+<button class="send" onclick="sendEmail()">
+Send
+</button>
+
+</div>
+
+<div class="section">
 NOS PRODUITS
 </div>
 
 <div class="products">
 
-<!-- PRODUIT 1 -->
-
 <div class="product">
 
 <div class="number">01</div>
-
 <div class="helmet"></div>
 
 <h2>Autojoiner</h2>
@@ -638,11 +458,11 @@ AP spam nearest
 
 <div class="selectArea">
 
-<select class="select">
-<option selected>Select option</option>
-<option>1 Day · 2,99€</option>
-<option>1 Week · 5,99€</option>
-<option>Lifetime · 10,99€</option>
+<select class="select" onchange="changePrice(this)">
+<option value="">Select option</option>
+<option value="day">1 Day</option>
+<option value="week">1 Week</option>
+<option value="life">Lifetime</option>
 </select>
 
 <span class="arrow">→</span>
@@ -650,26 +470,22 @@ AP spam nearest
 </div>
 
 <div class="price">
-<span class="priceDefault">Select a plan</span>
+<span class="old">—</span>
+<span class="new"><span class="newPrice">—</span> <span class="eur">EUR</span></span>
 </div>
 
-<a
-class="paypal"
-href="https://www.paypal.com/paypalme/athenahubscript"
+<a class="paypal"
+href="https://www.paypal.me/athenahubscript"
 target="_blank"
-rel="noopener noreferrer"
->
+rel="noopener noreferrer">
 Payer avec PayPal
 </a>
 
 </div>
 
-<!-- PRODUIT 2 -->
-
 <div class="product">
 
 <div class="number">02</div>
-
 <div class="helmet"></div>
 
 <h2>Auto Redeem</h2>
@@ -680,11 +496,11 @@ Lua for activate
 
 <div class="selectArea">
 
-<select class="select">
-<option selected>Select option</option>
-<option>1 Day · 2,99€</option>
-<option>1 Week · 5,99€</option>
-<option>Lifetime · 10,99€</option>
+<select class="select" onchange="changePrice(this)">
+<option value="">Select option</option>
+<option value="day">1 Day</option>
+<option value="week">1 Week</option>
+<option value="life">Lifetime</option>
 </select>
 
 <span class="arrow">→</span>
@@ -692,67 +508,54 @@ Lua for activate
 </div>
 
 <div class="price">
-<span class="priceDefault">Select a plan</span>
+<span class="old">—</span>
+<span class="new"><span class="newPrice">—</span> <span class="eur">EUR</span></span>
 </div>
 
-<a
-class="paypal"
-href="https://www.paypal.com/paypalme/athenahubscript"
+<a class="paypal"
+href="https://www.paypal.me/athenahubscript"
 target="_blank"
-rel="noopener noreferrer"
->
+rel="noopener noreferrer">
 Payer avec PayPal
 </a>
 
 </div>
 
-<!-- PRODUIT 3 -->
-
 <div class="product">
 
 <div class="number">03</div>
-
 <div class="helmet"></div>
 
 <h2>Athena Hub</h2>
 
 <p class="description">
-
-STEALING<br><br>
+🟢 STEALING<br>
 Auto Steal Best / Nearest / Priority<br>
-Semi Instant / Auto Desync / Auto TP<br>
-Flash TP / Giant Potion / Auto Walk<br>
-Auto Spam / Auto TP on unlock<br><br>
+Semi Instant / Auto Desync / Auto TP<br><br>
 
-PLAYER<br><br>
-Speed / Infinite Jump / Aimbot<br>
-Auto Destroy Turret / Anti Ragdoll<br>
-Anti Admin Panel<br><br>
+🔵 PLAYER<br>
+Speed / Infinite Jump / Aimbot / Anti Ragdoll<br><br>
 
-VISUALS<br><br>
-Brainrot ESP / Player ESP / Base ESP<br>
-Mine ESP / Clone ESP / Custom FOV<br><br>
+🟣 VISUALS<br>
+Brainrot ESP / Player ESP / Base ESP / Mine ESP / Clone ESP<br><br>
 
-ADMIN<br><br>
-Auto Defense / Admin Panel<br>
-Admin Spammer<br><br>
+🔴 ADMIN<br>
+Auto Defense / Admin Panel / Admin Spammer<br><br>
 
-QUICK BUTTONS<br><br>
-Self Ragdoll / Instant Reset<br>
-Allow / Disallow / Rejoin / Leave<br><br>
+⚡ QUICK BUTTONS<br>
+Self Ragdoll / Instant Reset / Allow / Disallow / Rejoin / Leave<br><br>
 
-EXTRAS<br><br>
+⚙️ EXTRAS<br>
 Fully recolorable
-
 </p>
 
 <div class="selectArea">
 
-<select class="select">
-<option selected>Select option</option>
-<option>1 Day · 2,99€</option>
-<option>1 Week · 5,99€</option>
-<option>Lifetime · 10,99€</option>
+<select class="select" onchange="changePrice(this)">
+<option value="">Select option</option>
+<option value="day">1 Day</option>
+<option value="week">1 Week</option>
+<option value="life">Lifetime</option>
 </select>
 
 <span class="arrow">→</span>
@@ -760,15 +563,14 @@ Fully recolorable
 </div>
 
 <div class="price">
-<span class="priceDefault">Select a plan</span>
+<span class="old">—</span>
+<span class="new"><span class="newPrice">—</span> <span class="eur">EUR</span></span>
 </div>
 
-<a
-class="paypal"
-href="https://www.paypal.com/paypalme/athenahubscript"
+<a class="paypal"
+href="https://www.paypal.me/athenahubscript"
 target="_blank"
-rel="noopener noreferrer"
->
+rel="noopener noreferrer">
 Payer avec PayPal
 </a>
 
@@ -779,8 +581,126 @@ Payer avec PayPal
 </main>
 
 <footer>
-© 2026 ATHENA HUB · ALL RIGHTS RESERVED
+© 2026 ATHENA HUB · TOUS DROITS RÉSERVÉS
 </footer>
+
+<script>
+
+const prices={
+day:{old:"2,99€",new:"2,99"},
+week:{old:"5,99€",new:"5,99"},
+life:{old:"10,99€",new:"10,99"}
+};
+
+function changePrice(select){
+
+const product=select.closest(".product");
+const oldPrice=product.querySelector(".old");
+const newPrice=product.querySelector(".newPrice");
+
+if(!prices[select.value]){
+oldPrice.textContent="—";
+newPrice.textContent="—";
+return;
+}
+
+oldPrice.textContent=prices[select.value].old;
+newPrice.textContent=prices[select.value].new;
+}
+
+/*
+WEBHOOK DISCORD
+
+Remplace cette URL par ton webhook
+MAIS pour un vrai site public utilise plutôt
+un serveur/proxy afin de ne pas exposer le webhook
+*/
+
+const WEBHOOK_URL="https://discord.com/api/webhooks/1543275343744475220/UWzs8TFPDcCazMEG55HMRoeOuxrp-x0-4ju6IfjUy1OEM1IzKhlE8_LzDNXmg3wW6BJs";
+
+async function sendEmail(){
+
+const input=document.getElementById("email");
+const icon=document.getElementById("emailIcon");
+const email=input.value.trim();
+
+if(!email){
+input.focus();
+return;
+}
+
+if(!email.includes("@")){
+input.focus();
+return;
+}
+
+const button=document.querySelector(".send");
+
+button.disabled=true;
+button.textContent="Sending...";
+
+try{
+
+await fetch(WEBHOOK_URL,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+content:"📩 Nouvel email reçu\nEmail : "+email
+})
+});
+
+icon.textContent="✓";
+icon.style.color="#20c875";
+
+input.value="";
+
+button.textContent="Sent";
+
+setTimeout(()=>{
+
+icon.textContent="✉";
+icon.style.color="#69d1ff";
+button.textContent="Send";
+button.disabled=false;
+
+},2000);
+
+}catch(error){
+
+button.textContent="Error";
+
+setTimeout(()=>{
+button.textContent="Send";
+button.disabled=false;
+},2000);
+
+}
+
+}
+
+const particles=document.getElementById("particles");
+
+for(let i=0;i<65;i++){
+
+const p=document.createElement("div");
+
+p.className="particle";
+
+const size=1+Math.random()*3;
+
+p.style.width=size+"px";
+p.style.height=size+"px";
+p.style.left=Math.random()*100+"%";
+p.style.animationDuration=7+Math.random()*13+"s";
+p.style.animationDelay=-Math.random()*15+"s";
+
+particles.appendChild(p);
+
+}
+
+</script>
 
 </body>
 </html>
