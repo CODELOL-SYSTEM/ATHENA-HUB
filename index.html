@@ -6,20 +6,14 @@
 <title>ATHENA HUB</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
-html{
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
 min-height:100vh;
 background:#02050a;
-color:white;
+color:#fff;
 font-family:Arial,Helvetica,sans-serif;
 overflow-x:hidden;
 }
@@ -33,7 +27,7 @@ overflow:hidden;
 z-index:-10;
 background:
 radial-gradient(circle at 50% 0%,rgba(0,145,255,.22),transparent 35%),
-radial-gradient(circle at 0% 100%,rgba(0,80,255,.18),transparent 35%),
+radial-gradient(circle at 0 100%,rgba(0,80,255,.18),transparent 35%),
 #02050a;
 }
 
@@ -57,8 +51,6 @@ to{
 transform:perspective(500px) rotateX(55deg) scale(1.5) translateY(55px);
 }
 }
-
-/* GLOW */
 
 .glow{
 position:absolute;
@@ -85,12 +77,11 @@ opacity:.15;
 }
 }
 
-/* ORBES */
+/* PARTICULES */
 
 .orb{
 position:absolute;
 border-radius:50%;
-filter:blur(2px);
 background:rgba(45,175,255,.8);
 box-shadow:
 0 0 20px rgba(0,150,255,.8),
@@ -99,48 +90,36 @@ animation:orbFloat linear infinite;
 }
 
 .orb:nth-child(3){
-width:4px;
-height:4px;
-left:12%;
+width:4px;height:4px;left:12%;
 animation-duration:9s;
 }
 
 .orb:nth-child(4){
-width:3px;
-height:3px;
-left:25%;
+width:3px;height:3px;left:25%;
 animation-duration:13s;
 animation-delay:2s;
 }
 
 .orb:nth-child(5){
-width:5px;
-height:5px;
-left:42%;
+width:5px;height:5px;left:42%;
 animation-duration:11s;
 animation-delay:4s;
 }
 
 .orb:nth-child(6){
-width:3px;
-height:3px;
-left:61%;
+width:3px;height:3px;left:61%;
 animation-duration:15s;
 animation-delay:1s;
 }
 
 .orb:nth-child(7){
-width:5px;
-height:5px;
-left:78%;
+width:5px;height:5px;left:78%;
 animation-duration:10s;
 animation-delay:3s;
 }
 
 .orb:nth-child(8){
-width:3px;
-height:3px;
-left:91%;
+width:3px;height:3px;left:91%;
 animation-duration:12s;
 animation-delay:5s;
 }
@@ -150,22 +129,18 @@ animation-delay:5s;
 transform:translateY(110vh) translateX(0);
 opacity:0;
 }
-15%{
-opacity:.8;
-}
+15%{opacity:.8}
 50%{
 transform:translateY(50vh) translateX(80px);
 }
-85%{
-opacity:.8;
-}
+85%{opacity:.8}
 100%{
 transform:translateY(-10vh) translateX(-80px);
 opacity:0;
 }
 }
 
-/* LIGNES LUMINEUSES */
+/* LIGHTS */
 
 .light{
 position:absolute;
@@ -198,12 +173,8 @@ animation-delay:3s;
 transform:translateX(0) rotate(-25deg);
 opacity:0;
 }
-20%{
-opacity:.5;
-}
-80%{
-opacity:.5;
-}
+20%{opacity:.5}
+80%{opacity:.5}
 100%{
 transform:translateX(1800px) rotate(-25deg);
 opacity:0;
@@ -259,12 +230,12 @@ letter-spacing:5px;
 background:
 linear-gradient(
 90deg,
-#ffffff,
+#fff,
 #8be0ff,
 #168cff,
-#ffffff,
+#fff,
 #65caff,
-#ffffff
+#fff
 );
 background-size:400%;
 -webkit-background-clip:text;
@@ -274,9 +245,7 @@ filter:drop-shadow(0 0 25px rgba(0,145,255,.3));
 }
 
 @keyframes logoShine{
-to{
-background-position:400% center;
-}
+to{background-position:400% center}
 }
 
 .subtitle{
@@ -317,7 +286,7 @@ transparent
 );
 }
 
-/* CARDS */
+/* PRODUCTS */
 
 .products{
 display:flex;
@@ -480,8 +449,8 @@ box-shadow:0 0 25px rgba(0,145,255,.15);
 }
 
 .select option{
-background:#ffffff;
-color:#000000;
+background:#fff;
+color:#000;
 font-weight:bold;
 }
 
@@ -510,26 +479,6 @@ align-items:center;
 gap:12px;
 margin:25px 0;
 min-height:48px;
-}
-
-.old{
-color:#727f92;
-font-size:20px;
-font-weight:bold;
-position:relative;
-}
-
-.new{
-font-size:38px;
-font-weight:1000;
-color:#fff;
-}
-
-.eur{
-font-size:12px;
-color:#7e8b9d;
-font-weight:normal;
-margin-left:3px;
 }
 
 .priceDefault{
@@ -596,10 +545,6 @@ width:100%;
 width:calc(100% - 38px);
 }
 
-.price{
-flex-wrap:wrap;
-}
-
 .paypal{
 width:100%;
 }
@@ -610,7 +555,7 @@ letter-spacing:2px;
 
 }
 
-/* CUSTOM SCROLLBAR */
+/* SCROLLBAR */
 
 ::-webkit-scrollbar{
 width:7px;
@@ -675,7 +620,7 @@ NOS PRODUITS
 
 <div class="products">
 
-<!-- AUTOJOINER -->
+<!-- PRODUIT 1 -->
 
 <div class="product">
 
@@ -705,11 +650,7 @@ AP spam nearest
 </div>
 
 <div class="price">
-
-<span class="priceDefault">
-Select a plan
-</span>
-
+<span class="priceDefault">Select a plan</span>
 </div>
 
 <a
@@ -723,8 +664,7 @@ Payer avec PayPal
 
 </div>
 
-
-<!-- AUTO REDEEM -->
+<!-- PRODUIT 2 -->
 
 <div class="product">
 
@@ -752,11 +692,7 @@ Lua for activate
 </div>
 
 <div class="price">
-
-<span class="priceDefault">
-Select a plan
-</span>
-
+<span class="priceDefault">Select a plan</span>
 </div>
 
 <a
@@ -770,8 +706,7 @@ Payer avec PayPal
 
 </div>
 
-
-<!-- ATHENA HUB -->
+<!-- PRODUIT 3 -->
 
 <div class="product">
 
@@ -784,35 +719,29 @@ Payer avec PayPal
 <p class="description">
 
 STEALING<br><br>
-
 Auto Steal Best / Nearest / Priority<br>
 Semi Instant / Auto Desync / Auto TP<br>
 Flash TP / Giant Potion / Auto Walk<br>
 Auto Spam / Auto TP on unlock<br><br>
 
 PLAYER<br><br>
-
 Speed / Infinite Jump / Aimbot<br>
 Auto Destroy Turret / Anti Ragdoll<br>
 Anti Admin Panel<br><br>
 
 VISUALS<br><br>
-
 Brainrot ESP / Player ESP / Base ESP<br>
 Mine ESP / Clone ESP / Custom FOV<br><br>
 
 ADMIN<br><br>
-
 Auto Defense / Admin Panel<br>
 Admin Spammer<br><br>
 
 QUICK BUTTONS<br><br>
-
 Self Ragdoll / Instant Reset<br>
 Allow / Disallow / Rejoin / Leave<br><br>
 
 EXTRAS<br><br>
-
 Fully recolorable
 
 </p>
@@ -831,11 +760,7 @@ Fully recolorable
 </div>
 
 <div class="price">
-
-<span class="priceDefault">
-Select a plan
-</span>
-
+<span class="priceDefault">Select a plan</span>
 </div>
 
 <a
