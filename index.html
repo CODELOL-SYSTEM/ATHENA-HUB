@@ -2,902 +2,857 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ATHENA HUB</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-:root{
-  --bg:#03060b;
-  --card:#0a101a;
-  --blue:#168cff;
-  --cyan:#68d5ff;
-  --muted:#8793a6;
-  --line:rgba(100,180,255,.16);
-}
-
-html{
-  scroll-behavior:smooth;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  min-height:100vh;
-  background:#03060b;
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
+background:#03060b;
+color:#fff;
+font-family:Arial,sans-serif;
+overflow-x:hidden;
 }
 
-/* BACKGROUND */
-
-.background{
-  position:fixed;
-  inset:0;
-  z-index:-3;
-  background:
-    radial-gradient(circle at 50% -10%,rgba(0,130,255,.25),transparent 38%),
-    radial-gradient(circle at 0% 100%,rgba(0,80,255,.12),transparent 30%),
-    #03060b;
+.bg{
+position:fixed;
+inset:0;
+z-index:-2;
+background:
+radial-gradient(circle at 50% -10%,rgba(0,130,255,.25),transparent 38%),
+radial-gradient(circle at 0 100%,rgba(0,70,255,.12),transparent 30%),
+#03060b;
 }
 
 .grid{
-  position:fixed;
-  inset:0;
-  z-index:-2;
-  opacity:.13;
-  background-image:
-    linear-gradient(rgba(60,150,255,.12) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(60,150,255,.12) 1px,transparent 1px);
-  background-size:50px 50px;
+position:fixed;
+inset:0;
+z-index:-1;
+opacity:.12;
+background-image:
+linear-gradient(rgba(50,150,255,.12) 1px,transparent 1px),
+linear-gradient(90deg,rgba(50,150,255,.12) 1px,transparent 1px);
+background-size:50px 50px;
 }
 
-/* PARTICLES */
-
 #particles{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-1;
-  overflow:hidden;
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+z-index:0;
 }
 
 .particle{
-  position:absolute;
-  border-radius:50%;
-  background:#59caff;
-  box-shadow:0 0 14px #168cff;
-  animation:float linear infinite;
+position:absolute;
+border-radius:50%;
+background:#58caff;
+box-shadow:0 0 14px #168cff;
+animation:float linear infinite;
 }
 
 @keyframes float{
-  from{
-    transform:translateY(110vh);
-    opacity:0;
-  }
-  15%{opacity:.7}
-  85%{opacity:.7}
-  to{
-    transform:translateY(-10vh);
-    opacity:0;
-  }
+from{transform:translateY(110vh);opacity:0}
+15%,85%{opacity:.7}
+to{transform:translateY(-10vh);opacity:0}
 }
 
 /* HEADER */
 
 header{
-  position:relative;
-  text-align:center;
-  padding:85px 20px 70px;
-  border-bottom:1px solid var(--line);
-  overflow:hidden;
-}
-
-.headerGlow{
-  position:absolute;
-  width:700px;
-  height:500px;
-  top:-370px;
-  left:50%;
-  transform:translateX(-50%);
-  background:radial-gradient(circle,rgba(0,140,255,.45),transparent 70%);
-  filter:blur(25px);
-  animation:pulse 5s ease-in-out infinite;
-}
-
-@keyframes pulse{
-  0%,100%{
-    opacity:.55;
-    transform:translateX(-50%) scale(1);
-  }
-  50%{
-    opacity:1;
-    transform:translateX(-50%) scale(1.15);
-  }
+position:relative;
+z-index:2;
+text-align:center;
+padding:75px 20px 65px;
+border-bottom:1px solid rgba(100,170,255,.14);
 }
 
 .badge{
-  position:relative;
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  padding:9px 17px;
-  border:1px solid rgba(80,180,255,.35);
-  border-radius:50px;
-  color:#76d4ff;
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:3px;
-  animation:appear .8s ease both;
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:9px 16px;
+border:1px solid rgba(80,180,255,.35);
+border-radius:50px;
+color:#72d2ff;
+font-size:11px;
+font-weight:bold;
+letter-spacing:3px;
 }
 
-.badgeDot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:#3db8ff;
-  box-shadow:0 0 15px #168cff;
-  animation:blink 1.7s infinite;
-}
-
-@keyframes blink{
-  50%{opacity:.25}
+.dot{
+width:7px;
+height:7px;
+border-radius:50%;
+background:#38aaff;
+box-shadow:0 0 14px #168cff;
 }
 
 .logo{
-  position:relative;
-  margin-top:22px;
-  font-size:clamp(48px,10vw,90px);
-  font-weight:900;
-  letter-spacing:4px;
-  background:linear-gradient(
-    90deg,
-    #fff,
-    #8bddff,
-    #258cff,
-    #fff
-  );
-  background-size:300%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:shine 5s linear infinite,appear .8s ease both;
+margin-top:20px;
+font-size:clamp(48px,10vw,88px);
+font-weight:900;
+letter-spacing:4px;
+background:linear-gradient(90deg,#fff,#80d9ff,#258cff,#fff);
+background-size:300%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:shine 5s linear infinite;
 }
 
 @keyframes shine{
-  to{background-position:-300% center}
+to{background-position:-300% center}
 }
 
 .subtitle{
-  position:relative;
-  max-width:520px;
-  margin:16px auto 0;
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.7;
-  animation:appear .8s .15s ease both;
-}
-
-@keyframes appear{
-  from{
-    opacity:0;
-    transform:translateY(25px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+margin:15px auto 0;
+color:#8793a6;
+font-size:14px;
 }
 
 /* MAIN */
 
 main{
-  width:min(900px,calc(100% - 24px));
-  margin:auto;
-  padding:65px 0 100px;
+position:relative;
+z-index:2;
+width:min(900px,calc(100% - 24px));
+margin:auto;
+padding:55px 0 100px;
 }
 
-.sectionTitle{
-  display:flex;
-  align-items:center;
-  gap:15px;
-  margin-bottom:28px;
-  color:#7e8b9d;
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:3px;
+/* CODE BUTTON */
+
+.codeButton{
+position:fixed;
+top:18px;
+right:18px;
+z-index:50;
+border:1px solid rgba(80,180,255,.45);
+background:rgba(5,15,27,.9);
+color:#72d2ff;
+padding:11px 17px;
+border-radius:10px;
+font-weight:bold;
+font-size:12px;
+cursor:pointer;
+box-shadow:0 0 25px rgba(20,130,255,.15);
+transition:.25s;
 }
 
-.sectionTitle:after{
-  content:"";
-  height:1px;
-  flex:1;
-  background:var(--line);
+.codeButton:hover{
+transform:translateY(-2px);
+box-shadow:0 0 30px rgba(20,130,255,.4);
 }
 
 /* EMAIL */
 
 .emailBox{
-  position:relative;
-  display:flex;
-  gap:10px;
-  margin-bottom:35px;
-  padding:7px;
-  border:1px solid var(--line);
-  border-radius:15px;
-  background:rgba(10,18,30,.85);
-  box-shadow:0 15px 50px rgba(0,0,0,.3);
+display:flex;
+gap:10px;
+padding:7px;
+margin-bottom:35px;
+border:1px solid rgba(100,170,255,.16);
+border-radius:15px;
+background:#09111c;
 }
 
 .emailIcon{
-  width:48px;
-  min-width:48px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#67cfff;
-  font-size:20px;
+width:45px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:19px;
+color:#69d1ff;
 }
 
 .emailInput{
-  flex:1;
-  min-width:0;
-  border:0;
-  outline:0;
-  background:transparent;
-  color:white;
-  font-size:14px;
+flex:1;
+min-width:0;
+background:transparent;
+border:0;
+outline:0;
+color:#fff;
+font-size:14px;
 }
 
 .emailInput::placeholder{
-  color:#718096;
+color:#718096;
 }
 
-.sendButton{
-  border:0;
-  border-radius:10px;
-  padding:0 25px;
-  background:#20c875;
-  color:#04150d;
-  font-weight:800;
-  cursor:pointer;
-  transition:.25s;
+.send{
+border:0;
+border-radius:10px;
+padding:0 25px;
+background:#20c875;
+color:#03130b;
+font-weight:900;
+cursor:pointer;
 }
 
-.sendButton:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 30px rgba(32,200,117,.3);
+/* SECTION */
+
+.section{
+display:flex;
+align-items:center;
+gap:14px;
+margin-bottom:25px;
+color:#7d899b;
+font-size:11px;
+font-weight:bold;
+letter-spacing:3px;
+}
+
+.section:after{
+content:"";
+height:1px;
+flex:1;
+background:rgba(100,170,255,.16);
 }
 
 /* PRODUCTS */
 
 .products{
-  display:flex;
-  flex-direction:column;
-  gap:25px;
+display:flex;
+flex-direction:column;
+gap:25px;
 }
 
 .product{
-  position:relative;
-  min-height:350px;
-  padding:38px;
-  border:1px solid var(--line);
-  border-radius:24px;
-  background:
-    linear-gradient(145deg,rgba(15,28,45,.98),rgba(4,8,14,.99));
-  overflow:visible;
-  box-shadow:0 20px 70px rgba(0,0,0,.45);
-  animation:cardIn .8s ease both;
-  transition:.35s;
-}
-
-.product:nth-child(2){
-  animation-delay:.12s;
-}
-
-.product:nth-child(3){
-  animation-delay:.24s;
-}
-
-@keyframes cardIn{
-  from{
-    opacity:0;
-    transform:translateY(35px) scale(.97);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
+position:relative;
+padding:38px;
+border:1px solid rgba(100,170,255,.17);
+border-radius:24px;
+background:linear-gradient(145deg,#0e1b2b,#050a11);
+box-shadow:0 25px 70px rgba(0,0,0,.45);
+overflow:visible;
+transition:.3s;
 }
 
 .product:hover{
-  transform:translateY(-7px);
-  border-color:rgba(50,165,255,.55);
-  box-shadow:
-    0 30px 90px rgba(0,0,0,.65),
-    0 0 45px rgba(20,130,255,.12);
-}
-
-.productGlow{
-  position:absolute;
-  width:300px;
-  height:300px;
-  right:-170px;
-  top:-180px;
-  background:radial-gradient(circle,rgba(20,140,255,.28),transparent 70%);
-  pointer-events:none;
+transform:translateY(-6px);
+border-color:rgba(50,165,255,.5);
+box-shadow:
+0 30px 90px rgba(0,0,0,.65),
+0 0 40px rgba(20,130,255,.12);
 }
 
 .number{
-  position:absolute;
-  top:24px;
-  right:28px;
-  color:rgba(100,190,255,.25);
-  font-size:13px;
-  font-weight:bold;
-  letter-spacing:2px;
+position:absolute;
+top:23px;
+right:27px;
+color:rgba(100,190,255,.25);
+font-size:12px;
+font-weight:bold;
 }
 
-/* MYTHOLOGICAL HELMET */
+/* HELMET */
 
 .helmet{
-  position:relative;
-  width:78px;
-  height:78px;
-  margin-bottom:24px;
-  border:2px solid #52c6ff;
-  border-radius:45% 45% 35% 35%;
-  background:linear-gradient(
-    145deg,
-    rgba(70,190,255,.18),
-    rgba(10,50,90,.15)
-  );
-  box-shadow:
-    0 0 20px rgba(40,170,255,.45),
-    inset 0 0 25px rgba(40,170,255,.12);
-  animation:helmetFloat 3s ease-in-out infinite;
+width:76px;
+height:76px;
+margin-bottom:23px;
+position:relative;
+border:2px solid #51c8ff;
+border-radius:45% 45% 35% 35%;
+background:linear-gradient(145deg,rgba(50,180,255,.18),rgba(5,30,55,.2));
+box-shadow:0 0 25px rgba(30,150,255,.4);
+animation:helmet 3s ease-in-out infinite;
 }
 
 .helmet:before{
-  content:"";
-  position:absolute;
-  left:17px;
-  top:12px;
-  width:39px;
-  height:48px;
-  border-left:3px solid #9be3ff;
-  border-right:3px solid #9be3ff;
-  border-radius:0 0 20px 20px;
+content:"";
+position:absolute;
+left:17px;
+top:13px;
+width:36px;
+height:46px;
+border-left:3px solid #9be4ff;
+border-right:3px solid #9be4ff;
+border-radius:0 0 20px 20px;
 }
 
 .helmet:after{
-  content:"";
-  position:absolute;
-  width:55px;
-  height:12px;
-  left:8px;
-  top:-10px;
-  border-top:4px solid #65d0ff;
-  border-radius:50%;
-  transform:rotate(-12deg);
-  box-shadow:0 0 14px #168cff;
+content:"";
+position:absolute;
+width:55px;
+height:12px;
+left:8px;
+top:-10px;
+border-top:4px solid #67d1ff;
+border-radius:50%;
+transform:rotate(-12deg);
 }
 
-@keyframes helmetFloat{
-  0%,100%{
-    transform:translateY(0) rotate(-2deg);
-  }
-  50%{
-    transform:translateY(-7px) rotate(2deg);
-  }
+@keyframes helmet{
+50%{transform:translateY(-7px) rotate(2deg)}
 }
 
-.product h2{
-  position:relative;
-  font-size:28px;
-  margin-bottom:10px;
+/* TEXT */
+
+h2{
+font-size:28px;
+margin-bottom:10px;
 }
 
 .description{
-  position:relative;
-  max-width:700px;
-  color:#8d99aa;
-  font-size:14px;
-  line-height:1.65;
-  margin-bottom:28px;
+color:#8996a9;
+font-size:14px;
+line-height:1.65;
+margin-bottom:25px;
 }
 
 /* SELECT */
 
 .selectArea{
-  position:relative;
-  z-index:20;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:25px;
+display:flex;
+align-items:center;
+gap:10px;
+position:relative;
+z-index:20;
 }
 
 .select{
-  width:260px;
-  padding:15px 17px;
-  border:1px solid rgba(70,170,255,.3);
-  border-radius:11px;
-  background:#08111d;
-  color:#fff;
-  font-size:14px;
-  font-weight:bold;
-  outline:none;
-  cursor:pointer;
+width:260px;
+padding:15px;
+border-radius:11px;
+border:1px solid rgba(70,170,255,.35);
+background:#08111d;
+color:#fff;
+font-weight:bold;
+outline:0;
+cursor:pointer;
 }
 
 .select option{
-  background:#fff;
-  color:#000;
+background:#fff;
+color:#000;
 }
 
-.selectArrow{
-  color:#62caff;
-  font-size:20px;
-  animation:arrowMove 1.5s ease-in-out infinite;
-}
-
-@keyframes arrowMove{
-  50%{transform:translateX(5px)}
+.arrow{
+color:#68d1ff;
+font-size:21px;
 }
 
 /* PRICE */
 
-.priceArea{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:25px;
+.price{
+display:flex;
+align-items:center;
+gap:12px;
+margin:25px 0;
 }
 
-.oldPrice{
-  position:relative;
-  color:#707b8c;
-  font-size:22px;
-  font-weight:bold;
+.old{
+position:relative;
+color:#737f91;
+font-size:21px;
+font-weight:bold;
 }
 
-.oldPrice:after{
-  content:"";
-  position:absolute;
-  left:-5px;
-  right:-5px;
-  top:50%;
-  height:3px;
-  background:#ff4757;
-  transform:scaleX(0);
-  transform-origin:left;
-  animation:slash .65s .25s ease forwards;
-}
-
-@keyframes slash{
-  to{transform:scaleX(1)}
+.old:after{
+content:"";
+position:absolute;
+left:-5px;
+right:-5px;
+top:50%;
+height:3px;
+background:#ff4054;
+transform:rotate(-5deg);
+box-shadow:0 0 10px rgba(255,60,80,.5);
 }
 
 .discount{
-  padding:6px 9px;
-  border-radius:7px;
-  background:#ff334d;
-  color:#fff;
-  font-size:11px;
-  font-weight:900;
-  animation:discountPop .6s .35s cubic-bezier(.2,1.5,.5,1) both;
+padding:6px 9px;
+border-radius:7px;
+background:#ff334d;
+font-size:11px;
+font-weight:900;
+animation:pop .5s ease;
 }
 
-@keyframes discountPop{
-  from{
-    opacity:0;
-    transform:scale(.5) rotate(-8deg);
-  }
-  to{
-    opacity:1;
-    transform:scale(1) rotate(0);
-  }
+.new{
+font-size:38px;
+font-weight:900;
+animation:price .6s ease;
 }
 
-.newPrice{
-  font-size:39px;
-  font-weight:900;
-  color:#fff;
-  animation:pricePop .7s .45s cubic-bezier(.2,1.5,.5,1) both;
+.eur{
+color:#7b8799;
+font-size:12px;
+font-weight:normal;
 }
 
-@keyframes pricePop{
-  from{
-    opacity:0;
-    transform:scale(.6);
-    filter:blur(8px);
-  }
-  to{
-    opacity:1;
-    transform:scale(1);
-    filter:blur(0);
-  }
+@keyframes pop{
+from{transform:scale(.5);opacity:0}
+to{transform:scale(1);opacity:1}
 }
 
-.currency{
-  color:#7c8a9d;
-  font-size:13px;
-  font-weight:normal;
+@keyframes price{
+from{transform:scale(.7);opacity:0}
+to{transform:scale(1);opacity:1}
 }
 
 /* PAYPAL */
 
 .paypal{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-width:220px;
-  padding:16px 25px;
-  border-radius:11px;
-  background:#ffc439;
-  color:#003087;
-  text-decoration:none;
-  font-size:14px;
-  font-weight:900;
-  transition:.25s;
-  box-shadow:0 8px 25px rgba(255,196,57,.15);
+display:inline-flex;
+width:220px;
+padding:16px;
+justify-content:center;
+align-items:center;
+border-radius:11px;
+background:#ffc439;
+color:#003087;
+text-decoration:none;
+font-weight:900;
+font-size:14px;
+transition:.25s;
 }
 
 .paypal:hover{
-  transform:translateY(-3px) scale(1.02);
-  box-shadow:0 14px 40px rgba(255,196,57,.35);
+transform:translateY(-3px) scale(1.02);
+box-shadow:0 14px 40px rgba(255,196,57,.35);
+}
+
+/* CODE MODAL */
+
+.overlay{
+position:fixed;
+inset:0;
+z-index:100;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:rgba(0,0,0,.72);
+backdrop-filter:blur(12px);
+opacity:0;
+visibility:hidden;
+transition:.3s;
+}
+
+.overlay.open{
+opacity:1;
+visibility:visible;
+}
+
+.modal{
+width:min(430px,100%);
+padding:30px;
+border:1px solid rgba(70,170,255,.3);
+border-radius:22px;
+background:linear-gradient(145deg,#0d1b2c,#050a11);
+box-shadow:0 30px 100px rgba(0,0,0,.8);
+transform:translateY(30px) scale(.94);
+transition:.35s cubic-bezier(.2,1.3,.5,1);
+}
+
+.overlay.open .modal{
+transform:translateY(0) scale(1);
+}
+
+.close{
+float:right;
+border:0;
+background:transparent;
+color:#8492a5;
+font-size:24px;
+cursor:pointer;
+}
+
+.modal h3{
+font-size:24px;
+margin-bottom:8px;
+}
+
+.modal p{
+color:#7f8b9d;
+font-size:13px;
+margin-bottom:20px;
+}
+
+.codeInput{
+width:100%;
+padding:16px;
+border:1px solid rgba(80,170,255,.25);
+border-radius:11px;
+background:#050b13;
+color:#fff;
+outline:0;
+font-size:18px;
+letter-spacing:4px;
+text-align:center;
+}
+
+.apply{
+width:100%;
+margin-top:12px;
+padding:15px;
+border:0;
+border-radius:11px;
+background:#168cff;
+color:#fff;
+font-weight:900;
+cursor:pointer;
+}
+
+.result{
+margin-top:15px;
+font-size:13px;
+text-align:center;
+min-height:18px;
 }
 
 /* FOOTER */
 
 footer{
-  border-top:1px solid var(--line);
-  padding:35px 20px;
-  text-align:center;
-  color:#667286;
-  font-size:11px;
-  letter-spacing:2px;
+border-top:1px solid rgba(100,170,255,.12);
+padding:30px;
+text-align:center;
+color:#667286;
+font-size:11px;
 }
 
 /* MOBILE */
 
 @media(max-width:650px){
 
-  header{
-    padding:70px 15px 60px;
-  }
+.product{
+padding:30px 22px;
+}
 
-  main{
-    padding-top:50px;
-  }
+.emailBox{
+flex-wrap:wrap;
+}
 
-  .emailBox{
-    flex-wrap:wrap;
-  }
+.emailInput{
+min-width:130px;
+}
 
-  .emailInput{
-    min-width:150px;
-  }
+.send{
+height:45px;
+width:100%;
+}
 
-  .sendButton{
-    width:100%;
-    height:46px;
-  }
+.select{
+width:100%;
+}
 
-  .product{
-    padding:30px 22px;
-  }
+.price{
+flex-wrap:wrap;
+}
 
-  .selectArea{
-    width:100%;
-  }
+.paypal{
+width:100%;
+}
 
-  .select{
-    width:100%;
-  }
-
-  .priceArea{
-    flex-wrap:wrap;
-  }
-
-  .paypal{
-    width:100%;
-  }
+.codeButton{
+top:12px;
+right:12px;
+}
 }
 </style>
 </head>
 
 <body>
 
-<div class="background"></div>
+<div class="bg"></div>
 <div class="grid"></div>
 <div id="particles"></div>
 
+<button class="codeButton" onclick="openCode()">
+CODE
+</button>
+
 <header>
-  <div class="headerGlow"></div>
 
-  <div class="badge">
-    <span class="badgeDot"></span>
-    BOUTIQUE EN LIGNE
-  </div>
+<div class="badge">
+<span class="dot"></span>
+BOUTIQUE EN LIGNE
+</div>
 
-  <div class="logo">
-    ATHENA HUB
-  </div>
+<div class="logo">
+ATHENA HUB
+</div>
 
-  <p class="subtitle">
-    Une expérience simple, rapide et sécurisée.
-  </p>
+<p class="subtitle">
+Une expérience simple, rapide et sécurisée.
+</p>
+
 </header>
 
 <main>
 
-  <div class="sectionTitle">
-    NOS PRODUITS
-  </div>
+<div class="section">
+NOS PRODUITS
+</div>
 
-  <div class="emailBox">
+<div class="emailBox">
 
-    <div class="emailIcon" id="emailIcon">
-      ✉
-    </div>
+<div class="emailIcon" id="emailIcon">✉</div>
 
-    <input
-      id="email"
-      class="emailInput"
-      type="email"
-      placeholder="Email"
-      autocomplete="email"
-    >
+<input
+id="email"
+class="emailInput"
+type="email"
+placeholder="Email"
+>
 
-    <button class="sendButton" onclick="sendEmail()">
-      Send
-    </button>
+<button class="send" onclick="sendEmail()">
+Send
+</button>
 
-  </div>
+</div>
 
-  <div class="products">
+<div class="products">
 
-    <!-- AUTOJOINER -->
+<!-- PRODUIT 1 -->
 
-    <div class="product">
+<div class="product">
 
-      <div class="productGlow"></div>
+<div class="number">01</div>
+<div class="helmet"></div>
 
-      <div class="number">
-        01
-      </div>
+<h2>Autojoiner</h2>
 
-      <div class="helmet"></div>
+<p class="description">
+Quick panel / Lua autojoin / Drop brainrot /
+Auto grab / Invisible / AP spam owner /
+AP spam nearest
+</p>
 
-      <h2>Autojoiner</h2>
+<div class="selectArea">
 
-      <p class="description">
-        Quick panel / Lua autojoin / Drop brainrot / Auto grab /
-        Invisible / AP spam owner / AP spam nearest
-      </p>
+<select class="select" onchange="changePrice(this)">
+<option value="">Select option</option>
+<option value="day">1 Day</option>
+<option value="week">1 Week</option>
+<option value="life">Lifetime</option>
+</select>
 
-      <div class="selectArea">
+<span class="arrow">→</span>
 
-        <select
-          class="select"
-          onchange="changePlan(this)"
-        >
-          <option value="default">Select option</option>
-          <option value="day">1 Day</option>
-          <option value="week">1 Week</option>
-          <option value="lifetime">Lifetime</option>
-        </select>
+</div>
 
-        <span class="selectArrow">→</span>
+<div class="price">
 
-      </div>
+<span class="old">2,99€</span>
+<span class="discount">-70%</span>
 
-      <div class="priceArea">
+<span class="new">
+<span class="newPrice">0,90</span>
+<span class="eur">EUR</span>
+</span>
 
-        <span class="oldPrice">2,99€</span>
+</div>
 
-        <span class="discount">-70%</span>
+<a class="paypal"
+href="https://www.paypal.com/paypalme/athenahubscript"
+target="_blank"
+rel="noopener noreferrer">
+Payer avec PayPal
+</a>
 
-        <span class="newPrice">
-          <span class="currentPrice">0,90</span>
-          <span class="currency">EUR</span>
-        </span>
+</div>
 
-      </div>
 
-      <a
-        class="paypal"
-        href="https://www.paypal.com/paypalme/athenahubscript"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Payer avec PayPal
-      </a>
+<!-- PRODUIT 2 -->
 
-    </div>
+<div class="product">
 
+<div class="number">02</div>
+<div class="helmet"></div>
 
-    <!-- AUTO REDEEM -->
+<h2>Auto Redeem</h2>
 
-    <div class="product">
+<p class="description">
+Lua for activate
+</p>
 
-      <div class="productGlow"></div>
+<div class="selectArea">
 
-      <div class="number">
-        02
-      </div>
+<select class="select" onchange="changePrice(this)">
+<option value="">Select option</option>
+<option value="day">1 Day</option>
+<option value="week">1 Week</option>
+<option value="life">Lifetime</option>
+</select>
 
-      <div class="helmet"></div>
+<span class="arrow">→</span>
 
-      <h2>Auto Redeem</h2>
+</div>
 
-      <p class="description">
-        Lua for activate
-      </p>
+<div class="price">
 
-      <div class="selectArea">
+<span class="old">2,99€</span>
+<span class="discount">-70%</span>
 
-        <select
-          class="select"
-          onchange="changePlan(this)"
-        >
-          <option value="default">Select option</option>
-          <option value="day">1 Day</option>
-          <option value="week">1 Week</option>
-          <option value="lifetime">Lifetime</option>
-        </select>
+<span class="new">
+<span class="newPrice">0,90</span>
+<span class="eur">EUR</span>
+</span>
 
-        <span class="selectArrow">→</span>
+</div>
 
-      </div>
+<a class="paypal"
+href="https://www.paypal.com/paypalme/athenahubscript"
+target="_blank"
+rel="noopener noreferrer">
+Payer avec PayPal
+</a>
 
-      <div class="priceArea">
+</div>
 
-        <span class="oldPrice">2,99€</span>
 
-        <span class="discount">-70%</span>
+<!-- PRODUIT 3 -->
 
-        <span class="newPrice">
-          <span class="currentPrice">0,90</span>
-          <span class="currency">EUR</span>
-        </span>
+<div class="product">
 
-      </div>
+<div class="number">03</div>
+<div class="helmet"></div>
 
-      <a
-        class="paypal"
-        href="https://www.paypal.com/paypalme/athenahubscript"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Payer avec PayPal
-      </a>
+<h2>Athena Hub</h2>
 
-    </div>
+<p class="description">
+🟢 STEALING<br>
+Auto Steal Best / Nearest / Priority<br>
+Semi Instant / Auto Desync / Auto TP<br><br>
 
+🔵 PLAYER<br>
+Speed / Infinite Jump / Aimbot / Anti Ragdoll<br><br>
 
-    <!-- ATHENA HUB -->
+🟣 VISUALS<br>
+Brainrot ESP / Player ESP / Base ESP / Mine ESP / Clone ESP<br><br>
 
-    <div class="product">
+🔴 ADMIN<br>
+Auto Defense / Admin Panel / Admin Spammer<br><br>
 
-      <div class="productGlow"></div>
+⚡ QUICK BUTTONS<br>
+Self Ragdoll / Instant Reset / Allow / Disallow / Rejoin / Leave<br><br>
 
-      <div class="number">
-        03
-      </div>
+⚙️ EXTRAS<br>
+Fully recolorable
+</p>
 
-      <div class="helmet"></div>
+<div class="selectArea">
 
-      <h2>Athena Hub</h2>
+<select class="select" onchange="changePrice(this)">
+<option value="">Select option</option>
+<option value="day">1 Day</option>
+<option value="week">1 Week</option>
+<option value="life">Lifetime</option>
+</select>
 
-      <p class="description">
-        🟢 STEALING<br><br>
+<span class="arrow">→</span>
 
-        Auto Steal Best / Nearest / Priority<br>
-        Semi Instant / Auto Desync / Giant Potion / Auto Walk /
-        Auto Spam / Auto TP<br><br>
+</div>
 
-        🔵 PLAYER<br><br>
+<div class="price">
 
-        Speed / Infinite Jump / Aimbot / Anti Ragdoll /
-        Anti Admin Panel<br><br>
+<span class="old">2,99€</span>
+<span class="discount">-70%</span>
 
-        🟣 VISUALS<br><br>
+<span class="new">
+<span class="newPrice">0,90</span>
+<span class="eur">EUR</span>
+</span>
 
-        Brainrot ESP / Player ESP / Base ESP / Mine ESP /
-        Clone ESP / Custom FOV<br><br>
+</div>
 
-        🔴 ADMIN<br><br>
+<a class="paypal"
+href="https://www.paypal.com/paypalme/athenahubscript"
+target="_blank"
+rel="noopener noreferrer">
+Payer avec PayPal
+</a>
 
-        Auto Defense / Admin Panel / Admin Spammer<br><br>
+</div>
 
-        ⚡ QUICK BUTTONS<br><br>
-
-        Self Ragdoll / Instant Reset / Allow / Disallow /
-        Rejoin / Leave<br><br>
-
-        ⚙️ EXTRAS<br><br>
-
-        Fully recolorable
-      </p>
-
-      <div class="selectArea">
-
-        <select
-          class="select"
-          onchange="changePlan(this)"
-        >
-          <option value="default">Select option</option>
-          <option value="day">1 Day</option>
-          <option value="week">1 Week</option>
-          <option value="lifetime">Lifetime</option>
-        </select>
-
-        <span class="selectArrow">→</span>
-
-      </div>
-
-      <div class="priceArea">
-
-        <span class="oldPrice">2,99€</span>
-
-        <span class="discount">-70%</span>
-
-        <span class="newPrice">
-          <span class="currentPrice">0,90</span>
-          <span class="currency">EUR</span>
-        </span>
-
-      </div>
-
-      <a
-        class="paypal"
-        href="https://www.paypal.com/paypalme/athenahubscript"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Payer avec PayPal
-      </a>
-
-    </div>
-
-  </div>
+</div>
 
 </main>
 
 <footer>
-  © 2026 ATHENA HUB · TOUS DROITS RÉSERVÉS
+© 2026 ATHENA HUB · TOUS DROITS RÉSERVÉS
 </footer>
+
+
+<!-- CODE POPUP -->
+
+<div class="overlay" id="overlay">
+
+<div class="modal">
+
+<button class="close" onclick="closeCode()">×</button>
+
+<h3>Entrer un code</h3>
+
+<p>
+Entre ton code promotionnel à 6 caractères
+</p>
+
+<input
+id="codeInput"
+class="codeInput"
+maxlength="6"
+placeholder="XXXXXX"
+autocomplete="off"
+>
+
+<button class="apply" onclick="applyCode()">
+Appliquer
+</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+</div>
+
 
 <script>
 
-/* EMAIL */
+/* CODE POPUP */
 
-function sendEmail(){
+function openCode(){
+document.getElementById("overlay").classList.add("open");
+setTimeout(()=>{
+document.getElementById("codeInput").focus();
+},300);
+}
 
-  const input = document.getElementById("email");
-  const icon = document.getElementById("emailIcon");
-  const value = input.value.trim();
+function closeCode(){
+document.getElementById("overlay").classList.remove("open");
+}
 
-  if(!value){
-    input.focus();
-    return;
-  }
 
-  icon.textContent = "✓";
-  icon.style.color = "#20c875";
+/* CODE -70% */
 
-  input.value = "";
+const promoCode = "A7K2Q9";
 
-  setTimeout(() => {
-    icon.textContent = "✉";
-    icon.style.color = "#67cfff";
-  },2000);
+function applyCode(){
+
+const input =
+document.getElementById("codeInput").value
+.trim()
+.toUpperCase();
+
+const result =
+document.getElementById("result");
+
+if(input === promoCode){
+
+result.textContent = "Code valide · -70% appliqué";
+result.style.color = "#20c875";
+
+}else{
+
+result.textContent = "Code invalide";
+result.style.color = "#ff5265";
+
+}
+
 }
 
 
@@ -905,78 +860,109 @@ function sendEmail(){
 
 const prices = {
 
-  day:{
-    original:"2,99",
-    price:"0,90"
-  },
+day:{
+old:"2,99€",
+new:"0,90"
+},
 
-  week:{
-    original:"5,99",
-    price:"1,80"
-  },
+week:{
+old:"5,99€",
+new:"1,80"
+},
 
-  lifetime:{
-    original:"10,99",
-    price:"3,30"
-  }
+life:{
+old:"10,99€",
+new:"3,30"
+}
 
 };
 
+function changePrice(select){
 
-function changePlan(select){
+const product = select.closest(".product");
 
-  const product = select.closest(".product");
+const oldPrice =
+product.querySelector(".old");
 
-  const oldPrice = product.querySelector(".oldPrice");
-  const newPrice = product.querySelector(".currentPrice");
+const newPrice =
+product.querySelector(".newPrice");
 
-  const selected = select.value;
+const value = select.value;
 
-  if(!prices[selected]){
-    oldPrice.textContent = "—";
-    newPrice.textContent = "—";
-    return;
-  }
+if(!prices[value]){
 
-  oldPrice.textContent = prices[selected].original + "€";
-  newPrice.textContent = prices[selected].price;
+oldPrice.textContent = "—";
+newPrice.textContent = "—";
+return;
 
-  oldPrice.classList.remove("slashAgain");
-  newPrice.classList.remove("priceAgain");
+}
 
-  void oldPrice.offsetWidth;
-  void newPrice.offsetWidth;
+oldPrice.textContent =
+prices[value].old;
 
-  oldPrice.classList.add("slashAgain");
-  newPrice.classList.add("priceAgain");
+newPrice.textContent =
+prices[value].new;
+
+newPrice.style.animation="none";
+void newPrice.offsetWidth;
+newPrice.style.animation="price .6s ease";
+
 }
 
 
-/* PARTICULES */
+/* EMAIL */
 
-const particles = document.getElementById("particles");
+function sendEmail(){
 
-for(let i = 0; i < 65; i++){
+const input =
+document.getElementById("email");
 
-  const particle = document.createElement("div");
+const icon =
+document.getElementById("emailIcon");
 
-  particle.className = "particle";
+if(!input.value.trim()){
 
-  const size = 1 + Math.random() * 3;
+input.focus();
+return;
 
-  particle.style.width = size + "px";
-  particle.style.height = size + "px";
+}
 
-  particle.style.left =
-    Math.random() * 100 + "%";
+icon.textContent="✓";
+icon.style.color="#20c875";
 
-  particle.style.animationDuration =
-    7 + Math.random() * 13 + "s";
+input.value="";
 
-  particle.style.animationDelay =
-    -Math.random() * 15 + "s";
+setTimeout(()=>{
 
-  particles.appendChild(particle);
+icon.textContent="✉";
+icon.style.color="#69d1ff";
+
+},2000);
+
+}
+
+
+/* PARTICLES */
+
+const particles =
+document.getElementById("particles");
+
+for(let i=0;i<65;i++){
+
+const p=document.createElement("div");
+
+p.className="particle";
+
+const size=1+Math.random()*3;
+
+p.style.width=size+"px";
+p.style.height=size+"px";
+p.style.left=Math.random()*100+"%";
+p.style.animationDuration=7+Math.random()*13+"s";
+p.style.animationDelay=-Math.random()*15+"s";
+
+particles.appendChild(p);
+
 }
 
 </script>
