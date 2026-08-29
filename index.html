@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ATHENA HUB</title>
 
 <style>
@@ -23,8 +23,6 @@ body{
   font-family:Arial,Helvetica,sans-serif;
   overflow-x:hidden;
 }
-
-/* BACKGROUND */
 
 body:before{
   content:"";
@@ -50,14 +48,14 @@ body:after{
   pointer-events:none;
 }
 
-/* PARTICLES */
+/* PARTICULES */
 
 #particles{
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:-1;
   overflow:hidden;
+  z-index:-1;
 }
 
 .particle{
@@ -82,18 +80,18 @@ body:after{
   }
 }
 
-/* CODE BUTTON */
+/* CODE */
 
 .code-button{
   position:fixed;
   top:18px;
   right:18px;
   z-index:100;
+  padding:12px 20px;
   border:1px solid rgba(70,180,255,.5);
-  background:rgba(3,12,23,.92);
-  color:#72d5ff;
-  padding:12px 19px;
   border-radius:12px;
+  background:rgba(3,12,23,.95);
+  color:#72d5ff;
   font-size:12px;
   font-weight:900;
   cursor:pointer;
@@ -129,8 +127,11 @@ header{
 }
 
 @keyframes pulse{
+  0%,100%{
+    opacity:.5;
+  }
   50%{
-    opacity:.8;
+    opacity:1;
     transform:translateX(-50%) scale(1.15);
   }
 }
@@ -159,7 +160,9 @@ header{
 }
 
 @keyframes blink{
-  50%{opacity:.3}
+  50%{
+    opacity:.3;
+  }
 }
 
 .logo{
@@ -176,7 +179,9 @@ header{
 }
 
 @keyframes shine{
-  to{background-position:-300% center}
+  to{
+    background-position:-300% center;
+  }
 }
 
 .subtitle{
@@ -224,7 +229,6 @@ main{
   border:1px solid rgba(90,170,255,.18);
   border-radius:15px;
   background:rgba(8,17,29,.85);
-  box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
 .email-icon{
@@ -262,7 +266,7 @@ main{
 
 .send:hover{
   transform:translateY(-2px);
-  box-shadow:0 8px 25px rgba(32,200,117,.25);
+  box-shadow:0 8px 25px rgba(32,200,117,.3);
 }
 
 /* PRODUCTS */
@@ -301,7 +305,7 @@ main{
   font-weight:900;
 }
 
-/* MYTHOLOGICAL HELMET */
+/* CASQUE MYTHOLOGIQUE */
 
 .helmet{
   position:relative;
@@ -310,8 +314,11 @@ main{
   margin-bottom:25px;
   border:2px solid #54caff;
   border-radius:48% 48% 35% 35%;
-  background:
-    linear-gradient(145deg,rgba(90,210,255,.2),rgba(5,25,50,.3));
+  background:linear-gradient(
+    145deg,
+    rgba(90,210,255,.2),
+    rgba(5,25,50,.3)
+  );
   box-shadow:
     0 0 20px rgba(30,160,255,.45),
     inset 0 0 20px rgba(60,190,255,.1);
@@ -350,7 +357,7 @@ main{
   }
 }
 
-/* CARD TEXT */
+/* TEXTE */
 
 .product h2{
   font-size:29px;
@@ -398,7 +405,7 @@ main{
   font-weight:bold;
 }
 
-/* PRICE */
+/* PRIX */
 
 .price{
   display:flex;
@@ -415,6 +422,8 @@ main{
   font-weight:bold;
 }
 
+/* BARRE CACHEE PAR DEFAUT */
+
 .old:after{
   content:"";
   position:absolute;
@@ -423,17 +432,33 @@ main{
   top:50%;
   height:3px;
   background:#ff4054;
-  transform:rotate(-6deg);
+  transform:scaleX(0) rotate(-6deg);
+  transform-origin:center;
+  opacity:0;
   box-shadow:0 0 10px rgba(255,60,80,.5);
+  transition:.4s ease;
+}
+
+/* BARRE SEULEMENT APRES CODE */
+
+.product.discounted .old:after{
+  transform:scaleX(1) rotate(-6deg);
+  opacity:1;
 }
 
 .discount{
+  display:none;
   padding:6px 9px;
   border-radius:7px;
   background:#ff334d;
   color:#fff;
   font-size:11px;
   font-weight:900;
+  animation:discountPop .45s ease;
+}
+
+.product.discounted .discount{
+  display:inline-block;
 }
 
 .new{
@@ -445,6 +470,28 @@ main{
   color:#7d899b;
   font-size:12px;
   font-weight:normal;
+}
+
+@keyframes discountPop{
+  from{
+    transform:scale(.5) rotate(-10deg);
+    opacity:0;
+  }
+  to{
+    transform:scale(1) rotate(0);
+    opacity:1;
+  }
+}
+
+@keyframes priceIn{
+  from{
+    transform:scale(.65);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
 }
 
 /* PAYPAL */
@@ -469,7 +516,7 @@ main{
   box-shadow:0 14px 40px rgba(255,196,57,.35);
 }
 
-/* CODE MODAL */
+/* CODE POPUP */
 
 .overlay{
   position:fixed;
@@ -553,6 +600,12 @@ main{
   color:#fff;
   font-weight:900;
   cursor:pointer;
+  transition:.25s;
+}
+
+.apply:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(22,140,255,.35);
 }
 
 .result{
@@ -683,7 +736,7 @@ Send
 
 <div class="products">
 
-<!-- 1 -->
+<!-- PRODUIT 1 -->
 
 <div class="product">
 
@@ -715,7 +768,10 @@ AP spam nearest
 <div class="price">
 
 <span class="old">—</span>
-<span class="discount" style="display:none">-70%</span>
+
+<span class="discount">
+-70%
+</span>
 
 <span class="new">
 <span class="newPrice">—</span>
@@ -735,7 +791,8 @@ Payer avec PayPal
 
 </div>
 
-<!-- 2 -->
+
+<!-- PRODUIT 2 -->
 
 <div class="product">
 
@@ -765,7 +822,10 @@ Lua for activate
 <div class="price">
 
 <span class="old">—</span>
-<span class="discount" style="display:none">-70%</span>
+
+<span class="discount">
+-70%
+</span>
 
 <span class="new">
 <span class="newPrice">—</span>
@@ -785,7 +845,8 @@ Payer avec PayPal
 
 </div>
 
-<!-- 3 -->
+
+<!-- PRODUIT 3 -->
 
 <div class="product">
 
@@ -796,24 +857,32 @@ Payer avec PayPal
 <h2>Athena Hub</h2>
 
 <p class="description">
+
 🟢 STEALING<br><br>
+
 Auto Steal Best / Nearest / Priority<br>
 Semi Instant / Auto Desync / Auto TP<br><br>
 
 🔵 PLAYER<br><br>
+
 Speed / Infinite Jump / Aimbot / Anti Ragdoll<br><br>
 
 🟣 VISUALS<br><br>
+
 Brainrot ESP / Player ESP / Base ESP / Mine ESP / Clone ESP<br><br>
 
 🔴 ADMIN<br><br>
+
 Auto Defense / Admin Panel / Admin Spammer<br><br>
 
 ⚡ QUICK BUTTONS<br><br>
+
 Self Ragdoll / Instant Reset / Allow / Disallow / Rejoin / Leave<br><br>
 
 ⚙️ EXTRAS<br><br>
+
 Fully recolorable
+
 </p>
 
 <div class="select-area">
@@ -832,7 +901,10 @@ Fully recolorable
 <div class="price">
 
 <span class="old">—</span>
-<span class="discount" style="display:none">-70%</span>
+
+<span class="discount">
+-70%
+</span>
 
 <span class="new">
 <span class="newPrice">—</span>
@@ -860,13 +932,16 @@ Payer avec PayPal
 © 2026 ATHENA HUB · TOUS DROITS RÉSERVÉS
 </footer>
 
-<!-- CODE -->
+
+<!-- POPUP CODE -->
 
 <div class="overlay" id="overlay">
 
 <div class="modal">
 
-<button class="close" onclick="closeCode()">×</button>
+<button class="close" onclick="closeCode()">
+×
+</button>
 
 <h3>Entrer un code</h3>
 
@@ -892,75 +967,73 @@ Appliquer
 
 </div>
 
+
 <script>
 
-/* PRIX NORMAUX */
+/* PRIX */
 
-const prices = {
+const prices={
 
-day:{
-old:"2,99€",
-normal:"2,99",
-discount:"0,90"
-},
+  day:{
+    normal:"2,99",
+    discount:"0,90"
+  },
 
-week:{
-old:"5,99€",
-normal:"5,99",
-discount:"1,80"
-},
+  week:{
+    normal:"5,99",
+    discount:"1,80"
+  },
 
-life:{
-old:"10,99€",
-normal:"10,99",
-discount:"3,30"
-}
+  life:{
+    normal:"10,99",
+    discount:"3,30"
+  }
 
 };
 
 
-/* CHANGEMENT PRIX */
+/* PRIX */
 
 function changePrice(select){
 
-const product = select.closest(".product");
+  const product=select.closest(".product");
 
-const oldPrice =
-product.querySelector(".old");
+  const oldPrice=
+    product.querySelector(".old");
 
-const newPrice =
-product.querySelector(".newPrice");
+  const newPrice=
+    product.querySelector(".newPrice");
 
-const discount =
-product.querySelector(".discount");
+  const value=select.value;
 
-const value = select.value;
+  if(!prices[value]){
 
-if(!prices[value]){
+    oldPrice.textContent="—";
+    newPrice.textContent="—";
 
-oldPrice.textContent="—";
-newPrice.textContent="—";
-discount.style.display="none";
+    return;
+  }
 
-return;
+  const item=prices[value];
 
-}
+  if(promoActive){
 
-const item=prices[value];
+    oldPrice.textContent=item.normal+"€";
+    newPrice.textContent=item.discount;
 
-/*
-Le prix normal reste affiché.
-La réduction reste cachée tant qu'aucun code n'est activé.
-*/
+  }else{
 
-oldPrice.textContent=item.normal+"€";
-newPrice.textContent=item.normal;
+    oldPrice.textContent=item.normal+"€";
+    newPrice.textContent=item.normal;
 
-discount.style.display="none";
+  }
 
-newPrice.style.animation="none";
-void newPrice.offsetWidth;
-newPrice.style.animation="priceIn .45s ease";
+  newPrice.style.animation="none";
+
+  void newPrice.offsetWidth;
+
+  newPrice.style.animation=
+    "priceIn .45s ease";
 
 }
 
@@ -973,79 +1046,80 @@ let promoActive=false;
 
 function openCode(){
 
-document
-.getElementById("overlay")
-.classList.add("open");
+  document
+    .getElementById("overlay")
+    .classList.add("open");
 
-setTimeout(()=>{
+  setTimeout(()=>{
 
-document
-.getElementById("codeInput")
-.focus();
+    document
+      .getElementById("codeInput")
+      .focus();
 
-},300);
+  },300);
 
 }
 
 function closeCode(){
 
-document
-.getElementById("overlay")
-.classList.remove("open");
+  document
+    .getElementById("overlay")
+    .classList.remove("open");
 
 }
 
 function applyCode(){
 
-const input=
-document
-.getElementById("codeInput")
-.value
-.trim()
-.toUpperCase();
+  const input=
+    document
+      .getElementById("codeInput")
+      .value
+      .trim()
+      .toUpperCase();
 
-const result=
-document.getElementById("result");
+  const result=
+    document.getElementById("result");
 
-if(input===promoCode){
+  if(input===promoCode){
 
-promoActive=true;
+    promoActive=true;
 
-document
-.querySelectorAll(".product")
-.forEach(product=>{
+    document
+      .querySelectorAll(".product")
+      .forEach(product=>{
 
-const select=
-product.querySelector(".select");
+        product.classList.add("discounted");
 
-const value=select.value;
+        const select=
+          product.querySelector(".select");
 
-if(prices[value]){
+        const value=select.value;
 
-const item=prices[value];
+        if(prices[value]){
 
-product.querySelector(".old").textContent=
-item.normal+"€";
+          product.querySelector(".old").textContent=
+            prices[value].normal+"€";
 
-product.querySelector(".newPrice").textContent=
-item.discount;
+          product.querySelector(".newPrice").textContent=
+            prices[value].discount;
 
-product.querySelector(".discount").style.display=
-"inline-block";
+        }
 
-}
+      });
 
-});
+    result.textContent=
+      "Code valide · -70% appliqué";
 
-result.textContent="Code valide · -70% appliqué";
-result.style.color="#20c875";
+    result.style.color="#20c875";
 
-}else{
+  }else{
 
-result.textContent="Code invalide";
-result.style.color="#ff5265";
+    result.textContent=
+      "Code invalide";
 
-}
+    result.style.color="#ff5265";
+
+  }
 
 }
 
@@ -1054,106 +1128,94 @@ result.style.color="#ff5265";
 
 function sendEmail(){
 
-const input=document.getElementById("email");
-const icon=document.getElementById("emailIcon");
+  const input=
+    document.getElementById("email");
 
-if(!input.value.trim()){
+  const icon=
+    document.getElementById("emailIcon");
 
-input.focus();
-return;
+  if(!input.value.trim()){
+
+    input.focus();
+
+    return;
+
+  }
+
+  icon.textContent="✓";
+  icon.style.color="#20c875";
+
+  input.value="";
+
+  setTimeout(()=>{
+
+    icon.textContent="✉";
+    icon.style.color="#70d5ff";
+
+  },2000);
 
 }
 
-icon.textContent="✓";
-icon.style.color="#20c875";
 
-input.value="";
-
-setTimeout(()=>{
-
-icon.textContent="✉";
-icon.style.color="#70d5ff";
-
-},2000);
-
-}
-
-
-/* FERMER POPUP EN CLIQUANT DEHORS */
+/* FERMER EN CLIQUANT DEHORS */
 
 document
-.getElementById("overlay")
-.addEventListener("click",function(e){
+  .getElementById("overlay")
+  .addEventListener("click",function(e){
 
-if(e.target===this){
+    if(e.target===this){
 
-closeCode();
+      closeCode();
 
-}
+    }
 
-});
+  });
 
 
 /* ESC */
 
 document.addEventListener("keydown",function(e){
 
-if(e.key==="Escape"){
+  if(e.key==="Escape"){
 
-closeCode();
+    closeCode();
 
-}
+  }
 
 });
-
-
-/* ANIMATION PRIX */
-
-const style=document.createElement("style");
-
-style.textContent=`
-@keyframes priceIn{
-from{
-transform:scale(.65);
-opacity:0;
-}
-to{
-transform:scale(1);
-opacity:1;
-}
-}
-`;
-
-document.head.appendChild(style);
 
 
 /* PARTICULES */
 
 const particles=
-document.getElementById("particles");
+  document.getElementById("particles");
 
 for(let i=0;i<65;i++){
 
-const p=
-document.createElement("div");
+  const p=
+    document.createElement("div");
 
-p.className="particle";
+  p.className="particle";
 
-const size=
-1+Math.random()*3;
+  const size=
+    1+Math.random()*3;
 
-p.style.width=size+"px";
-p.style.height=size+"px";
-p.style.left=
-Math.random()*100+"%";
+  p.style.width=
+    size+"px";
 
-p.style.animationDuration=
-7+Math.random()*13+"s";
+  p.style.height=
+    size+"px";
 
-p.style.animationDelay=
--Math.random()*15+"s";
+  p.style.left=
+    Math.random()*100+"%";
 
-particles.appendChild(p);
+  p.style.animationDuration=
+    7+Math.random()*13+"s";
+
+  p.style.animationDelay=
+    -Math.random()*15+"s";
+
+  particles.appendChild(p);
 
 }
 
