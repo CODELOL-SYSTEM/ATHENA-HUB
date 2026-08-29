@@ -1,1013 +1,985 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>ATHENA HUB</title>
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --bg:#03060b;
+  --card:#0a101a;
+  --blue:#168cff;
+  --cyan:#68d5ff;
+  --muted:#8793a6;
+  --line:rgba(100,180,255,.16);
 }
 
 html{
-scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-min-height:100vh;
-background:#02050a;
-color:#fff;
-font-family:Arial,Helvetica,sans-serif;
-overflow-x:hidden;
+  min-height:100vh;
+  background:#03060b;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
 }
 
-body::before{
-content:"";
-position:fixed;
-inset:0;
-pointer-events:none;
-background:
-radial-gradient(circle at 50% 0%,rgba(0,130,255,.22),transparent 35%),
-radial-gradient(circle at 0% 100%,rgba(0,70,255,.12),transparent 30%);
-z-index:-3;
+/* BACKGROUND */
+
+.background{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:
+    radial-gradient(circle at 50% -10%,rgba(0,130,255,.25),transparent 38%),
+    radial-gradient(circle at 0% 100%,rgba(0,80,255,.12),transparent 30%),
+    #03060b;
 }
 
 .grid{
-position:fixed;
-inset:0;
-opacity:.08;
-pointer-events:none;
-z-index:-2;
-background-image:
-linear-gradient(rgba(50,150,255,.25) 1px,transparent 1px),
-linear-gradient(90deg,rgba(50,150,255,.25) 1px,transparent 1px);
-background-size:55px 55px;
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  opacity:.13;
+  background-image:
+    linear-gradient(rgba(60,150,255,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(60,150,255,.12) 1px,transparent 1px);
+  background-size:50px 50px;
+}
+
+/* PARTICLES */
+
+#particles{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  overflow:hidden;
+}
+
+.particle{
+  position:absolute;
+  border-radius:50%;
+  background:#59caff;
+  box-shadow:0 0 14px #168cff;
+  animation:float linear infinite;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+  15%{opacity:.7}
+  85%{opacity:.7}
+  to{
+    transform:translateY(-10vh);
+    opacity:0;
+  }
 }
 
 /* HEADER */
 
 header{
-position:relative;
-text-align:center;
-padding:90px 20px 70px;
-border-bottom:1px solid rgba(255,255,255,.08);
-overflow:hidden;
+  position:relative;
+  text-align:center;
+  padding:85px 20px 70px;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
 }
 
-.glow{
-position:absolute;
-width:700px;
-height:500px;
-top:-350px;
-left:50%;
-transform:translateX(-50%);
-background:radial-gradient(circle,rgba(0,130,255,.4),transparent 70%);
-filter:blur(25px);
-animation:pulse 5s ease-in-out infinite;
+.headerGlow{
+  position:absolute;
+  width:700px;
+  height:500px;
+  top:-370px;
+  left:50%;
+  transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(0,140,255,.45),transparent 70%);
+  filter:blur(25px);
+  animation:pulse 5s ease-in-out infinite;
 }
 
 @keyframes pulse{
-
-0%,100%{
-opacity:.5;
-transform:translateX(-50%) scale(1);
-}
-
-50%{
-opacity:1;
-transform:translateX(-50%) scale(1.15);
-}
-
+  0%,100%{
+    opacity:.55;
+    transform:translateX(-50%) scale(1);
+  }
+  50%{
+    opacity:1;
+    transform:translateX(-50%) scale(1.15);
+  }
 }
 
 .badge{
-position:relative;
-display:inline-flex;
-align-items:center;
-gap:9px;
-padding:10px 18px;
-border:1px solid rgba(80,170,255,.35);
-border-radius:50px;
-color:#7dd3fc;
-font-size:11px;
-font-weight:bold;
-letter-spacing:3px;
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 17px;
+  border:1px solid rgba(80,180,255,.35);
+  border-radius:50px;
+  color:#76d4ff;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:3px;
+  animation:appear .8s ease both;
 }
 
-.badge span{
-width:7px;
-height:7px;
-border-radius:50%;
-background:#39aaff;
-box-shadow:0 0 15px #39aaff;
-animation:blink 2s infinite;
+.badgeDot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#3db8ff;
+  box-shadow:0 0 15px #168cff;
+  animation:blink 1.7s infinite;
 }
 
 @keyframes blink{
-
-0%,100%{
-opacity:1;
-}
-
-50%{
-opacity:.3;
-}
-
+  50%{opacity:.25}
 }
 
 .logo{
-position:relative;
-margin-top:22px;
-font-size:clamp(48px,10vw,90px);
-font-weight:900;
-letter-spacing:4px;
-background:linear-gradient(
-90deg,
-#fff,
-#8bddff,
-#258cff,
-#fff
-);
-background-size:300%;
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation:shine 5s linear infinite;
+  position:relative;
+  margin-top:22px;
+  font-size:clamp(48px,10vw,90px);
+  font-weight:900;
+  letter-spacing:4px;
+  background:linear-gradient(
+    90deg,
+    #fff,
+    #8bddff,
+    #258cff,
+    #fff
+  );
+  background-size:300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:shine 5s linear infinite,appear .8s ease both;
 }
 
 @keyframes shine{
-
-to{
-background-position:-300%;
-}
-
+  to{background-position:-300% center}
 }
 
 .subtitle{
-position:relative;
-margin:18px auto 0;
-max-width:520px;
-color:#8996a9;
-font-size:15px;
+  position:relative;
+  max-width:520px;
+  margin:16px auto 0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+  animation:appear .8s .15s ease both;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 /* MAIN */
 
 main{
-position:relative;
-width:min(1000px,calc(100% - 28px));
-margin:auto;
-padding:65px 0 90px;
+  width:min(900px,calc(100% - 24px));
+  margin:auto;
+  padding:65px 0 100px;
 }
 
-.section{
-display:flex;
-align-items:center;
-gap:15px;
-margin-bottom:25px;
-color:#748196;
-font-size:11px;
-font-weight:bold;
-letter-spacing:3px;
+.sectionTitle{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:28px;
+  color:#7e8b9d;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:3px;
 }
 
-.section::after{
-content:"";
-height:1px;
-flex:1;
-background:rgba(100,170,255,.18);
+.sectionTitle:after{
+  content:"";
+  height:1px;
+  flex:1;
+  background:var(--line);
 }
 
 /* EMAIL */
 
-.contact-box{
-position:relative;
-display:flex;
-align-items:center;
-gap:10px;
-margin-bottom:28px;
-padding:10px;
-border:1px solid rgba(80,170,255,.2);
-border-radius:15px;
-background:linear-gradient(
-145deg,
-rgba(18,30,48,.95),
-rgba(5,10,18,.98)
-);
-box-shadow:
-0 15px 50px rgba(0,0,0,.4),
-0 0 30px rgba(30,130,255,.05);
+.emailBox{
+  position:relative;
+  display:flex;
+  gap:10px;
+  margin-bottom:35px;
+  padding:7px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:rgba(10,18,30,.85);
+  box-shadow:0 15px 50px rgba(0,0,0,.3);
 }
 
-.email-icon{
-width:44px;
-height:44px;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-shrink:0;
-border-radius:11px;
-background:rgba(40,140,255,.1);
-border:1px solid rgba(70,170,255,.2);
-color:#6bcaff;
-font-size:20px;
+.emailIcon{
+  width:48px;
+  min-width:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#67cfff;
+  font-size:20px;
 }
 
-.contact-box input{
-flex:1;
-min-width:0;
-height:44px;
-padding:0 13px;
-border:0;
-outline:none;
-background:transparent;
-color:#fff;
-font-size:14px;
+.emailInput{
+  flex:1;
+  min-width:0;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:white;
+  font-size:14px;
 }
 
-.contact-box input::placeholder{
-color:#718096;
+.emailInput::placeholder{
+  color:#718096;
 }
 
-.contact-box button{
-height:44px;
-padding:0 25px;
-border:0;
-border-radius:10px;
-background:#22c55e;
-color:#fff;
-font-size:13px;
-font-weight:800;
-cursor:pointer;
-transition:.25s ease;
+.sendButton{
+  border:0;
+  border-radius:10px;
+  padding:0 25px;
+  background:#20c875;
+  color:#04150d;
+  font-weight:800;
+  cursor:pointer;
+  transition:.25s;
 }
 
-.contact-box button:hover{
-transform:translateY(-2px);
-box-shadow:0 8px 25px rgba(34,197,94,.3);
-}
-
-.contact-box.sent{
-border-color:rgba(34,197,94,.45);
+.sendButton:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(32,200,117,.3);
 }
 
 /* PRODUCTS */
 
 .products{
-display:flex;
-flex-direction:column;
-gap:25px;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
 }
 
-/* CARD */
-
 .product{
-position:relative;
-padding:38px;
-min-height:350px;
-border:1px solid rgba(90,170,255,.17);
-border-radius:24px;
-background:
-linear-gradient(
-145deg,
-rgba(18,29,46,.97),
-rgba(4,8,14,.99)
-);
-overflow:visible;
-box-shadow:0 25px 70px rgba(0,0,0,.45);
-transition:.3s ease;
+  position:relative;
+  min-height:350px;
+  padding:38px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:
+    linear-gradient(145deg,rgba(15,28,45,.98),rgba(4,8,14,.99));
+  overflow:visible;
+  box-shadow:0 20px 70px rgba(0,0,0,.45);
+  animation:cardIn .8s ease both;
+  transition:.35s;
+}
+
+.product:nth-child(2){
+  animation-delay:.12s;
+}
+
+.product:nth-child(3){
+  animation-delay:.24s;
+}
+
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(35px) scale(.97);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
 }
 
 .product:hover{
-transform:translateY(-6px);
-border-color:rgba(50,160,255,.5);
-box-shadow:
-0 30px 90px rgba(0,0,0,.65),
-0 0 40px rgba(20,130,255,.12);
+  transform:translateY(-7px);
+  border-color:rgba(50,165,255,.55);
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.65),
+    0 0 45px rgba(20,130,255,.12);
 }
 
-.product::before{
-content:"";
-position:absolute;
-width:450px;
-height:450px;
-right:-250px;
-top:-300px;
-background:radial-gradient(
-circle,
-rgba(30,140,255,.25),
-transparent 70%
-);
-pointer-events:none;
+.productGlow{
+  position:absolute;
+  width:300px;
+  height:300px;
+  right:-170px;
+  top:-180px;
+  background:radial-gradient(circle,rgba(20,140,255,.28),transparent 70%);
+  pointer-events:none;
 }
-
-.product::after{
-content:"";
-position:absolute;
-top:0;
-left:0;
-right:0;
-height:1px;
-background:linear-gradient(
-90deg,
-transparent,
-#50baff,
-transparent
-);
-opacity:.6;
-}
-
-/* NUMBER */
 
 .number{
-position:absolute;
-top:22px;
-right:28px;
-color:rgba(80,180,255,.3);
-font-size:12px;
-font-weight:bold;
-letter-spacing:2px;
+  position:absolute;
+  top:24px;
+  right:28px;
+  color:rgba(100,190,255,.25);
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:2px;
 }
 
-/* CASQUE */
+/* MYTHOLOGICAL HELMET */
 
 .helmet{
-position:relative;
-width:78px;
-height:68px;
-margin-bottom:25px;
+  position:relative;
+  width:78px;
+  height:78px;
+  margin-bottom:24px;
+  border:2px solid #52c6ff;
+  border-radius:45% 45% 35% 35%;
+  background:linear-gradient(
+    145deg,
+    rgba(70,190,255,.18),
+    rgba(10,50,90,.15)
+  );
+  box-shadow:
+    0 0 20px rgba(40,170,255,.45),
+    inset 0 0 25px rgba(40,170,255,.12);
+  animation:helmetFloat 3s ease-in-out infinite;
 }
 
-.helmet-main{
-position:absolute;
-left:12px;
-top:16px;
-width:54px;
-height:42px;
-border:2px solid #55c4ff;
-border-radius:30px 30px 12px 12px;
-box-shadow:
-0 0 15px rgba(50,180,255,.45),
-inset 0 0 15px rgba(50,180,255,.08);
+.helmet:before{
+  content:"";
+  position:absolute;
+  left:17px;
+  top:12px;
+  width:39px;
+  height:48px;
+  border-left:3px solid #9be3ff;
+  border-right:3px solid #9be3ff;
+  border-radius:0 0 20px 20px;
 }
 
-.helmet-main::after{
-content:"";
-position:absolute;
-left:25px;
-top:0;
-height:39px;
-border-left:2px solid #55c4ff;
-transform:rotate(10deg);
+.helmet:after{
+  content:"";
+  position:absolute;
+  width:55px;
+  height:12px;
+  left:8px;
+  top:-10px;
+  border-top:4px solid #65d0ff;
+  border-radius:50%;
+  transform:rotate(-12deg);
+  box-shadow:0 0 14px #168cff;
 }
 
-.helmet-wing{
-position:absolute;
-top:19px;
-width:28px;
-height:19px;
-border-top:2px solid #55c4ff;
-border-bottom:2px solid #55c4ff;
-box-shadow:0 0 10px rgba(50,180,255,.35);
+@keyframes helmetFloat{
+  0%,100%{
+    transform:translateY(0) rotate(-2deg);
+  }
+  50%{
+    transform:translateY(-7px) rotate(2deg);
+  }
 }
-
-.helmet-wing.left{
-left:-2px;
-transform:skewX(-25deg);
-}
-
-.helmet-wing.right{
-right:-2px;
-transform:skewX(25deg);
-}
-
-.helmet-fin{
-position:absolute;
-left:32px;
-top:0;
-width:25px;
-height:22px;
-border-top:3px solid #8bddff;
-border-right:3px solid #8bddff;
-transform:skewY(-25deg) rotate(12deg);
-filter:drop-shadow(0 0 8px #168cff);
-}
-
-/* TEXT */
 
 .product h2{
-position:relative;
-font-size:29px;
-margin-bottom:10px;
+  position:relative;
+  font-size:28px;
+  margin-bottom:10px;
 }
 
 .description{
-position:relative;
-max-width:780px;
-margin-bottom:30px;
-color:#8996a9;
-font-size:14px;
-line-height:1.7;
-white-space:pre-line;
+  position:relative;
+  max-width:700px;
+  color:#8d99aa;
+  font-size:14px;
+  line-height:1.65;
+  margin-bottom:28px;
 }
 
-/* BOTTOM */
+/* SELECT */
 
-.bottom{
-position:relative;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:25px;
+.selectArea{
+  position:relative;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:25px;
 }
 
-.price{
-font-size:39px;
-font-weight:900;
-white-space:nowrap;
+.select{
+  width:260px;
+  padding:15px 17px;
+  border:1px solid rgba(70,170,255,.3);
+  border-radius:11px;
+  background:#08111d;
+  color:#fff;
+  font-size:14px;
+  font-weight:bold;
+  outline:none;
+  cursor:pointer;
 }
 
-.price small{
-color:#8996a9;
-font-size:13px;
-font-weight:normal;
+.select option{
+  background:#fff;
+  color:#000;
 }
 
-/* PAYMENT */
-
-.payment{
-display:flex;
-flex-direction:column;
-gap:10px;
-align-items:flex-end;
+.selectArrow{
+  color:#62caff;
+  font-size:20px;
+  animation:arrowMove 1.5s ease-in-out infinite;
 }
 
-.select-wrap{
-position:relative;
-display:flex;
-align-items:center;
+@keyframes arrowMove{
+  50%{transform:translateX(5px)}
 }
 
-select{
-appearance:none;
--webkit-appearance:none;
-width:240px;
-padding:16px 45px 16px 18px;
-border:1px solid rgba(90,170,255,.3);
-border-radius:11px;
-background:#101722;
-color:#fff;
-font-size:14px;
-font-weight:bold;
-cursor:pointer;
-outline:none;
+/* PRICE */
+
+.priceArea{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:25px;
 }
 
-select:hover{
-border-color:rgba(80,180,255,.6);
+.oldPrice{
+  position:relative;
+  color:#707b8c;
+  font-size:22px;
+  font-weight:bold;
 }
 
-select:focus{
-border-color:#298fff;
-box-shadow:0 0 20px rgba(40,145,255,.15);
+.oldPrice:after{
+  content:"";
+  position:absolute;
+  left:-5px;
+  right:-5px;
+  top:50%;
+  height:3px;
+  background:#ff4757;
+  transform:scaleX(0);
+  transform-origin:left;
+  animation:slash .65s .25s ease forwards;
 }
 
-select option{
-background:#101722;
-color:#fff;
+@keyframes slash{
+  to{transform:scaleX(1)}
 }
 
-.select-arrow{
-position:absolute;
-right:17px;
-pointer-events:none;
-color:#6cc8ff;
-font-size:18px;
+.discount{
+  padding:6px 9px;
+  border-radius:7px;
+  background:#ff334d;
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+  animation:discountPop .6s .35s cubic-bezier(.2,1.5,.5,1) both;
+}
+
+@keyframes discountPop{
+  from{
+    opacity:0;
+    transform:scale(.5) rotate(-8deg);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) rotate(0);
+  }
+}
+
+.newPrice{
+  font-size:39px;
+  font-weight:900;
+  color:#fff;
+  animation:pricePop .7s .45s cubic-bezier(.2,1.5,.5,1) both;
+}
+
+@keyframes pricePop{
+  from{
+    opacity:0;
+    transform:scale(.6);
+    filter:blur(8px);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+    filter:blur(0);
+  }
+}
+
+.currency{
+  color:#7c8a9d;
+  font-size:13px;
+  font-weight:normal;
 }
 
 /* PAYPAL */
 
 .paypal{
-width:240px;
-padding:16px;
-border:0;
-border-radius:11px;
-background:#ffc439;
-color:#003087;
-text-align:center;
-text-decoration:none;
-font-size:14px;
-font-weight:900;
-cursor:pointer;
-transition:.25s ease;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:220px;
+  padding:16px 25px;
+  border-radius:11px;
+  background:#ffc439;
+  color:#003087;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:900;
+  transition:.25s;
+  box-shadow:0 8px 25px rgba(255,196,57,.15);
 }
 
 .paypal:hover{
-transform:translateY(-3px);
-box-shadow:0 12px 35px rgba(255,196,57,.35);
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:0 14px 40px rgba(255,196,57,.35);
 }
 
 /* FOOTER */
 
 footer{
-padding:30px 20px;
-border-top:1px solid rgba(255,255,255,.08);
-text-align:center;
-color:#667286;
-font-size:11px;
-letter-spacing:2px;
+  border-top:1px solid var(--line);
+  padding:35px 20px;
+  text-align:center;
+  color:#667286;
+  font-size:11px;
+  letter-spacing:2px;
 }
 
 /* MOBILE */
 
-@media(max-width:700px){
+@media(max-width:650px){
 
-header{
-padding:70px 18px 55px;
+  header{
+    padding:70px 15px 60px;
+  }
+
+  main{
+    padding-top:50px;
+  }
+
+  .emailBox{
+    flex-wrap:wrap;
+  }
+
+  .emailInput{
+    min-width:150px;
+  }
+
+  .sendButton{
+    width:100%;
+    height:46px;
+  }
+
+  .product{
+    padding:30px 22px;
+  }
+
+  .selectArea{
+    width:100%;
+  }
+
+  .select{
+    width:100%;
+  }
+
+  .priceArea{
+    flex-wrap:wrap;
+  }
+
+  .paypal{
+    width:100%;
+  }
 }
-
-main{
-width:calc(100% - 20px);
-padding:50px 0 70px;
-}
-
-.product{
-padding:30px 22px;
-}
-
-.bottom{
-flex-direction:column;
-align-items:stretch;
-}
-
-.payment{
-align-items:stretch;
-}
-
-select,
-.paypal{
-width:100%;
-}
-
-.contact-box{
-padding:8px;
-}
-
-.contact-box button{
-padding:0 17px;
-}
-
-.description{
-font-size:13px;
-}
-
-.price{
-font-size:34px;
-}
-
-}
-
-@media(max-width:420px){
-
-.email-icon{
-display:none;
-}
-
-.contact-box input{
-font-size:13px;
-}
-
-.contact-box button{
-padding:0 14px;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
+<div class="background"></div>
 <div class="grid"></div>
+<div id="particles"></div>
 
 <header>
+  <div class="headerGlow"></div>
 
-<div class="glow"></div>
+  <div class="badge">
+    <span class="badgeDot"></span>
+    BOUTIQUE EN LIGNE
+  </div>
 
-<div class="badge">
-<span></span>
-BOUTIQUE EN LIGNE
-</div>
+  <div class="logo">
+    ATHENA HUB
+  </div>
 
-<div class="logo">
-ATHENA HUB
-</div>
-
-<p class="subtitle">
-Une expérience simple, rapide et sécurisée.
-</p>
-
+  <p class="subtitle">
+    Une expérience simple, rapide et sécurisée.
+  </p>
 </header>
 
 <main>
 
-<div class="section">
-NOS PRODUITS
-</div>
+  <div class="sectionTitle">
+    NOS PRODUITS
+  </div>
 
-<!-- EMAIL -->
+  <div class="emailBox">
 
-<div class="contact-box" id="contactBox">
+    <div class="emailIcon" id="emailIcon">
+      ✉
+    </div>
 
-<div class="email-icon">
-✉
-</div>
+    <input
+      id="email"
+      class="emailInput"
+      type="email"
+      placeholder="Email"
+      autocomplete="email"
+    >
 
-<input
-id="emailInput"
-type="email"
-placeholder="Email"
-autocomplete="email"
->
+    <button class="sendButton" onclick="sendEmail()">
+      Send
+    </button>
 
-<button id="sendButton" onclick="sendEmail()">
-Send
-</button>
+  </div>
 
-</div>
+  <div class="products">
 
-<div class="products">
+    <!-- AUTOJOINER -->
 
-<!-- PRODUIT 1 -->
+    <div class="product">
 
-<div class="product">
+      <div class="productGlow"></div>
 
-<div class="number">
-01
-</div>
+      <div class="number">
+        01
+      </div>
 
-<div class="helmet">
+      <div class="helmet"></div>
 
-<div class="helmet-main"></div>
+      <h2>Autojoiner</h2>
 
-<div class="helmet-wing left"></div>
-<div class="helmet-wing right"></div>
+      <p class="description">
+        Quick panel / Lua autojoin / Drop brainrot / Auto grab /
+        Invisible / AP spam owner / AP spam nearest
+      </p>
 
-<div class="helmet-fin"></div>
+      <div class="selectArea">
 
-</div>
+        <select
+          class="select"
+          onchange="changePlan(this)"
+        >
+          <option value="default">Select option</option>
+          <option value="day">1 Day</option>
+          <option value="week">1 Week</option>
+          <option value="lifetime">Lifetime</option>
+        </select>
 
-<h2>Autojoiner</h2>
+        <span class="selectArrow">→</span>
 
-<p class="description">Quick panel / Lua autojoin / drop brainrot / auto grab / invisible / AP spam owner / AP spam nearest</p>
+      </div>
 
-<div class="bottom">
+      <div class="priceArea">
 
-<div class="price">
-2,99 <small>EUR</small>
-</div>
+        <span class="oldPrice">2,99€</span>
 
-<div class="payment">
+        <span class="discount">-70%</span>
 
-<div class="select-wrap">
+        <span class="newPrice">
+          <span class="currentPrice">0,90</span>
+          <span class="currency">EUR</span>
+        </span>
 
-<select onchange="changePlan(this,1)">
+      </div>
 
-<option value="1day">
-1 Day
-</option>
+      <a
+        class="paypal"
+        href="https://www.paypal.com/paypalme/athenahubscript"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Payer avec PayPal
+      </a>
 
-<option value="1week">
-1 Week
-</option>
+    </div>
 
-<option value="lifetime">
-Lifetime
-</option>
 
-</select>
+    <!-- AUTO REDEEM -->
 
-<div class="select-arrow">
-⌄
-</div>
+    <div class="product">
 
-</div>
+      <div class="productGlow"></div>
 
-<a
-id="paypal1"
-class="paypal"
-href="https://www.paypal.com/paypalme/athenahubscript/2.99"
-target="_blank"
-rel="noopener noreferrer"
->
-Payer avec PayPal
-</a>
+      <div class="number">
+        02
+      </div>
 
-</div>
+      <div class="helmet"></div>
 
-</div>
+      <h2>Auto Redeem</h2>
 
-</div>
+      <p class="description">
+        Lua for activate
+      </p>
 
+      <div class="selectArea">
 
-<!-- PRODUIT 2 -->
+        <select
+          class="select"
+          onchange="changePlan(this)"
+        >
+          <option value="default">Select option</option>
+          <option value="day">1 Day</option>
+          <option value="week">1 Week</option>
+          <option value="lifetime">Lifetime</option>
+        </select>
 
-<div class="product">
+        <span class="selectArrow">→</span>
 
-<div class="number">
-02
-</div>
+      </div>
 
-<div class="helmet">
+      <div class="priceArea">
 
-<div class="helmet-main"></div>
+        <span class="oldPrice">2,99€</span>
 
-<div class="helmet-wing left"></div>
-<div class="helmet-wing right"></div>
+        <span class="discount">-70%</span>
 
-<div class="helmet-fin"></div>
+        <span class="newPrice">
+          <span class="currentPrice">0,90</span>
+          <span class="currency">EUR</span>
+        </span>
 
-</div>
+      </div>
 
-<h2>Auto Redeem</h2>
+      <a
+        class="paypal"
+        href="https://www.paypal.com/paypalme/athenahubscript"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Payer avec PayPal
+      </a>
 
-<p class="description">Lua for activate</p>
+    </div>
 
-<div class="bottom">
 
-<div class="price">
-2,99 <small>EUR</small>
-</div>
+    <!-- ATHENA HUB -->
 
-<div class="payment">
+    <div class="product">
 
-<div class="select-wrap">
+      <div class="productGlow"></div>
 
-<select onchange="changePlan(this,2)">
+      <div class="number">
+        03
+      </div>
 
-<option value="1day">
-1 Day
-</option>
+      <div class="helmet"></div>
 
-<option value="1week">
-1 Week
-</option>
+      <h2>Athena Hub</h2>
 
-<option value="lifetime">
-Lifetime
-</option>
+      <p class="description">
+        🟢 STEALING<br><br>
 
-</select>
+        Auto Steal Best / Nearest / Priority<br>
+        Semi Instant / Auto Desync / Giant Potion / Auto Walk /
+        Auto Spam / Auto TP<br><br>
 
-<div class="select-arrow">
-⌄
-</div>
+        🔵 PLAYER<br><br>
 
-</div>
+        Speed / Infinite Jump / Aimbot / Anti Ragdoll /
+        Anti Admin Panel<br><br>
 
-<a
-id="paypal2"
-class="paypal"
-href="https://www.paypal.com/paypalme/athenahubscript/2.99"
-target="_blank"
-rel="noopener noreferrer"
->
-Payer avec PayPal
-</a>
+        🟣 VISUALS<br><br>
 
-</div>
+        Brainrot ESP / Player ESP / Base ESP / Mine ESP /
+        Clone ESP / Custom FOV<br><br>
 
-</div>
+        🔴 ADMIN<br><br>
 
-</div>
+        Auto Defense / Admin Panel / Admin Spammer<br><br>
 
+        ⚡ QUICK BUTTONS<br><br>
 
-<!-- PRODUIT 3 -->
+        Self Ragdoll / Instant Reset / Allow / Disallow /
+        Rejoin / Leave<br><br>
 
-<div class="product">
+        ⚙️ EXTRAS<br><br>
 
-<div class="number">
-03
-</div>
+        Fully recolorable
+      </p>
 
-<div class="helmet">
+      <div class="selectArea">
 
-<div class="helmet-main"></div>
+        <select
+          class="select"
+          onchange="changePlan(this)"
+        >
+          <option value="default">Select option</option>
+          <option value="day">1 Day</option>
+          <option value="week">1 Week</option>
+          <option value="lifetime">Lifetime</option>
+        </select>
 
-<div class="helmet-wing left"></div>
-<div class="helmet-wing right"></div>
+        <span class="selectArrow">→</span>
 
-<div class="helmet-fin"></div>
+      </div>
 
-</div>
+      <div class="priceArea">
 
-<h2>Athena Hub</h2>
+        <span class="oldPrice">2,99€</span>
 
-<p class="description">🟢 STEALING
+        <span class="discount">-70%</span>
 
-- Auto Steal Best / Nearest / Priority
-- Semi Instant
-- Auto giant potion
-- Auto walk after steal
-- Auto spam after steal
-- Auto tp on unlock
-- Flash TP
+        <span class="newPrice">
+          <span class="currentPrice">0,90</span>
+          <span class="currency">EUR</span>
+        </span>
 
-🔵 PLAYER
+      </div>
 
-- Speed
-- Infinite Jump
-- Aimbot
-- Anti ragdoll
-- Anti admin panel
+      <a
+        class="paypal"
+        href="https://www.paypal.com/paypalme/athenahubscript"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Payer avec PayPal
+      </a>
 
-🟣 VISUALS
+    </div>
 
-- Brainrot ESP
-- Player ESP
-- Base ESP
-- Mine ESP
-- Clone ESP
-- Custom FOV
-
-🔴 ADMIN
-
-- Auto Defense
-- Admin Panel
-- Admin Spammer
-
-⚡ QUICK BUTTONS
-
-- Self Ragdoll
-- Instant Reset
-- Allow / Disallow
-- Rejoin
-- Leave
-
-⚙️ EXTRAS
-
-- Fully recolorable GUI + ESP</p>
-
-<div class="bottom">
-
-<div class="price">
-2,99 <small>EUR</small>
-</div>
-
-<div class="payment">
-
-<div class="select-wrap">
-
-<select onchange="changePlan(this,3)">
-
-<option value="1day">
-1 Day
-</option>
-
-<option value="1week">
-1 Week
-</option>
-
-<option value="lifetime">
-Lifetime
-</option>
-
-</select>
-
-<div class="select-arrow">
-⌄
-</div>
-
-</div>
-
-<a
-id="paypal3"
-class="paypal"
-href="https://www.paypal.com/paypalme/athenahubscript/2.99"
-target="_blank"
-rel="noopener noreferrer"
->
-Payer avec PayPal
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+  </div>
 
 </main>
 
 <footer>
-© 2026 ATHENA HUB · TOUS DROITS RÉSERVÉS
+  © 2026 ATHENA HUB · TOUS DROITS RÉSERVÉS
 </footer>
 
 <script>
-
-/* PRIX */
-
-const prices = {
-
-"1day":2.99,
-
-"1week":5.99,
-
-"lifetime":10.99
-
-};
-
-
-/* CHANGEMENT DE FORMULE */
-
-function changePlan(select,product){
-
-const plan = select.value;
-
-const price = prices[plan];
-
-const card = select.closest(".product");
-
-const priceElement = card.querySelector(".price");
-
-const paypal =
-document.getElementById("paypal"+product);
-
-priceElement.innerHTML =
-price.toFixed(2).replace(".",",")
-+
-' <small>EUR</small>';
-
-paypal.href =
-"https://www.paypal.com/paypalme/athenahubscript/"
-+
-price.toFixed(2);
-
-}
-
 
 /* EMAIL */
 
 function sendEmail(){
 
-const input =
-document.getElementById("emailInput");
+  const input = document.getElementById("email");
+  const icon = document.getElementById("emailIcon");
+  const value = input.value.trim();
 
-const button =
-document.getElementById("sendButton");
+  if(!value){
+    input.focus();
+    return;
+  }
 
-const box =
-document.getElementById("contactBox");
+  icon.textContent = "✓";
+  icon.style.color = "#20c875";
 
-const email =
-input.value.trim();
+  input.value = "";
 
-if(!email){
-
-input.focus();
-
-return;
-
+  setTimeout(() => {
+    icon.textContent = "✉";
+    icon.style.color = "#67cfff";
+  },2000);
 }
 
-if(!input.checkValidity()){
 
-input.focus();
+/* PRIX */
 
-return;
+const prices = {
 
+  day:{
+    original:"2,99",
+    price:"0,90"
+  },
+
+  week:{
+    original:"5,99",
+    price:"1,80"
+  },
+
+  lifetime:{
+    original:"10,99",
+    price:"3,30"
+  }
+
+};
+
+
+function changePlan(select){
+
+  const product = select.closest(".product");
+
+  const oldPrice = product.querySelector(".oldPrice");
+  const newPrice = product.querySelector(".currentPrice");
+
+  const selected = select.value;
+
+  if(!prices[selected]){
+    oldPrice.textContent = "—";
+    newPrice.textContent = "—";
+    return;
+  }
+
+  oldPrice.textContent = prices[selected].original + "€";
+  newPrice.textContent = prices[selected].price;
+
+  oldPrice.classList.remove("slashAgain");
+  newPrice.classList.remove("priceAgain");
+
+  void oldPrice.offsetWidth;
+  void newPrice.offsetWidth;
+
+  oldPrice.classList.add("slashAgain");
+  newPrice.classList.add("priceAgain");
 }
 
-button.textContent="Sent ✓";
 
-box.classList.add("sent");
+/* PARTICULES */
 
-input.disabled=true;
+const particles = document.getElementById("particles");
 
-button.disabled=true;
+for(let i = 0; i < 65; i++){
 
-setTimeout(function(){
+  const particle = document.createElement("div");
 
-input.value="";
-input.disabled=false;
-button.disabled=false;
+  particle.className = "particle";
 
-button.textContent="Send";
+  const size = 1 + Math.random() * 3;
 
-box.classList.remove("sent");
+  particle.style.width = size + "px";
+  particle.style.height = size + "px";
 
-},2000);
+  particle.style.left =
+    Math.random() * 100 + "%";
 
+  particle.style.animationDuration =
+    7 + Math.random() * 13 + "s";
+
+  particle.style.animationDelay =
+    -Math.random() * 15 + "s";
+
+  particles.appendChild(particle);
 }
 
 </script>
 
 </body>
 </html>
-```
