@@ -8,705 +8,507 @@
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    min-height:100vh;
-    background:#03060b;
-    color:white;
-    font-family:Arial,Helvetica,sans-serif;
-    overflow-x:hidden;
+min-height:100vh;
+background:#03060b;
+color:#fff;
+font-family:Arial,Helvetica,sans-serif;
+overflow-x:hidden;
 }
 
-/* BACKGROUND */
-
 .bg{
-    position:fixed;
-    inset:0;
-    z-index:-3;
-    background:
-        radial-gradient(circle at 50% -10%,rgba(0,130,255,.28),transparent 35%),
-        radial-gradient(circle at 10% 90%,rgba(0,80,255,.14),transparent 30%),
-        #03060b;
+position:fixed;
+inset:0;
+z-index:-3;
+background:
+radial-gradient(circle at 50% -10%,rgba(0,130,255,.28),transparent 35%),
+radial-gradient(circle at 10% 90%,rgba(0,80,255,.14),transparent 30%),
+#03060b;
 }
 
 .grid{
-    position:fixed;
-    inset:0;
-    z-index:-2;
-    opacity:.13;
-    background-image:
-        linear-gradient(rgba(40,130,255,.12) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(40,130,255,.12) 1px,transparent 1px);
-    background-size:55px 55px;
+position:fixed;
+inset:0;
+z-index:-2;
+opacity:.13;
+background-image:
+linear-gradient(rgba(40,130,255,.12) 1px,transparent 1px),
+linear-gradient(90deg,rgba(40,130,255,.12) 1px,transparent 1px);
+background-size:55px 55px;
 }
 
-/* PARTICLES */
-
 #particles{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:-1;
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+z-index:-1;
 }
 
 .particle{
-    position:absolute;
-    width:3px;
-    height:3px;
-    border-radius:50%;
-    background:#63c7ff;
-    box-shadow:0 0 14px #168cff;
-    animation:float linear infinite;
+position:absolute;
+width:3px;
+height:3px;
+border-radius:50%;
+background:#63c7ff;
+box-shadow:0 0 14px #168cff;
+animation:float linear infinite;
 }
 
 @keyframes float{
-    from{
-        transform:translateY(110vh);
-        opacity:0;
-    }
-
-    15%{
-        opacity:.8;
-    }
-
-    85%{
-        opacity:.8;
-    }
-
-    to{
-        transform:translateY(-10vh);
-        opacity:0;
-    }
+from{transform:translateY(110vh);opacity:0}
+15%{opacity:.8}
+85%{opacity:.8}
+to{transform:translateY(-10vh);opacity:0}
 }
 
-/* HEADER */
-
 header{
-    position:relative;
-    z-index:1;
-    text-align:center;
-    padding:95px 20px 80px;
-    border-bottom:1px solid rgba(100,170,255,.12);
-    overflow:hidden;
+position:relative;
+z-index:1;
+text-align:center;
+padding:95px 20px 80px;
+border-bottom:1px solid rgba(100,170,255,.12);
+overflow:hidden;
 }
 
 .glow{
-    position:absolute;
-    width:750px;
-    height:500px;
-    top:-350px;
-    left:50%;
-    transform:translateX(-50%);
-    background:radial-gradient(
-        circle,
-        rgba(0,130,255,.42),
-        transparent 70%
-    );
-    filter:blur(25px);
-    animation:pulse 5s ease-in-out infinite;
+position:absolute;
+width:750px;
+height:500px;
+top:-350px;
+left:50%;
+transform:translateX(-50%);
+background:radial-gradient(circle,rgba(0,130,255,.42),transparent 70%);
+filter:blur(25px);
+animation:pulse 5s ease-in-out infinite;
 }
 
 @keyframes pulse{
-    0%,100%{
-        opacity:.5;
-        transform:translateX(-50%) scale(1);
-    }
-
-    50%{
-        opacity:1;
-        transform:translateX(-50%) scale(1.15);
-    }
+0%,100%{opacity:.5;transform:translateX(-50%) scale(1)}
+50%{opacity:1;transform:translateX(-50%) scale(1.15)}
 }
 
 .badge{
-    position:relative;
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-    padding:10px 18px;
-    border:1px solid rgba(80,170,255,.35);
-    border-radius:50px;
-    color:#7dd3fc;
-    font-size:11px;
-    font-weight:bold;
-    letter-spacing:3px;
+position:relative;
+display:inline-flex;
+align-items:center;
+gap:9px;
+padding:10px 18px;
+border:1px solid rgba(80,170,255,.35);
+border-radius:50px;
+color:#7dd3fc;
+font-size:11px;
+font-weight:bold;
+letter-spacing:3px;
 }
 
 .badge span{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:#39aaff;
-    box-shadow:
-        0 0 8px #39aaff,
-        0 0 18px #39aaff;
-    animation:blink 2s infinite;
+width:7px;
+height:7px;
+border-radius:50%;
+background:#39aaff;
+box-shadow:0 0 8px #39aaff,0 0 18px #39aaff;
+animation:blink 2s infinite;
 }
 
 @keyframes blink{
-    0%,100%{
-        opacity:1;
-    }
-
-    50%{
-        opacity:.3;
-    }
+0%,100%{opacity:1}
+50%{opacity:.3}
 }
 
 .logo{
-    position:relative;
-    margin-top:22px;
-    font-size:clamp(48px,10vw,90px);
-    font-weight:900;
-    letter-spacing:5px;
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #8bddff,
-            #258cff,
-            #fff
-        );
-    background-size:300%;
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    animation:shine 5s linear infinite;
+position:relative;
+margin-top:22px;
+font-size:clamp(48px,10vw,90px);
+font-weight:900;
+letter-spacing:5px;
+background:linear-gradient(90deg,#fff,#8bddff,#258cff,#fff);
+background-size:300%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:shine 5s linear infinite;
 }
 
 @keyframes shine{
-    to{
-        background-position:-300%;
-    }
+to{background-position:-300%}
 }
 
 .subtitle{
-    position:relative;
-    margin:18px auto 0;
-    max-width:520px;
-    color:#8996a9;
-    font-size:15px;
-    line-height:1.7;
+position:relative;
+margin:18px auto 0;
+max-width:520px;
+color:#8996a9;
+font-size:15px;
+line-height:1.7;
 }
 
-/* MAIN */
-
 main{
-    position:relative;
-    z-index:1;
-    width:min(950px,calc(100% - 30px));
-    margin:auto;
-    padding:70px 0 110px;
+position:relative;
+z-index:1;
+width:min(950px,calc(100% - 30px));
+margin:auto;
+padding:70px 0 110px;
 }
 
 .section{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin-bottom:30px;
-    color:#7f8b9d;
-    font-size:11px;
-    font-weight:bold;
-    letter-spacing:3px;
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:30px;
+color:#7f8b9d;
+font-size:11px;
+font-weight:bold;
+letter-spacing:3px;
 }
 
 .section:after{
-    content:"";
-    flex:1;
-    height:1px;
-    background:rgba(100,170,255,.18);
+content:"";
+flex:1;
+height:1px;
+background:rgba(100,170,255,.18);
 }
-
-/* PRODUCTS */
 
 .products{
-    display:flex;
-    flex-direction:column;
-    gap:28px;
+display:flex;
+flex-direction:column;
+gap:28px;
 }
 
-/* CARD */
-
 .product{
-    position:relative;
-    min-height:390px;
-    padding:45px;
-    border:1px solid rgba(100,170,255,.17);
-    border-radius:26px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(17,29,47,.98),
-            rgba(4,8,15,.99)
-        );
-
-    overflow:hidden;
-
-    box-shadow:
-        0 20px 80px rgba(0,0,0,.5);
-
-    transition:.35s ease;
+position:relative;
+min-height:390px;
+padding:45px;
+border:1px solid rgba(100,170,255,.17);
+border-radius:26px;
+background:linear-gradient(145deg,rgba(17,29,47,.98),rgba(4,8,15,.99));
+overflow:visible;
+box-shadow:0 20px 80px rgba(0,0,0,.5);
+transition:.35s ease;
 }
 
 .product:hover{
-    transform:translateY(-8px);
-
-    border-color:rgba(55,165,255,.55);
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.7),
-        0 0 45px rgba(20,130,255,.12);
+transform:translateY(-8px);
+border-color:rgba(55,165,255,.55);
+box-shadow:
+0 30px 100px rgba(0,0,0,.7),
+0 0 45px rgba(20,130,255,.12);
 }
 
 .product:before{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    right:-280px;
-    top:-330px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(30,140,255,.28),
-            transparent 70%
-        );
-
-    pointer-events:none;
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+right:-280px;
+top:-330px;
+background:radial-gradient(circle,rgba(30,140,255,.28),transparent 70%);
+pointer-events:none;
 }
-
-.product:after{
-    content:"";
-    position:absolute;
-    top:0;
-    left:8%;
-    right:8%;
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #4dbbff,
-            transparent
-        );
-
-    opacity:.65;
-}
-
-/* NUMBER */
 
 .number{
-    position:absolute;
-    top:25px;
-    right:30px;
-
-    color:rgba(100,190,255,.25);
-    font-size:13px;
-    font-weight:bold;
-    letter-spacing:2px;
+position:absolute;
+top:25px;
+right:30px;
+color:rgba(100,190,255,.25);
+font-size:13px;
+font-weight:bold;
+letter-spacing:2px;
 }
-
-/* MYTHOLOGICAL HELMET */
 
 .helmet{
-    position:relative;
-    width:92px;
-    height:92px;
-
-    margin-bottom:25px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:1px solid rgba(80,180,255,.35);
-    border-radius:22px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(30,150,255,.13),
-            rgba(5,15,30,.5)
-        );
-
-    box-shadow:
-        inset 0 0 30px rgba(40,160,255,.08),
-        0 0 35px rgba(30,140,255,.1);
+position:relative;
+width:92px;
+height:92px;
+margin-bottom:25px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid rgba(80,180,255,.35);
+border-radius:22px;
+background:radial-gradient(circle,rgba(30,150,255,.13),rgba(5,15,30,.5));
+box-shadow:
+inset 0 0 30px rgba(40,160,255,.08),
+0 0 35px rgba(30,140,255,.1);
 }
-
-/* casque */
 
 .helmet-shape{
-    position:relative;
-    width:47px;
-    height:52px;
-
-    border:3px solid #61c9ff;
-    border-radius:24px 24px 15px 15px;
-
-    box-shadow:
-        0 0 12px rgba(70,190,255,.8);
+position:relative;
+width:47px;
+height:52px;
+border:3px solid #61c9ff;
+border-radius:24px 24px 15px 15px;
+box-shadow:0 0 12px rgba(70,190,255,.8);
 }
-
-/* ouverture visage */
 
 .helmet-shape:before{
-    content:"";
-    position:absolute;
-
-    width:23px;
-    height:16px;
-
-    right:-3px;
-    top:22px;
-
-    border-right:3px solid #61c9ff;
-    border-bottom:3px solid #61c9ff;
-
-    border-radius:0 0 8px 0;
+content:"";
+position:absolute;
+width:23px;
+height:16px;
+right:-3px;
+top:22px;
+border-right:3px solid #61c9ff;
+border-bottom:3px solid #61c9ff;
+border-radius:0 0 8px 0;
 }
-
-/* crête */
 
 .helmet-shape:after{
-    content:"";
-    position:absolute;
-
-    width:9px;
-    height:24px;
-
-    left:17px;
-    top:-25px;
-
-    background:#61c9ff;
-
-    clip-path:polygon(
-        50% 0,
-        100% 100%,
-        50% 78%,
-        0 100%
-    );
-
-    filter:
-        drop-shadow(0 0 7px #168cff);
+content:"";
+position:absolute;
+width:9px;
+height:24px;
+left:17px;
+top:-25px;
+background:#61c9ff;
+clip-path:polygon(50% 0,100% 100%,50% 78%,0 100%);
+filter:drop-shadow(0 0 7px #168cff);
 }
 
-/* CARD TEXT */
-
 .product h2{
-    position:relative;
-    font-size:30px;
-    margin-bottom:10px;
+position:relative;
+font-size:30px;
+margin-bottom:10px;
 }
 
 .description{
-    position:relative;
-    max-width:650px;
-    margin-bottom:30px;
-
-    color:#8996a9;
-    font-size:14px;
-    line-height:1.7;
+position:relative;
+max-width:650px;
+margin-bottom:30px;
+color:#8996a9;
+font-size:14px;
+line-height:1.7;
 }
 
-/* SELECT */
-
 .purchase{
-    position:relative;
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-    gap:30px;
+position:relative;
+display:flex;
+align-items:flex-end;
+gap:25px;
 }
 
 .select-area{
-    flex:1;
-    max-width:460px;
+flex:1;
 }
 
 .select-label{
-    display:block;
-    margin-bottom:9px;
-
-    color:#718197;
-    font-size:10px;
-    font-weight:bold;
-    letter-spacing:2px;
+display:block;
+margin-bottom:9px;
+color:#718197;
+font-size:10px;
+font-weight:bold;
+letter-spacing:2px;
 }
 
-/* CUSTOM SELECT */
-
 .custom-select{
-    position:relative;
-    width:100%;
+position:relative;
+width:100%;
 }
 
 .select-button{
-    width:100%;
-    height:58px;
-
-    padding:0 20px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    border:1px solid rgba(80,170,255,.25);
-    border-radius:13px;
-
-    background:
-        rgba(7,16,28,.95);
-
-    color:white;
-
-    font-size:14px;
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.25s;
+width:100%;
+height:58px;
+padding:0 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+border:1px solid rgba(80,170,255,.3);
+border-radius:13px;
+background:#f5f7fa;
+color:#111;
+font-size:14px;
+font-weight:bold;
+cursor:pointer;
+transition:.25s;
 }
 
 .select-button:hover{
-    border-color:#309eff;
-    box-shadow:
-        0 0 25px rgba(30,140,255,.1);
+border-color:#309eff;
+box-shadow:0 0 25px rgba(30,140,255,.15);
 }
 
 .arrow{
-    width:10px;
-    height:10px;
-
-    border-right:2px solid #65c6ff;
-    border-bottom:2px solid #65c6ff;
-
-    transform:rotate(45deg);
-    margin-top:-5px;
-
-    transition:.3s;
+width:10px;
+height:10px;
+border-right:2px solid #111;
+border-bottom:2px solid #111;
+transform:rotate(45deg);
+margin-top:-5px;
+transition:.3s;
 }
 
 .custom-select.open .arrow{
-    transform:rotate(225deg);
-    margin-top:5px;
+transform:rotate(225deg);
+margin-top:5px;
 }
 
-/* DROPDOWN */
-
 .options{
-    position:absolute;
-    z-index:20;
-
-    left:0;
-    right:0;
-    top:68px;
-
-    padding:7px;
-
-    background:
-        rgba(5,12,22,.98);
-
-    border:1px solid rgba(70,170,255,.25);
-    border-radius:14px;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.65),
-        0 0 30px rgba(20,130,255,.1);
-
-    opacity:0;
-    visibility:hidden;
-
-    transform:translateY(-8px);
-
-    transition:.25s;
+position:absolute;
+z-index:999;
+left:0;
+right:0;
+top:68px;
+padding:7px;
+background:#f5f7fa;
+border:1px solid rgba(80,170,255,.3);
+border-radius:14px;
+box-shadow:
+0 20px 60px rgba(0,0,0,.7),
+0 0 30px rgba(20,130,255,.12);
+opacity:0;
+visibility:hidden;
+transform:translateY(-8px);
+transition:.25s;
 }
 
 .custom-select.open .options{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
+opacity:1;
+visibility:visible;
+transform:translateY(0);
 }
 
 .option{
-    width:100%;
-
-    padding:15px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    border-radius:10px;
-
-    color:#dce8f5;
-
-    cursor:pointer;
-
-    transition:.2s;
+width:100%;
+padding:15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-radius:10px;
+color:#111 !important;
+background:#f5f7fa;
+cursor:pointer;
+transition:.2s;
 }
 
 .option:hover{
-    background:rgba(35,130,220,.14);
-    color:#fff;
+background:#dceeff;
+color:#000 !important;
 }
 
 .option.selected{
-    background:rgba(35,130,220,.18);
-    color:#70ceff;
+background:#cce7ff;
+color:#000 !important;
 }
 
 .option-name{
-    font-weight:bold;
+color:#111 !important;
+font-weight:bold;
 }
 
 .option-price{
-    color:#8b9bad;
-    font-size:12px;
+color:#333 !important;
+font-size:12px;
 }
 
 .option.selected .option-price{
-    color:#70ceff;
+color:#111 !important;
 }
 
-/* PRICE */
-
 .price-box{
-    min-width:150px;
-    text-align:right;
+min-width:125px;
+text-align:center;
 }
 
 .price{
-    font-size:42px;
-    font-weight:900;
-    line-height:1;
+font-size:38px;
+font-weight:900;
+white-space:nowrap;
 }
 
-.price span{
-    color:#7c899a;
-    font-size:12px;
-    font-weight:normal;
+.price small{
+display:block;
+color:#7c899a;
+font-size:11px;
+font-weight:normal;
+margin-bottom:4px;
 }
-
-/* PAYPAL */
 
 .paypal{
-    position:relative;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    min-width:190px;
-    height:58px;
-
-    padding:0 25px;
-
-    border-radius:12px;
-
-    background:#ffc439;
-    color:#003087;
-
-    font-size:13px;
-    font-weight:900;
-
-    text-decoration:none;
-
-    box-shadow:
-        0 8px 30px rgba(255,196,57,.16);
-
-    transition:.25s;
+display:flex;
+align-items:center;
+justify-content:center;
+min-width:190px;
+height:58px;
+padding:0 25px;
+border-radius:12px;
+background:#ffc439;
+color:#003087;
+font-size:13px;
+font-weight:900;
+text-decoration:none;
+box-shadow:0 8px 30px rgba(255,196,57,.16);
+transition:.25s;
 }
 
 .paypal:hover{
-    transform:translateY(-3px) scale(1.02);
-
-    box-shadow:
-        0 14px 40px rgba(255,196,57,.35);
+transform:translateY(-3px) scale(1.02);
+box-shadow:0 14px 40px rgba(255,196,57,.35);
 }
-
-/* FOOTER */
 
 footer{
-    position:relative;
-    z-index:1;
-
-    padding:35px 20px;
-
-    border-top:1px solid rgba(100,170,255,.12);
-
-    text-align:center;
-
-    color:#667286;
-
-    font-size:11px;
-    letter-spacing:2px;
+position:relative;
+z-index:1;
+padding:35px 20px;
+border-top:1px solid rgba(100,170,255,.12);
+text-align:center;
+color:#667286;
+font-size:11px;
+letter-spacing:2px;
 }
-
-/* MOBILE */
 
 @media(max-width:700px){
 
-    header{
-        padding:75px 18px 65px;
-    }
+header{
+padding:75px 18px 65px;
+}
 
-    main{
-        width:calc(100% - 24px);
-        padding:55px 0 80px;
-    }
+main{
+width:calc(100% - 24px);
+padding:55px 0 80px;
+}
 
-    .product{
-        padding:32px 22px;
-    }
+.product{
+padding:32px 22px;
+}
 
-    .purchase{
-        flex-direction:column;
-        align-items:stretch;
-        gap:20px;
-    }
+.purchase{
+flex-direction:column;
+align-items:stretch;
+}
 
-    .select-area{
-        max-width:none;
-    }
+.price-box{
+text-align:left;
+}
 
-    .price-box{
-        text-align:left;
-    }
+.paypal{
+width:100%;
+}
 
-    .paypal{
-        width:100%;
-    }
+.select-area{
+width:100%;
+}
 
-    .options{
-        position:absolute;
-    }
 }
 
 @media(max-width:450px){
 
-    .product h2{
-        font-size:25px;
-    }
+.product h2{
+font-size:25px;
+}
 
-    .price{
-        font-size:36px;
-    }
+.price{
+font-size:34px;
+}
 
-    .helmet{
-        width:78px;
-        height:78px;
-    }
+.helmet{
+width:78px;
+height:78px;
+}
+
 }
 </style>
 </head>
@@ -719,372 +521,261 @@ footer{
 
 <header>
 
-    <div class="glow"></div>
+<div class="glow"></div>
 
-    <div class="badge">
-        <span></span>
-        BOUTIQUE EN LIGNE
-    </div>
+<div class="badge">
+<span></span>
+BOUTIQUE EN LIGNE
+</div>
 
-    <div class="logo">
-        ATHENA HUB
-    </div>
+<div class="logo">
+ATHENA HUB
+</div>
 
-    <p class="subtitle">
-        Une expérience simple, rapide et sécurisée.
-    </p>
+<p class="subtitle">
+Une expérience simple, rapide et sécurisée.
+</p>
 
 </header>
 
 <main>
 
-    <div class="section">
-        NOS PRODUITS
-    </div>
+<div class="section">
+NOS PRODUITS
+</div>
 
-    <div class="products">
+<div class="products">
 
-        <!-- PRODUIT 1 -->
+<!-- PRODUIT 1 -->
 
-        <div class="product">
+<div class="product">
 
-            <div class="number">01</div>
+<div class="number">01</div>
 
-            <div class="helmet">
-                <div class="helmet-shape"></div>
-            </div>
+<div class="helmet">
+<div class="helmet-shape"></div>
+</div>
 
-            <h2>ATHENA ACCESS</h2>
+<h2>ATHENA ACCESS</h2>
 
-            <p class="description">
-                Choisis la durée de ton accès parmi les différentes formules disponibles.
-            </p>
+<p class="description">
+Choisis la durée de ton accès parmi les différentes formules disponibles.
+</p>
 
-            <div class="purchase">
+<div class="purchase">
 
-                <div class="select-area">
+<div class="select-area">
 
-                    <label class="select-label">
-                        DURÉE DE L'ACCÈS
-                    </label>
+<label class="select-label">
+DURÉE DE L'ACCÈS
+</label>
 
-                    <div class="custom-select" data-product="1">
+<div class="custom-select">
 
-                        <button class="select-button" type="button">
-                            <span class="selected-text">
-                                Select option
-                            </span>
+<button class="select-button" type="button">
+<span class="selected-text">Select option</span>
+<span class="arrow"></span>
+</button>
 
-                            <span class="arrow"></span>
-                        </button>
+<div class="options">
 
-                        <div class="options">
+<div class="option"
+data-name="1 Day"
+data-price="6.99"
+data-url="https://www.paypal.com/paypalme/athenahubscript/6.99">
+<span class="option-name">1 Day</span>
+<span class="option-price">6,99 EUR</span>
+</div>
 
-                            <div class="option"
-                                 data-name="1 Day"
-                                 data-price="6.99"
-                                 data-url="https://www.paypal.com/paypalme/athenahubscript/6.99">
+<div class="option"
+data-name="1 Week"
+data-price="14.99"
+data-url="https://www.paypal.com/paypalme/athenahubscript/14.99">
+<span class="option-name">1 Week</span>
+<span class="option-price">14,99 EUR</span>
+</div>
 
-                                <span class="option-name">
-                                    1 Day
-                                </span>
+<div class="option"
+data-name="Lifetime"
+data-price="10.99"
+data-url="https://www.paypal.com/paypalme/athenahubscript/10.99">
+<span class="option-name">Lifetime</span>
+<span class="option-price">10,99 EUR</span>
+</div>
 
-                                <span class="option-price">
-                                    6,99 EUR
-                                </span>
+</div>
+</div>
+</div>
 
-                            </div>
+<div class="price-box">
+<small>PRIX</small>
+<div class="price current-price">--</div>
+</div>
 
-                            <div class="option"
-                                 data-name="1 Week"
-                                 data-price="14.99"
-                                 data-url="https://www.paypal.com/paypalme/athenahubscript/14.99">
+<a class="paypal" href="#" target="_blank" rel="noopener noreferrer">
+Payer avec PayPal
+</a>
 
-                                <span class="option-name">
-                                    1 Week
-                                </span>
+</div>
 
-                                <span class="option-price">
-                                    14,99 EUR
-                                </span>
+</div>
 
-                            </div>
 
-                            <div class="option"
-                                 data-name="Lifetime"
-                                 data-price="29.99"
-                                 data-url="https://www.paypal.com/paypalme/athenahubscript/29.99">
+<!-- PRODUIT 2 -->
 
-                                <span class="option-name">
-                                    Lifetime
-                                </span>
+<div class="product">
 
-                                <span class="option-price">
-                                    29,99 EUR
-                                </span>
+<div class="number">02</div>
 
-                            </div>
+<div class="helmet">
+<div class="helmet-shape"></div>
+</div>
 
-                        </div>
+<h2>ATHENA PREMIUM</h2>
 
-                    </div>
+<p class="description">
+Une formule premium avec plusieurs durées disponibles selon ton besoin.
+</p>
 
-                </div>
+<div class="purchase">
 
-                <div class="price-box">
+<div class="select-area">
 
-                    <div class="price">
-                        <span>EUR</span>
-                        <span class="current-price">
-                            --
-                        </span>
-                    </div>
+<label class="select-label">
+DURÉE DE L'ACCÈS
+</label>
 
-                </div>
+<div class="custom-select">
 
-                <a
-                    class="paypal"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Payer avec PayPal
-                </a>
+<button class="select-button" type="button">
+<span class="selected-text">Select option</span>
+<span class="arrow"></span>
+</button>
 
-            </div>
+<div class="options">
 
-        </div>
+<div class="option"
+data-name="1 Day"
+data-price="6.99"
+data-url="https://www.paypal.com/paypalme/athenahubscript/6.99">
+<span class="option-name">1 Day</span>
+<span class="option-price">6,99 EUR</span>
+</div>
+
+<div class="option"
+data-name="1 Week"
+data-price="14.99"
+data-url="https://www.paypal.com/paypalme/athenahubscript/14.99">
+<span class="option-name">1 Week</span>
+<span class="option-price">14,99 EUR</span>
+</div>
 
+<div class="option"
+data-name="Lifetime"
+data-price="10.99"
+data-url="https://www.paypal.com/paypalme/athenahubscript/10.99">
+<span class="option-name">Lifetime</span>
+<span class="option-price">10,99 EUR</span>
+</div>
 
-        <!-- PRODUIT 2 -->
+</div>
+</div>
+</div>
 
-        <div class="product">
+<div class="price-box">
+<small>PRIX</small>
+<div class="price current-price">--</div>
+</div>
 
-            <div class="number">02</div>
+<a class="paypal" href="#" target="_blank" rel="noopener noreferrer">
+Payer avec PayPal
+</a>
 
-            <div class="helmet">
-                <div class="helmet-shape"></div>
-            </div>
+</div>
 
-            <h2>ATHENA PREMIUM</h2>
+</div>
 
-            <p class="description">
-                Une formule premium avec plusieurs durées disponibles selon ton besoin.
-            </p>
 
-            <div class="purchase">
+<!-- PRODUIT 3 -->
 
-                <div class="select-area">
+<div class="product">
 
-                    <label class="select-label">
-                        DURÉE DE L'ACCÈS
-                    </label>
+<div class="number">03</div>
 
-                    <div class="custom-select">
+<div class="helmet">
+<div class="helmet-shape"></div>
+</div>
 
-                        <button class="select-button" type="button">
-                            <span class="selected-text">
-                                Select option
-                            </span>
+<h2>ATHENA ULTIMATE</h2>
 
-                            <span class="arrow"></span>
-                        </button>
+<p class="description">
+La formule ultime avec les mêmes options de durée.
+</p>
 
-                        <div class="options">
+<div class="purchase">
 
-                            <div class="option"
-                                 data-name="1 Day"
-                                 data-price="6.99"
-                                 data-url="https://www.paypal.com/paypalme/athenahubscript/6.99">
+<div class="select-area">
 
-                                <span class="option-name">
-                                    1 Day
-                                </span>
+<label class="select-label">
+DURÉE DE L'ACCÈS
+</label>
 
-                                <span class="option-price">
-                                    6,99 EUR
-                                </span>
+<div class="custom-select">
 
-                            </div>
+<button class="select-button" type="button">
+<span class="selected-text">Select option</span>
+<span class="arrow"></span>
+</button>
 
-                            <div class="option"
-                                 data-name="1 Week"
-                                 data-price="14.99"
-                                 data-url="https://www.paypal.com/paypalme/athenahubscript/14.99">
+<div class="options">
 
-                                <span class="option-name">
-                                    1 Week
-                                </span>
+<div class="option"
+data-name="1 Day"
+data-price="6.99"
+data-url="https://www.paypal.com/paypalme/athenahubscript/6.99">
+<span class="option-name">1 Day</span>
+<span class="option-price">6,99 EUR</span>
+</div>
 
-                                <span class="option-price">
-                                    14,99 EUR
-                                </span>
+<div class="option"
+data-name="1 Week"
+data-price="14.99"
+data-url="https://www.paypal.com/paypalme/athenahubscript/14.99">
+<span class="option-name">1 Week</span>
+<span class="option-price">14,99 EUR</span>
+</div>
 
-                            </div>
+<div class="option"
+data-name="Lifetime"
+data-price="10.99"
+data-url="https://www.paypal.com/paypalme/athenahubscript/10.99">
+<span class="option-name">Lifetime</span>
+<span class="option-price">10,99 EUR</span>
+</div>
 
-                            <div class="option"
-                                 data-name="Lifetime"
-                                 data-price="29.99"
-                                 data-url="https://www.paypal.com/paypalme/athenahubscript/29.99">
+</div>
+</div>
+</div>
 
-                                <span class="option-name">
-                                    Lifetime
-                                </span>
+<div class="price-box">
+<small>PRIX</small>
+<div class="price current-price">--</div>
+</div>
 
-                                <span class="option-price">
-                                    29,99 EUR
-                                </span>
+<a class="paypal" href="#" target="_blank" rel="noopener noreferrer">
+Payer avec PayPal
+</a>
 
-                            </div>
+</div>
 
-                        </div>
+</div>
 
-                    </div>
-
-                </div>
-
-                <div class="price-box">
-
-                    <div class="price">
-                        <span>EUR</span>
-                        <span class="current-price">
-                            --
-                        </span>
-                    </div>
-
-                </div>
-
-                <a
-                    class="paypal"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Payer avec PayPal
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUIT 3 -->
-
-        <div class="product">
-
-            <div class="number">03</div>
-
-            <div class="helmet">
-                <div class="helmet-shape"></div>
-            </div>
-
-            <h2>ATHENA ULTIMATE</h2>
-
-            <p class="description">
-                La formule ultime avec le même système de sélection de durée.
-            </p>
-
-            <div class="purchase">
-
-                <div class="select-area">
-
-                    <label class="select-label">
-                        DURÉE DE L'ACCÈS
-                    </label>
-
-                    <div class="custom-select">
-
-                        <button class="select-button" type="button">
-                            <span class="selected-text">
-                                Select option
-                            </span>
-
-                            <span class="arrow"></span>
-                        </button>
-
-                        <div class="options">
-
-                            <div class="option"
-                                 data-name="1 Day"
-                                 data-price="6.99"
-                                 data-url="https://www.paypal.com/paypalme/athenahubscript/6.99">
-
-                                <span class="option-name">
-                                    1 Day
-                                </span>
-
-                                <span class="option-price">
-                                    6,99 EUR
-                                </span>
-
-                            </div>
-
-                            <div class="option"
-                                 data-name="1 Week"
-                                 data-price="14.99"
-                                 data-url="https://www.paypal.com/paypalme/athenahubscript/14.99">
-
-                                <span class="option-name">
-                                    1 Week
-                                </span>
-
-                                <span class="option-price">
-                                    14,99 EUR
-                                </span>
-
-                            </div>
-
-                            <div class="option"
-                                 data-name="Lifetime"
-                                 data-price="29.99"
-                                 data-url="https://www.paypal.com/paypalme/athenahubscript/29.99">
-
-                                <span class="option-name">
-                                    Lifetime
-                                </span>
-
-                                <span class="option-price">
-                                    29,99 EUR
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="price-box">
-
-                    <div class="price">
-                        <span>EUR</span>
-                        <span class="current-price">
-                            --
-                        </span>
-                    </div>
-
-                </div>
-
-                <a
-                    class="paypal"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Payer avec PayPal
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </main>
 
 <footer>
-    © 2026 ATHENA HUB · TOUS DROITS RÉSERVÉS
+© 2026 ATHENA HUB · TOUS DROITS RÉSERVÉS
 </footer>
 
 <script>
@@ -1095,122 +786,119 @@ const particles = document.getElementById("particles");
 
 for(let i = 0; i < 60; i++){
 
-    const particle = document.createElement("div");
+const particle = document.createElement("div");
 
-    particle.className = "particle";
+particle.className = "particle";
 
-    particle.style.left =
-        Math.random() * 100 + "%";
+particle.style.left =
+Math.random() * 100 + "%";
 
-    particle.style.animationDuration =
-        (7 + Math.random() * 12) + "s";
+particle.style.animationDuration =
+(7 + Math.random() * 12) + "s";
 
-    particle.style.animationDelay =
-        (-Math.random() * 15) + "s";
+particle.style.animationDelay =
+(-Math.random() * 15) + "s";
 
-    const size =
-        1 + Math.random() * 3;
+const size =
+1 + Math.random() * 3;
 
-    particle.style.width =
-        size + "px";
+particle.style.width =
+size + "px";
 
-    particle.style.height =
-        size + "px";
+particle.style.height =
+size + "px";
 
-    particles.appendChild(particle);
+particles.appendChild(particle);
+
 }
 
 
-/* SELECTS */
+/* MENUS */
 
 const selects =
-    document.querySelectorAll(".custom-select");
+document.querySelectorAll(".custom-select");
 
 selects.forEach(select => {
 
-    const button =
-        select.querySelector(".select-button");
+const button =
+select.querySelector(".select-button");
 
-    const text =
-        select.querySelector(".selected-text");
+const text =
+select.querySelector(".selected-text");
 
-    const price =
-        select.querySelector(".current-price");
+const price =
+select.querySelector(".current-price");
 
-    const paypal =
-        select.querySelector(".paypal");
+const paypal =
+select.querySelector(".paypal");
 
-    const options =
-        select.querySelectorAll(".option");
-
-
-    button.addEventListener("click", function(e){
-
-        e.stopPropagation();
-
-        document.querySelectorAll(".custom-select")
-            .forEach(other => {
-
-                if(other !== select){
-                    other.classList.remove("open");
-                }
-
-            });
-
-        select.classList.toggle("open");
-
-    });
+const options =
+select.querySelectorAll(".option");
 
 
-    options.forEach(option => {
+button.addEventListener("click",function(e){
 
-        option.addEventListener("click", function(e){
+e.stopPropagation();
 
-            e.stopPropagation();
+document.querySelectorAll(".custom-select")
+.forEach(other => {
 
-            const name =
-                option.dataset.name;
+if(other !== select){
+other.classList.remove("open");
+}
 
-            const amount =
-                option.dataset.price;
+});
 
-            const url =
-                option.dataset.url;
-
-            text.textContent =
-                name;
-
-            price.textContent =
-                amount.replace(".", ",");
-
-            paypal.href =
-                url;
-
-            options.forEach(item =>
-                item.classList.remove("selected")
-            );
-
-            option.classList.add("selected");
-
-            select.classList.remove("open");
-
-        });
-
-    });
+select.classList.toggle("open");
 
 });
 
 
-/* FERMER LE MENU EN CLIQUANT AILLEURS */
+options.forEach(option => {
 
-document.addEventListener("click", function(){
+option.addEventListener("click",function(e){
 
-    document.querySelectorAll(".custom-select")
-        .forEach(select => {
+e.stopPropagation();
 
-            select.classList.remove("open");
+const name =
+option.dataset.name;
 
-        });
+const amount =
+option.dataset.price;
+
+const url =
+option.dataset.url;
+
+text.textContent =
+name;
+
+price.textContent =
+amount.replace(".",",") + " €";
+
+paypal.href =
+url;
+
+options.forEach(item =>
+item.classList.remove("selected")
+);
+
+option.classList.add("selected");
+
+select.classList.remove("open");
+
+});
+
+});
+
+});
+
+
+document.addEventListener("click",function(){
+
+document.querySelectorAll(".custom-select")
+.forEach(select => {
+select.classList.remove("open");
+});
 
 });
 
