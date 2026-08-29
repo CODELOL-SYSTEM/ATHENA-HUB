@@ -1,9 +1,10 @@
-```html
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ATHENA HUB</title>
 
 <style>
@@ -30,48 +31,38 @@ body{
 .bg{
   position:fixed;
   inset:0;
-  z-index:-2;
+  z-index:-3;
   background:
-    radial-gradient(
-      circle at 50% -5%,
-      rgba(0,130,255,.25),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 0% 100%,
-      rgba(0,70,255,.12),
-      transparent 30%
-    ),
+    radial-gradient(circle at 50% -10%,rgba(0,130,255,.28),transparent 35%),
+    radial-gradient(circle at 0% 100%,rgba(0,80,255,.12),transparent 30%),
     #03060b;
 }
 
 .grid{
   position:fixed;
   inset:0;
-  z-index:-1;
+  z-index:-2;
   opacity:.12;
   background-image:
-    linear-gradient(rgba(60,150,255,.12) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(60,150,255,.12) 1px,transparent 1px);
+    linear-gradient(rgba(50,150,255,.15) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(50,150,255,.15) 1px,transparent 1px);
   background-size:50px 50px;
 }
 
-/* PARTICULES */
+/* PARTICLES */
 
 #particles{
   position:fixed;
   inset:0;
   pointer-events:none;
   overflow:hidden;
-  z-index:0;
+  z-index:-1;
 }
 
 .particle{
   position:absolute;
-  width:3px;
-  height:3px;
   border-radius:50%;
-  background:#5bc5ff;
+  background:#55c8ff;
   box-shadow:0 0 15px #168cff;
   animation:float linear infinite;
 }
@@ -83,11 +74,11 @@ body{
   }
 
   15%{
-    opacity:.8;
+    opacity:.7;
   }
 
   85%{
-    opacity:.8;
+    opacity:.7;
   }
 
   to{
@@ -100,23 +91,22 @@ body{
 
 header{
   position:relative;
-  z-index:1;
   text-align:center;
-  padding:100px 20px 80px;
+  padding:95px 20px 80px;
   border-bottom:1px solid rgba(100,170,255,.12);
   overflow:hidden;
 }
 
 .glow{
   position:absolute;
-  width:750px;
+  width:800px;
   height:500px;
   top:-350px;
   left:50%;
   transform:translateX(-50%);
   background:radial-gradient(
     circle,
-    rgba(0,130,255,.4),
+    rgba(0,130,255,.45),
     transparent 70%
   );
   filter:blur(25px);
@@ -147,7 +137,6 @@ header{
   font-size:11px;
   font-weight:bold;
   letter-spacing:3px;
-  text-transform:uppercase;
 }
 
 .badge span{
@@ -155,9 +144,7 @@ header{
   height:7px;
   border-radius:50%;
   background:#39aaff;
-  box-shadow:
-    0 0 8px #39aaff,
-    0 0 18px #39aaff;
+  box-shadow:0 0 12px #39aaff;
   animation:blink 2s infinite;
 }
 
@@ -167,27 +154,30 @@ header{
   }
 
   50%{
-    opacity:.3;
+    opacity:.25;
   }
 }
 
 .logo{
   position:relative;
-  margin-top:22px;
+  margin-top:25px;
   font-size:clamp(48px,10vw,90px);
   font-weight:900;
-  letter-spacing:4px;
-  background:
-    linear-gradient(
-      90deg,
-      #fff,
-      #8bddff,
-      #258cff,
-      #fff
-    );
+  letter-spacing:5px;
+
+  background:linear-gradient(
+    90deg,
+    #fff,
+    #8bddff,
+    #258cff,
+    #fff
+  );
+
   background-size:300%;
+
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+
   animation:shine 5s linear infinite;
 }
 
@@ -203,15 +193,13 @@ header{
   max-width:520px;
   color:#8996a9;
   font-size:15px;
-  line-height:1.7;
 }
 
 /* MAIN */
 
 main{
   position:relative;
-  z-index:1;
-  width:min(920px,calc(100% - 30px));
+  width:min(950px,calc(100% - 30px));
   margin:auto;
   padding:75px 0 110px;
 }
@@ -227,77 +215,123 @@ main{
   letter-spacing:3px;
 }
 
-.section:after{
+.section::after{
   content:"";
   flex:1;
   height:1px;
   background:rgba(100,170,255,.18);
 }
 
-/* PRODUITS */
+/* PRODUCTS */
 
 .products{
   display:flex;
   flex-direction:column;
-  gap:26px;
+  gap:28px;
 }
 
-/* CARTE */
+/* CARD */
 
 .product{
   position:relative;
-  min-height:340px;
-  padding:42px;
+  padding:45px;
+  min-height:390px;
+
   border:1px solid rgba(100,170,255,.16);
   border-radius:25px;
+
   background:
     linear-gradient(
       145deg,
-      rgba(18,29,46,.97),
-      rgba(5,9,16,.99)
+      rgba(18,29,46,.98),
+      rgba(4,8,15,.99)
     );
+
   overflow:hidden;
-  box-shadow:0 20px 70px rgba(0,0,0,.45);
+
+  box-shadow:
+    0 20px 70px rgba(0,0,0,.45);
+
   transition:.35s ease;
+
+  animation:cardIn .8s ease both;
+}
+
+.product:nth-child(1){
+  animation-delay:.1s;
+}
+
+.product:nth-child(2){
+  animation-delay:.25s;
+}
+
+.product:nth-child(3){
+  animation-delay:.4s;
+}
+
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(35px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .product:hover{
   transform:translateY(-8px);
+
   border-color:rgba(50,160,255,.55);
+
   box-shadow:
     0 30px 90px rgba(0,0,0,.65),
-    0 0 45px rgba(20,130,255,.12);
+    0 0 50px rgba(20,130,255,.14);
 }
 
-.product:before{
+.product::before{
   content:"";
+
   position:absolute;
+
   width:450px;
   height:450px;
+
   right:-250px;
   top:-300px;
-  background:radial-gradient(
-    circle,
-    rgba(30,140,255,.27),
-    transparent 70%
-  );
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(30,140,255,.3),
+      transparent 70%
+    );
+
   pointer-events:none;
 }
 
-.product:after{
+.product::after{
   content:"";
+
   position:absolute;
+
   top:0;
-  left:0;
-  right:0;
+  left:15%;
+  right:15%;
+
   height:1px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    #50baff,
-    transparent
-  );
-  opacity:.6;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #50baff,
+      transparent
+    );
+
+  box-shadow:0 0 15px #168cff;
 }
 
 /* NUMBER */
@@ -306,174 +340,240 @@ main{
   position:absolute;
   top:25px;
   right:30px;
+
   color:rgba(100,190,255,.25);
+
   font-size:13px;
   font-weight:bold;
+
   letter-spacing:2px;
 }
 
 /* ICON */
 
 .icon{
-  position:relative;
-  width:65px;
-  height:65px;
+  width:70px;
+  height:70px;
+
   margin-bottom:25px;
+
   border:1px solid rgba(70,175,255,.4);
-  border-radius:16px;
+  border-radius:18px;
+
   background:rgba(20,130,255,.06);
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   box-shadow:
     inset 0 0 25px rgba(30,140,255,.08),
     0 0 30px rgba(30,140,255,.08);
+
+  animation:iconFloat 3s ease-in-out infinite;
 }
 
-.icon:after{
+.icon::after{
   content:"";
-  width:24px;
-  height:24px;
+
+  width:25px;
+  height:25px;
+
   border:2px solid #54bfff;
+
   transform:rotate(45deg);
-  box-shadow:0 0 18px rgba(50,180,255,.8);
+
+  box-shadow:
+    0 0 18px rgba(50,180,255,.8);
 }
 
-/* TEXTE */
+@keyframes iconFloat{
+  0%,100%{
+    transform:translateY(0) rotate(0);
+  }
+
+  50%{
+    transform:translateY(-6px) rotate(3deg);
+  }
+}
+
+/* TEXT */
 
 .product h2{
   position:relative;
-  font-size:29px;
-  margin-bottom:10px;
+  font-size:30px;
+  margin-bottom:12px;
 }
 
 .description{
   position:relative;
-  max-width:620px;
+  max-width:650px;
   margin-bottom:30px;
+
   color:#8996a9;
   font-size:14px;
   line-height:1.7;
 }
 
-/* BAS DE CARTE */
+/* PLAN */
 
-.bottom{
+.plan-area{
   position:relative;
   display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:25px;
+  flex-direction:column;
+  gap:15px;
+  max-width:500px;
 }
 
-.price{
-  font-size:39px;
-  font-weight:900;
-  white-space:nowrap;
+/* SELECT */
+
+.plan-select{
+  position:relative;
 }
 
-.price span{
-  color:#8996a9;
-  font-size:13px;
-  font-weight:normal;
-}
+.plan-select select{
+  width:100%;
 
-/* BOUTONS */
+  padding:17px 50px 17px 18px;
 
-.buttons{
-  display:flex;
-  gap:12px;
-}
+  appearance:none;
 
-.button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-width:190px;
-  padding:16px 24px;
-  border:0;
-  border-radius:11px;
-  font-size:13px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(25,50,80,.8),
+      rgba(10,18,30,.95)
+    );
+
+  color:white;
+
+  border:1px solid rgba(80,170,255,.25);
+  border-radius:13px;
+
+  font-size:14px;
   font-weight:bold;
-  text-decoration:none;
+
+  outline:none;
   cursor:pointer;
+
   transition:.25s ease;
 }
 
-.paypal{
-  background:#ffc439;
-  color:#003087;
+.plan-select select:hover,
+.plan-select select:focus{
+  border-color:#3b9cff;
+
+  box-shadow:
+    0 0 25px rgba(40,150,255,.12);
 }
 
-.paypal:hover{
-  transform:translateY(-3px);
-  box-shadow:0 12px 40px rgba(255,196,57,.35);
+.arrow{
+  position:absolute;
+
+  right:18px;
+  top:50%;
+
+  width:10px;
+  height:10px;
+
+  border-right:2px solid #69c8ff;
+  border-bottom:2px solid #69c8ff;
+
+  transform:translateY(-70%) rotate(45deg);
+
+  pointer-events:none;
+
+  transition:.25s ease;
 }
 
-.transfer{
-  background:#1769e8;
+.plan-select:focus-within .arrow{
+  transform:translateY(-30%) rotate(225deg);
+}
+
+/* PRICE */
+
+.selected-price{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:18px 20px;
+
+  border-radius:14px;
+
+  background:rgba(20,130,255,.05);
+
+  border:1px solid rgba(70,170,255,.15);
+}
+
+.selected-label{
+  color:#8996a9;
+  font-size:12px;
+}
+
+.selected-price-value{
+  font-size:30px;
+  font-weight:900;
   color:#fff;
 }
 
-.transfer:hover{
+.selected-price-value span{
+  color:#8996a9;
+  font-size:12px;
+  font-weight:normal;
+}
+
+/* BUTTON */
+
+.pay-button{
+  width:100%;
+
+  padding:17px;
+
+  border:0;
+  border-radius:12px;
+
+  background:#ffc439;
+  color:#003087;
+
+  font-size:14px;
+  font-weight:900;
+
+  text-decoration:none;
+  text-align:center;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 10px 35px rgba(255,196,57,.18);
+
+  transition:.25s ease;
+}
+
+.pay-button:hover{
   transform:translateY(-3px);
-  box-shadow:0 12px 40px rgba(23,105,232,.4);
+
+  box-shadow:
+    0 15px 45px rgba(255,196,57,.4);
 }
 
-/* VIREMENT */
-
-.bank{
-  max-height:0;
-  opacity:0;
-  overflow:hidden;
-  margin-top:0;
-  padding:0 20px;
-  border:1px solid transparent;
-  border-radius:14px;
-  background:rgba(20,130,255,.04);
-  transition:.45s ease;
-}
-
-.bank.open{
-  max-height:240px;
-  opacity:1;
-  margin-top:25px;
-  padding:20px;
-  border-color:rgba(50,160,255,.22);
-}
-
-.bank-title{
-  margin-bottom:10px;
-  color:#70d0ff;
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:2px;
-}
-
-.bank-row{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  padding:10px 0;
-  border-bottom:1px dashed rgba(255,255,255,.08);
-  color:#c6d0dc;
-  font-size:13px;
-}
-
-.bank-row:last-child{
-  border-bottom:0;
+.pay-button:active{
+  transform:scale(.98);
 }
 
 /* FOOTER */
 
 footer{
-  position:relative;
-  z-index:1;
   padding:35px 20px;
+
   border-top:1px solid rgba(100,170,255,.12);
+
   text-align:center;
+
   color:#667286;
+
   font-size:11px;
+
   letter-spacing:2px;
 }
 
@@ -495,30 +595,20 @@ footer{
     min-height:0;
   }
 
-  .bottom{
-    flex-direction:column;
-    align-items:stretch;
+  .product h2{
+    font-size:26px;
   }
 
-  .buttons{
-    flex-direction:column;
+  .description{
+    font-size:13px;
   }
 
-  .button{
-    width:100%;
-    min-width:0;
-  }
-
-  .bank-row{
-    flex-direction:column;
-    gap:4px;
-  }
-
-  .price{
-    font-size:34px;
+  .selected-price-value{
+    font-size:26px;
   }
 }
 </style>
+
 </head>
 
 <body>
@@ -554,202 +644,201 @@ footer{
 
   <div class="products">
 
-    <div class="product">
+```
+<!-- PRODUIT 1 -->
 
-      <div class="number">01</div>
+<div class="product">
 
-      <div class="icon"></div>
+  <div class="number">01</div>
 
-      <h2>Nom du produit</h2>
+  <div class="icon"></div>
 
-      <p class="description">
-        Description courte du produit ou du service que tu proposes à tes clients.
-      </p>
+  <h2>Produit 01</h2>
 
-      <div class="bottom">
+  <p class="description">
+    Choisis la durée qui te convient puis passe directement au paiement.
+  </p>
 
-        <div class="price">
-          29,99 <span>EUR</span>
-        </div>
+  <div class="plan-area">
 
-        <div class="buttons">
+    <div class="plan-select">
 
-          <a
-            class="button paypal"
-            href="https://www.paypal.com/paypalme/athenahubscript/29.99"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Payer avec PayPal
-          </a>
+      <select onchange="changePlan(this,'price1','pay1')">
 
-          <button
-            class="button transfer"
-            onclick="toggleBank('bank1')"
-          >
-            Payer par virement
-          </button>
+        <option value="7.99">
+          1 Day
+        </option>
 
-        </div>
+        <option value="19.99">
+          1 Week
+        </option>
 
+        <option value="49.99">
+          Lifetime
+        </option>
+
+      </select>
+
+      <div class="arrow"></div>
+
+    </div>
+
+    <div class="selected-price">
+
+      <div class="selected-label">
+        PRIX
       </div>
 
-      <div class="bank" id="bank1">
-
-        <div class="bank-title">
-          COORDONNÉES BANCAIRES
-        </div>
-
-        <div class="bank-row">
-          <span>IBAN</span>
-          <span>FRXX XXXX XXXX XXXX XXXX XXXX XXX</span>
-        </div>
-
-        <div class="bank-row">
-          <span>BIC</span>
-          <span>XXXXXXXX</span>
-        </div>
-
-        <div class="bank-row">
-          <span>Référence</span>
-          <span>Votre nom + Commande</span>
-        </div>
-
+      <div class="selected-price-value">
+        <span id="price1">7,99 EUR</span>
       </div>
 
     </div>
 
+    <a
+      id="pay1"
+      class="pay-button"
+      href="https://www.paypal.com/paypalme/athenahubscript/7.99"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Payer avec PayPal
+    </a>
 
-    <div class="product">
+  </div>
 
-      <div class="number">02</div>
+</div>
 
-      <div class="icon"></div>
 
-      <h2>Nom du produit</h2>
+<!-- PRODUIT 2 -->
 
-      <p class="description">
-        Description courte du produit ou du service que tu proposes à tes clients.
-      </p>
+<div class="product">
 
-      <div class="bottom">
+  <div class="number">02</div>
 
-        <div class="price">
-          29,99 <span>EUR</span>
-        </div>
+  <div class="icon"></div>
 
-        <div class="buttons">
+  <h2>Produit 02</h2>
 
-          <a
-            class="button paypal"
-            href="https://www.paypal.com/paypalme/athenahubscript/29.99"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Payer avec PayPal
-          </a>
+  <p class="description">
+    Choisis la durée qui te convient puis passe directement au paiement.
+  </p>
 
-          <button
-            class="button transfer"
-            onclick="toggleBank('bank2')"
-          >
-            Payer par virement
-          </button>
+  <div class="plan-area">
 
-        </div>
+    <div class="plan-select">
 
+      <select onchange="changePlan(this,'price2','pay2')">
+
+        <option value="7.99">
+          1 Day
+        </option>
+
+        <option value="19.99">
+          1 Week
+        </option>
+
+        <option value="49.99">
+          Lifetime
+        </option>
+
+      </select>
+
+      <div class="arrow"></div>
+
+    </div>
+
+    <div class="selected-price">
+
+      <div class="selected-label">
+        PRIX
       </div>
 
-      <div class="bank" id="bank2">
-
-        <div class="bank-title">
-          COORDONNÉES BANCAIRES
-        </div>
-
-        <div class="bank-row">
-          <span>IBAN</span>
-          <span>FRXX XXXX XXXX XXXX XXXX XXXX XXX</span>
-        </div>
-
-        <div class="bank-row">
-          <span>BIC</span>
-          <span>XXXXXXXX</span>
-        </div>
-
-        <div class="bank-row">
-          <span>Référence</span>
-          <span>Votre nom + Commande</span>
-        </div>
-
+      <div class="selected-price-value">
+        <span id="price2">7,99 EUR</span>
       </div>
 
     </div>
 
+    <a
+      id="pay2"
+      class="pay-button"
+      href="https://www.paypal.com/paypalme/athenahubscript/7.99"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Payer avec PayPal
+    </a>
 
-    <div class="product">
+  </div>
 
-      <div class="number">03</div>
+</div>
 
-      <div class="icon"></div>
 
-      <h2>Nom du produit</h2>
+<!-- PRODUIT 3 -->
 
-      <p class="description">
-        Description courte du produit ou du service que tu proposes à tes clients.
-      </p>
+<div class="product">
 
-      <div class="bottom">
+  <div class="number">03</div>
 
-        <div class="price">
-          29,99 <span>EUR</span>
-        </div>
+  <div class="icon"></div>
 
-        <div class="buttons">
+  <h2>Produit 03</h2>
 
-          <a
-            class="button paypal"
-            href="https://www.paypal.com/paypalme/athenahubscript/29.99"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Payer avec PayPal
-          </a>
+  <p class="description">
+    Choisis la durée qui te convient puis passe directement au paiement.
+  </p>
 
-          <button
-            class="button transfer"
-            onclick="toggleBank('bank3')"
-          >
-            Payer par virement
-          </button>
+  <div class="plan-area">
 
-        </div>
+    <div class="plan-select">
 
+      <select onchange="changePlan(this,'price3','pay3')">
+
+        <option value="7.99">
+          1 Day
+        </option>
+
+        <option value="19.99">
+          1 Week
+        </option>
+
+        <option value="49.99">
+          Lifetime
+        </option>
+
+      </select>
+
+      <div class="arrow"></div>
+
+    </div>
+
+    <div class="selected-price">
+
+      <div class="selected-label">
+        PRIX
       </div>
 
-      <div class="bank" id="bank3">
-
-        <div class="bank-title">
-          COORDONNÉES BANCAIRES
-        </div>
-
-        <div class="bank-row">
-          <span>IBAN</span>
-          <span>FRXX XXXX XXXX XXXX XXXX XXXX XXX</span>
-        </div>
-
-        <div class="bank-row">
-          <span>BIC</span>
-          <span>XXXXXXXX</span>
-        </div>
-
-        <div class="bank-row">
-          <span>Référence</span>
-          <span>Votre nom + Commande</span>
-        </div>
-
+      <div class="selected-price-value">
+        <span id="price3">7,99 EUR</span>
       </div>
 
     </div>
+
+    <a
+      id="pay3"
+      class="pay-button"
+      href="https://www.paypal.com/paypalme/athenahubscript/7.99"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Payer avec PayPal
+    </a>
+
+  </div>
+
+</div>
+```
 
   </div>
 
@@ -761,23 +850,42 @@ footer{
 
 <script>
 
-function toggleBank(id){
+/* PRIX */
 
-  const bank = document.getElementById(id);
+function changePlan(select,priceId,payId){
 
-  if(bank){
-    bank.classList.toggle("open");
-  }
+  const price = select.value;
+
+  const priceElement =
+    document.getElementById(priceId);
+
+  const payButton =
+    document.getElementById(payId);
+
+  const formatted =
+    Number(price).toFixed(2).replace(".",",");
+
+  priceElement.textContent =
+    formatted + " EUR";
+
+  payButton.href =
+    "https://www.paypal.com/paypalme/athenahubscript/" + price;
 
 }
 
-const particles = document.getElementById("particles");
+
+/* PARTICULES */
+
+const particles =
+  document.getElementById("particles");
 
 for(let i = 0; i < 60; i++){
 
-  const particle = document.createElement("div");
+  const particle =
+    document.createElement("div");
 
-  particle.className = "particle";
+  particle.className =
+    "particle";
 
   particle.style.left =
     Math.random() * 100 + "%";
@@ -804,4 +912,3 @@ for(let i = 0; i < 60; i++){
 
 </body>
 </html>
-```
