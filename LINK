@@ -1,0 +1,807 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATHENA HUB</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  background:#03060b;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(
+      circle at 50% -5%,
+      rgba(0,130,255,.25),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 0% 100%,
+      rgba(0,70,255,.12),
+      transparent 30%
+    ),
+    #03060b;
+}
+
+.grid{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  opacity:.12;
+  background-image:
+    linear-gradient(rgba(60,150,255,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(60,150,255,.12) 1px,transparent 1px);
+  background-size:50px 50px;
+}
+
+/* PARTICULES */
+
+#particles{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+
+.particle{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#5bc5ff;
+  box-shadow:0 0 15px #168cff;
+  animation:float linear infinite;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+
+  15%{
+    opacity:.8;
+  }
+
+  85%{
+    opacity:.8;
+  }
+
+  to{
+    transform:translateY(-10vh);
+    opacity:0;
+  }
+}
+
+/* HEADER */
+
+header{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  padding:100px 20px 80px;
+  border-bottom:1px solid rgba(100,170,255,.12);
+  overflow:hidden;
+}
+
+.glow{
+  position:absolute;
+  width:750px;
+  height:500px;
+  top:-350px;
+  left:50%;
+  transform:translateX(-50%);
+  background:radial-gradient(
+    circle,
+    rgba(0,130,255,.4),
+    transparent 70%
+  );
+  filter:blur(25px);
+  animation:pulse 5s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%,100%{
+    opacity:.5;
+    transform:translateX(-50%) scale(1);
+  }
+
+  50%{
+    opacity:1;
+    transform:translateX(-50%) scale(1.15);
+  }
+}
+
+.badge{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 18px;
+  border:1px solid rgba(80,170,255,.35);
+  border-radius:50px;
+  color:#7dd3fc;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.badge span{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#39aaff;
+  box-shadow:
+    0 0 8px #39aaff,
+    0 0 18px #39aaff;
+  animation:blink 2s infinite;
+}
+
+@keyframes blink{
+  0%,100%{
+    opacity:1;
+  }
+
+  50%{
+    opacity:.3;
+  }
+}
+
+.logo{
+  position:relative;
+  margin-top:22px;
+  font-size:clamp(48px,10vw,90px);
+  font-weight:900;
+  letter-spacing:4px;
+  background:
+    linear-gradient(
+      90deg,
+      #fff,
+      #8bddff,
+      #258cff,
+      #fff
+    );
+  background-size:300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:shine 5s linear infinite;
+}
+
+@keyframes shine{
+  to{
+    background-position:-300%;
+  }
+}
+
+.subtitle{
+  position:relative;
+  margin:18px auto 0;
+  max-width:520px;
+  color:#8996a9;
+  font-size:15px;
+  line-height:1.7;
+}
+
+/* MAIN */
+
+main{
+  position:relative;
+  z-index:1;
+  width:min(920px,calc(100% - 30px));
+  margin:auto;
+  padding:75px 0 110px;
+}
+
+.section{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:30px;
+  color:#7f8b9d;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:3px;
+}
+
+.section:after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:rgba(100,170,255,.18);
+}
+
+/* PRODUITS */
+
+.products{
+  display:flex;
+  flex-direction:column;
+  gap:26px;
+}
+
+/* CARTE */
+
+.product{
+  position:relative;
+  min-height:340px;
+  padding:42px;
+  border:1px solid rgba(100,170,255,.16);
+  border-radius:25px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18,29,46,.97),
+      rgba(5,9,16,.99)
+    );
+  overflow:hidden;
+  box-shadow:0 20px 70px rgba(0,0,0,.45);
+  transition:.35s ease;
+}
+
+.product:hover{
+  transform:translateY(-8px);
+  border-color:rgba(50,160,255,.55);
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.65),
+    0 0 45px rgba(20,130,255,.12);
+}
+
+.product:before{
+  content:"";
+  position:absolute;
+  width:450px;
+  height:450px;
+  right:-250px;
+  top:-300px;
+  background:radial-gradient(
+    circle,
+    rgba(30,140,255,.27),
+    transparent 70%
+  );
+  pointer-events:none;
+}
+
+.product:after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    #50baff,
+    transparent
+  );
+  opacity:.6;
+}
+
+/* NUMBER */
+
+.number{
+  position:absolute;
+  top:25px;
+  right:30px;
+  color:rgba(100,190,255,.25);
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+/* ICON */
+
+.icon{
+  position:relative;
+  width:65px;
+  height:65px;
+  margin-bottom:25px;
+  border:1px solid rgba(70,175,255,.4);
+  border-radius:16px;
+  background:rgba(20,130,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:
+    inset 0 0 25px rgba(30,140,255,.08),
+    0 0 30px rgba(30,140,255,.08);
+}
+
+.icon:after{
+  content:"";
+  width:24px;
+  height:24px;
+  border:2px solid #54bfff;
+  transform:rotate(45deg);
+  box-shadow:0 0 18px rgba(50,180,255,.8);
+}
+
+/* TEXTE */
+
+.product h2{
+  position:relative;
+  font-size:29px;
+  margin-bottom:10px;
+}
+
+.description{
+  position:relative;
+  max-width:620px;
+  margin-bottom:30px;
+  color:#8996a9;
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* BAS DE CARTE */
+
+.bottom{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+
+.price{
+  font-size:39px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.price span{
+  color:#8996a9;
+  font-size:13px;
+  font-weight:normal;
+}
+
+/* BOUTONS */
+
+.buttons{
+  display:flex;
+  gap:12px;
+}
+
+.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:190px;
+  padding:16px 24px;
+  border:0;
+  border-radius:11px;
+  font-size:13px;
+  font-weight:bold;
+  text-decoration:none;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+.paypal{
+  background:#ffc439;
+  color:#003087;
+}
+
+.paypal:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 40px rgba(255,196,57,.35);
+}
+
+.transfer{
+  background:#1769e8;
+  color:#fff;
+}
+
+.transfer:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 40px rgba(23,105,232,.4);
+}
+
+/* VIREMENT */
+
+.bank{
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  margin-top:0;
+  padding:0 20px;
+  border:1px solid transparent;
+  border-radius:14px;
+  background:rgba(20,130,255,.04);
+  transition:.45s ease;
+}
+
+.bank.open{
+  max-height:240px;
+  opacity:1;
+  margin-top:25px;
+  padding:20px;
+  border-color:rgba(50,160,255,.22);
+}
+
+.bank-title{
+  margin-bottom:10px;
+  color:#70d0ff;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.bank-row{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:10px 0;
+  border-bottom:1px dashed rgba(255,255,255,.08);
+  color:#c6d0dc;
+  font-size:13px;
+}
+
+.bank-row:last-child{
+  border-bottom:0;
+}
+
+/* FOOTER */
+
+footer{
+  position:relative;
+  z-index:1;
+  padding:35px 20px;
+  border-top:1px solid rgba(100,170,255,.12);
+  text-align:center;
+  color:#667286;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  header{
+    padding:75px 18px 65px;
+  }
+
+  main{
+    width:calc(100% - 24px);
+    padding:55px 0 80px;
+  }
+
+  .product{
+    padding:30px 22px;
+    min-height:0;
+  }
+
+  .bottom{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .buttons{
+    flex-direction:column;
+  }
+
+  .button{
+    width:100%;
+    min-width:0;
+  }
+
+  .bank-row{
+    flex-direction:column;
+    gap:4px;
+  }
+
+  .price{
+    font-size:34px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+<div id="particles"></div>
+
+<header>
+
+  <div class="glow"></div>
+
+  <div class="badge">
+    <span></span>
+    BOUTIQUE EN LIGNE
+  </div>
+
+  <div class="logo">
+    ATHENA HUB
+  </div>
+
+  <p class="subtitle">
+    Une expérience simple, rapide et sécurisée.
+  </p>
+
+</header>
+
+<main>
+
+  <div class="section">
+    NOS PRODUITS
+  </div>
+
+  <div class="products">
+
+    <div class="product">
+
+      <div class="number">01</div>
+
+      <div class="icon"></div>
+
+      <h2>Nom du produit</h2>
+
+      <p class="description">
+        Description courte du produit ou du service que tu proposes à tes clients.
+      </p>
+
+      <div class="bottom">
+
+        <div class="price">
+          29,99 <span>EUR</span>
+        </div>
+
+        <div class="buttons">
+
+          <a
+            class="button paypal"
+            href="https://www.paypal.com/paypalme/athenahubscript/29.99"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Payer avec PayPal
+          </a>
+
+          <button
+            class="button transfer"
+            onclick="toggleBank('bank1')"
+          >
+            Payer par virement
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="bank" id="bank1">
+
+        <div class="bank-title">
+          COORDONNÉES BANCAIRES
+        </div>
+
+        <div class="bank-row">
+          <span>IBAN</span>
+          <span>FRXX XXXX XXXX XXXX XXXX XXXX XXX</span>
+        </div>
+
+        <div class="bank-row">
+          <span>BIC</span>
+          <span>XXXXXXXX</span>
+        </div>
+
+        <div class="bank-row">
+          <span>Référence</span>
+          <span>Votre nom + Commande</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="product">
+
+      <div class="number">02</div>
+
+      <div class="icon"></div>
+
+      <h2>Nom du produit</h2>
+
+      <p class="description">
+        Description courte du produit ou du service que tu proposes à tes clients.
+      </p>
+
+      <div class="bottom">
+
+        <div class="price">
+          29,99 <span>EUR</span>
+        </div>
+
+        <div class="buttons">
+
+          <a
+            class="button paypal"
+            href="https://www.paypal.com/paypalme/athenahubscript/29.99"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Payer avec PayPal
+          </a>
+
+          <button
+            class="button transfer"
+            onclick="toggleBank('bank2')"
+          >
+            Payer par virement
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="bank" id="bank2">
+
+        <div class="bank-title">
+          COORDONNÉES BANCAIRES
+        </div>
+
+        <div class="bank-row">
+          <span>IBAN</span>
+          <span>FRXX XXXX XXXX XXXX XXXX XXXX XXX</span>
+        </div>
+
+        <div class="bank-row">
+          <span>BIC</span>
+          <span>XXXXXXXX</span>
+        </div>
+
+        <div class="bank-row">
+          <span>Référence</span>
+          <span>Votre nom + Commande</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="product">
+
+      <div class="number">03</div>
+
+      <div class="icon"></div>
+
+      <h2>Nom du produit</h2>
+
+      <p class="description">
+        Description courte du produit ou du service que tu proposes à tes clients.
+      </p>
+
+      <div class="bottom">
+
+        <div class="price">
+          29,99 <span>EUR</span>
+        </div>
+
+        <div class="buttons">
+
+          <a
+            class="button paypal"
+            href="https://www.paypal.com/paypalme/athenahubscript/29.99"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Payer avec PayPal
+          </a>
+
+          <button
+            class="button transfer"
+            onclick="toggleBank('bank3')"
+          >
+            Payer par virement
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="bank" id="bank3">
+
+        <div class="bank-title">
+          COORDONNÉES BANCAIRES
+        </div>
+
+        <div class="bank-row">
+          <span>IBAN</span>
+          <span>FRXX XXXX XXXX XXXX XXXX XXXX XXX</span>
+        </div>
+
+        <div class="bank-row">
+          <span>BIC</span>
+          <span>XXXXXXXX</span>
+        </div>
+
+        <div class="bank-row">
+          <span>Référence</span>
+          <span>Votre nom + Commande</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  © 2026 ATHENA HUB · TOUS DROITS RÉSERVÉS
+</footer>
+
+<script>
+
+function toggleBank(id){
+
+  const bank = document.getElementById(id);
+
+  if(bank){
+    bank.classList.toggle("open");
+  }
+
+}
+
+const particles = document.getElementById("particles");
+
+for(let i = 0; i < 60; i++){
+
+  const particle = document.createElement("div");
+
+  particle.className = "particle";
+
+  particle.style.left =
+    Math.random() * 100 + "%";
+
+  particle.style.animationDuration =
+    (7 + Math.random() * 12) + "s";
+
+  particle.style.animationDelay =
+    (-Math.random() * 15) + "s";
+
+  const size =
+    1 + Math.random() * 3;
+
+  particle.style.width =
+    size + "px";
+
+  particle.style.height =
+    size + "px";
+
+  particles.appendChild(particle);
+}
+
+</script>
+
+</body>
+</html>
+```
