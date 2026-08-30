@@ -8,446 +8,438 @@
 
 <style>
 *{
- box-sizing:border-box;
- margin:0;
- padding:0;
-}
-
-html{
- scroll-behavior:smooth;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
- min-height:100vh;
- background:#03060b;
- color:#fff;
- font-family:Arial,Helvetica,sans-serif;
- overflow-x:hidden;
+background:#02050a;
+color:#fff;
+font-family:Arial,sans-serif;
+overflow-x:hidden;
 }
 
-.bg{
- position:fixed;
- inset:0;
- z-index:-3;
- background:
- radial-gradient(circle at 50% -10%,rgba(0,130,255,.28),transparent 38%),
- radial-gradient(circle at 0 100%,rgba(0,70,255,.14),transparent 30%),
- #03060b;
+body:before{
+content:"";
+position:fixed;
+inset:0;
+z-index:-3;
+background:
+radial-gradient(circle at 50% -10%,rgba(0,140,255,.28),transparent 35%),
+radial-gradient(circle at 10% 90%,rgba(0,70,255,.16),transparent 30%),
+#02050a;
 }
 
-.grid{
- position:fixed;
- inset:0;
- z-index:-2;
- opacity:.12;
- background-image:
- linear-gradient(rgba(50,150,255,.12) 1px,transparent 1px),
- linear-gradient(90deg,rgba(50,150,255,.12) 1px,transparent 1px);
- background-size:50px 50px;
+body:after{
+content:"";
+position:fixed;
+inset:0;
+z-index:-2;
+opacity:.12;
+background-image:
+linear-gradient(rgba(40,150,255,.12) 1px,transparent 1px),
+linear-gradient(90deg,rgba(40,150,255,.12) 1px,transparent 1px);
+background-size:55px 55px;
 }
 
 #particles{
- position:fixed;
- inset:0;
- pointer-events:none;
- overflow:hidden;
- z-index:-1;
+position:fixed;
+inset:0;
+z-index:-1;
+pointer-events:none;
+overflow:hidden;
 }
 
 .particle{
- position:absolute;
- border-radius:50%;
- background:#58caff;
- box-shadow:0 0 15px #168cff;
- animation:float linear infinite;
+position:absolute;
+border-radius:50%;
+background:#4bc7ff;
+box-shadow:0 0 15px #168cff;
+animation:float linear infinite;
 }
 
 @keyframes float{
- from{
-  transform:translateY(110vh);
-  opacity:0;
- }
- 15%,85%{
-  opacity:.7;
- }
- to{
-  transform:translateY(-10vh);
-  opacity:0;
- }
+0%{
+transform:translateY(110vh);
+opacity:0;
+}
+15%{
+opacity:.8;
+}
+85%{
+opacity:.8;
+}
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
 }
 
 header{
- text-align:center;
- padding:80px 20px 65px;
- border-bottom:1px solid rgba(100,170,255,.14);
+text-align:center;
+padding:85px 20px 65px;
+border-bottom:1px solid rgba(90,170,255,.12);
 }
 
 .badge{
- display:inline-flex;
- align-items:center;
- gap:8px;
- padding:9px 16px;
- border:1px solid rgba(80,180,255,.35);
- border-radius:50px;
- color:#72d2ff;
- font-size:11px;
- font-weight:bold;
- letter-spacing:3px;
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:9px 17px;
+border:1px solid rgba(80,180,255,.3);
+border-radius:50px;
+color:#71d4ff;
+font-size:10px;
+font-weight:900;
+letter-spacing:3px;
 }
 
 .dot{
- width:7px;
- height:7px;
- border-radius:50%;
- background:#38aaff;
- box-shadow:0 0 14px #168cff;
+width:7px;
+height:7px;
+border-radius:50%;
+background:#36b4ff;
+box-shadow:0 0 15px #168cff;
 }
 
 .logo{
- margin-top:20px;
- font-size:clamp(48px,10vw,88px);
- font-weight:900;
- letter-spacing:4px;
- background:linear-gradient(90deg,#fff,#80d9ff,#258cff,#fff);
- background-size:300%;
- -webkit-background-clip:text;
- -webkit-text-fill-color:transparent;
- animation:shine 5s linear infinite;
+margin-top:22px;
+font-size:clamp(48px,10vw,90px);
+font-weight:1000;
+letter-spacing:5px;
+background:linear-gradient(90deg,#fff,#7edcff,#168cff,#fff);
+background-size:300%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:shine 5s linear infinite;
 }
 
 @keyframes shine{
- to{
-  background-position:-300% center;
- }
+to{
+background-position:-300%;
+}
 }
 
 .subtitle{
- margin:15px auto 0;
- color:#8793a6;
- font-size:14px;
+margin-top:15px;
+color:#75849a;
+font-size:14px;
 }
 
 main{
- width:min(900px,calc(100% - 24px));
- margin:auto;
- padding:55px 0 100px;
-}
-
-.emailBox{
- display:flex;
- gap:10px;
- padding:7px;
- margin-bottom:35px;
- border:1px solid rgba(100,170,255,.16);
- border-radius:15px;
- background:#09111c;
- box-shadow:0 15px 50px rgba(0,0,0,.25);
-}
-
-.emailIcon{
- width:45px;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:19px;
- color:#69d1ff;
-}
-
-.emailInput{
- flex:1;
- min-width:0;
- background:transparent;
- border:0;
- outline:0;
- color:#fff;
- font-size:14px;
-}
-
-.emailInput::placeholder{
- color:#718096;
-}
-
-.send{
- border:0;
- border-radius:10px;
- padding:0 25px;
- background:#20c875;
- color:#03130b;
- font-weight:900;
- cursor:pointer;
- transition:.25s;
-}
-
-.send:hover{
- transform:translateY(-2px);
- box-shadow:0 10px 30px rgba(32,200,117,.25);
+width:min(900px,calc(100% - 24px));
+margin:auto;
+padding:55px 0 100px;
 }
 
 .section{
- display:flex;
- align-items:center;
- gap:14px;
- margin-bottom:25px;
- color:#7d899b;
- font-size:11px;
- font-weight:bold;
- letter-spacing:3px;
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:25px;
+color:#748297;
+font-size:11px;
+font-weight:900;
+letter-spacing:3px;
 }
 
 .section:after{
- content:"";
- height:1px;
- flex:1;
- background:rgba(100,170,255,.16);
+content:"";
+height:1px;
+flex:1;
+background:rgba(80,160,255,.15);
+}
+
+.emailBox{
+display:flex;
+align-items:center;
+gap:10px;
+padding:7px;
+margin-bottom:35px;
+border:1px solid rgba(70,160,255,.18);
+border-radius:15px;
+background:rgba(8,17,29,.85);
+box-shadow:0 15px 50px rgba(0,0,0,.3);
+}
+
+.emailIcon{
+width:44px;
+font-size:19px;
+text-align:center;
+color:#63ceff;
+transition:.3s;
+}
+
+.emailInput{
+flex:1;
+background:transparent;
+border:0;
+outline:0;
+color:#fff;
+font-size:14px;
+}
+
+.emailInput::placeholder{
+color:#63738a;
+}
+
+.send{
+border:0;
+border-radius:10px;
+padding:14px 25px;
+background:#20c878;
+color:#03140b;
+font-weight:900;
+cursor:pointer;
+transition:.25s;
+}
+
+.send:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 30px rgba(32,200,120,.25);
 }
 
 .products{
- display:flex;
- flex-direction:column;
- gap:25px;
+display:flex;
+flex-direction:column;
+gap:25px;
 }
 
 .product{
- position:relative;
- padding:38px;
- border:1px solid rgba(100,170,255,.17);
- border-radius:24px;
- background:linear-gradient(145deg,#0e1b2b,#050a11);
- box-shadow:0 25px 70px rgba(0,0,0,.45);
- overflow:visible;
- transition:.3s;
+position:relative;
+padding:38px;
+border:1px solid rgba(80,165,255,.17);
+border-radius:25px;
+background:linear-gradient(145deg,rgba(14,27,44,.98),rgba(4,9,16,.99));
+box-shadow:0 25px 70px rgba(0,0,0,.45);
+overflow:visible;
+transition:.35s;
 }
 
 .product:hover{
- transform:translateY(-6px);
- border-color:rgba(50,165,255,.5);
- box-shadow:
- 0 30px 90px rgba(0,0,0,.65),
- 0 0 40px rgba(20,130,255,.12);
+transform:translateY(-7px);
+border-color:rgba(60,175,255,.5);
+box-shadow:
+0 35px 90px rgba(0,0,0,.6),
+0 0 45px rgba(20,130,255,.13);
 }
 
 .number{
- position:absolute;
- top:23px;
- right:27px;
- color:rgba(100,190,255,.25);
- font-size:12px;
- font-weight:bold;
+position:absolute;
+top:24px;
+right:27px;
+font-size:12px;
+font-weight:900;
+color:rgba(90,190,255,.25);
 }
 
 .helmet{
- width:76px;
- height:76px;
- margin-bottom:23px;
- position:relative;
- border:2px solid #51c8ff;
- border-radius:45% 45% 35% 35%;
- background:linear-gradient(145deg,rgba(50,180,255,.18),rgba(5,30,55,.2));
- box-shadow:0 0 25px rgba(30,150,255,.4);
- animation:helmet 3s ease-in-out infinite;
+position:relative;
+width:78px;
+height:78px;
+margin-bottom:24px;
+border:2px solid #51caff;
+border-radius:48% 48% 35% 35%;
+background:linear-gradient(145deg,rgba(40,180,255,.18),rgba(5,20,40,.3));
+box-shadow:0 0 25px rgba(30,150,255,.35);
+animation:helmetFloat 3s ease-in-out infinite;
 }
 
 .helmet:before{
- content:"";
- position:absolute;
- left:17px;
- top:13px;
- width:36px;
- height:46px;
- border-left:3px solid #9be4ff;
- border-right:3px solid #9be4ff;
- border-radius:0 0 20px 20px;
+content:"";
+position:absolute;
+left:17px;
+top:14px;
+width:38px;
+height:45px;
+border-left:3px solid #a3e8ff;
+border-right:3px solid #a3e8ff;
+border-radius:0 0 22px 22px;
 }
 
 .helmet:after{
- content:"";
- position:absolute;
- width:55px;
- height:12px;
- left:8px;
- top:-10px;
- border-top:4px solid #67d1ff;
- border-radius:50%;
- transform:rotate(-12deg);
+content:"";
+position:absolute;
+left:9px;
+top:-11px;
+width:56px;
+height:13px;
+border-top:4px solid #62d1ff;
+border-radius:50%;
+transform:rotate(-10deg);
 }
 
-@keyframes helmet{
- 50%{
-  transform:translateY(-7px) rotate(2deg);
- }
+@keyframes helmetFloat{
+50%{
+transform:translateY(-6px) rotate(2deg);
+}
 }
 
 h2{
- font-size:28px;
- margin-bottom:10px;
+font-size:29px;
+margin-bottom:11px;
 }
 
 .description{
- color:#8996a9;
- font-size:14px;
- line-height:1.65;
- margin-bottom:25px;
+color:#8795a8;
+font-size:14px;
+line-height:1.7;
+margin-bottom:25px;
 }
 
 .selectArea{
- display:flex;
- align-items:center;
- gap:10px;
- position:relative;
- z-index:20;
+display:flex;
+align-items:center;
+gap:10px;
+position:relative;
+z-index:10;
 }
 
 .select{
- width:260px;
- padding:15px;
- border-radius:11px;
- border:1px solid rgba(70,170,255,.35);
- background:#08111d;
- color:#fff;
- font-weight:bold;
- outline:0;
- cursor:pointer;
+width:260px;
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(70,175,255,.3);
+background:#07101b;
+color:#fff;
+font-weight:900;
+outline:none;
+cursor:pointer;
 }
 
 .select option{
- background:#fff;
- color:#000;
+background:#fff;
+color:#000;
 }
 
 .arrow{
- color:#68d1ff;
- font-size:21px;
+font-size:22px;
+color:#61ceff;
 }
 
 .price{
- display:flex;
- align-items:center;
- gap:12px;
- margin:25px 0;
- flex-wrap:wrap;
+display:flex;
+align-items:center;
+gap:13px;
+margin:26px 0;
+min-height:45px;
 }
 
 .old{
- position:relative;
- color:#737f91;
- font-size:21px;
- font-weight:bold;
-}
-
-.old:after{
- content:"";
- position:absolute;
- left:-5px;
- right:-5px;
- top:50%;
- height:3px;
- background:#ff4054;
- transform:rotate(-5deg);
- box-shadow:0 0 10px rgba(255,60,80,.5);
+color:#718096;
+font-size:20px;
+font-weight:800;
 }
 
 .new{
- font-size:38px;
- font-weight:900;
+font-size:38px;
+font-weight:1000;
+color:#fff;
 }
 
 .eur{
- color:#7b8799;
- font-size:12px;
- font-weight:normal;
+font-size:12px;
+font-weight:500;
+color:#75849a;
 }
 
 .paypal{
- display:inline-flex;
- width:220px;
- padding:16px;
- justify-content:center;
- align-items:center;
- border-radius:11px;
- background:#ffc439;
- color:#003087;
- text-decoration:none;
- font-weight:900;
- font-size:14px;
- transition:.25s;
+display:flex;
+align-items:center;
+justify-content:center;
+width:230px;
+padding:16px;
+border-radius:11px;
+background:#ffc439;
+color:#003087;
+text-decoration:none;
+font-size:14px;
+font-weight:1000;
+transition:.25s;
 }
 
 .paypal:hover{
- transform:translateY(-3px) scale(1.02);
- box-shadow:0 14px 40px rgba(255,196,57,.35);
+transform:translateY(-3px);
+box-shadow:0 15px 40px rgba(255,196,57,.3);
 }
 
 .discord{
- display:flex;
- align-items:center;
- justify-content:center;
- gap:10px;
- width:220px;
- margin-top:12px;
- padding:14px;
- border-radius:11px;
- background:#5865F2;
- color:#fff;
- text-decoration:none;
- font-weight:900;
- font-size:14px;
- transition:.25s;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+width:230px;
+margin-top:12px;
+padding:15px;
+border-radius:11px;
+background:#5865f2;
+color:#fff;
+text-decoration:none;
+font-weight:1000;
+transition:.25s;
 }
 
 .discord:hover{
- transform:translateY(-3px);
- box-shadow:0 14px 40px rgba(88,101,242,.4);
+transform:translateY(-3px);
+box-shadow:0 15px 40px rgba(88,101,242,.35);
 }
 
 .discord svg{
- width:21px;
- height:21px;
- fill:currentColor;
+width:21px;
+height:21px;
+fill:currentColor;
 }
 
 footer{
- border-top:1px solid rgba(100,170,255,.12);
- padding:30px;
- text-align:center;
- color:#667286;
- font-size:11px;
+padding:30px;
+border-top:1px solid rgba(80,160,255,.12);
+text-align:center;
+color:#637084;
+font-size:10px;
+letter-spacing:2px;
 }
 
 @media(max-width:650px){
 
- .product{
-  padding:30px 22px;
- }
+header{
+padding:70px 18px 55px;
+}
 
- .emailBox{
-  flex-wrap:wrap;
- }
+main{
+width:calc(100% - 20px);
+}
 
- .emailInput{
-  min-width:130px;
- }
+.product{
+padding:30px 22px;
+}
 
- .send{
-  height:45px;
-  width:100%;
- }
+.emailBox{
+flex-wrap:wrap;
+}
 
- .select{
-  width:100%;
- }
+.emailInput{
+min-width:120px;
+}
 
- .paypal,
- .discord{
-  width:100%;
- }
+.send{
+width:100%;
+}
+
+.select{
+width:100%;
+}
+
+.paypal,
+.discord{
+width:100%;
+}
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
-<div class="grid"></div>
 <div id="particles"></div>
 
 <header>
@@ -461,9 +453,9 @@ BOUTIQUE EN LIGNE
 ATHENA HUB
 </div>
 
-<p class="subtitle">
+<div class="subtitle">
 Une expérience simple, rapide et sécurisée.
-</p>
+</div>
 
 </header>
 
@@ -484,9 +476,13 @@ id="email"
 class="emailInput"
 type="email"
 placeholder="Email"
+autocomplete="off"
 >
 
-<button class="send" onclick="sendEmail()">
+<button
+class="send"
+id="sendButton"
+onclick="sendEmail()">
 Send
 </button>
 
@@ -497,7 +493,6 @@ Send
 <div class="product">
 
 <div class="number">01</div>
-
 <div class="helmet"></div>
 
 <h2>Autojoiner</h2>
@@ -523,7 +518,6 @@ AP spam nearest
 
 <div class="price">
 <span class="old">—</span>
-
 <span class="new">
 <span class="newPrice">—</span>
 <span class="eur">EUR</span>
@@ -545,19 +539,18 @@ target="_blank"
 rel="noopener noreferrer">
 
 <svg viewBox="0 0 24 24">
-<path d="M19.54 5.19A16.2 16.2 0 0 0 15.5 4l-.49 1a14.4 14.4 0 0 0-6.02 0L8.5 4a16.2 16.2 0 0 0-4.04 1.19C1.9 9.05 1.2 12.82 1.55 16.54A16.4 16.4 0 0 0 6.5 19l1.2-1.64c-.66-.24-1.28-.54-1.86-.9l.45-.34c3.58 1.67 7.86 1.67 11.44 0l.45.34c-.58.36-1.2.66-1.86.9L17.5 19a16.4 16.4 0 0 0 4.95-2.46c.4-4.32-.68-8.05-2.91-11.35ZM8.32 14.83c-1.07 0-1.95-.98-1.95-2.18s.86-2.19 1.95-2.19 1.97.99 1.95 2.19c.02 1.2-.86 2.18-1.95 2.18Zm7.36 0c-1.07 0-1.95-.98-1.95-2.18s.86-2.19 1.95-2.19 1.97.99 1.95 2.19c0 1.2-.86 2.18-1.95 2.18Z"/>
+<path d="M19.54 5.19A16.2 16.2 0 0 0 15.5 4l-.49 1a14.4 14.4 0 0 0-6.02 0l-.49-1a16.2 16.2 0 0 0-4.04 1.19C1.9 9.05 1.2 12.82 1.55 16.54A16.4 16.4 0 0 0 6.5 19l1.2-1.64c-.66-.24-1.28-.54-1.86-.9l.45-.34c3.58 1.67 7.86 1.67 11.44 0l.45.34c-.58.36-1.2.66-1.86.9L17.5 19a16.4 16.4 0 0 0 3.95-2.46C21.8 12.82 21.1 9.05 19.54 5.19ZM8.32 14.83c1.09 0 1.97-.98 1.95-2.18.02-1.2-.86-2.19-1.95-2.19s-1.95.99-1.95 2.19.88 2.18 1.95 2.18Zm7.36 0c1.09 0 1.95-.98 1.95-2.18s-.86-2.19-1.95-2.19-1.97.99-1.95 2.19c-.02 1.2.86 2.18 1.95 2.18Z"/>
 </svg>
 
 Discord
+
 </a>
 
 </div>
 
-
 <div class="product">
 
 <div class="number">02</div>
-
 <div class="helmet"></div>
 
 <h2>Auto Redeem</h2>
@@ -581,7 +574,6 @@ Lua for activate
 
 <div class="price">
 <span class="old">—</span>
-
 <span class="new">
 <span class="newPrice">—</span>
 <span class="eur">EUR</span>
@@ -603,27 +595,25 @@ target="_blank"
 rel="noopener noreferrer">
 
 <svg viewBox="0 0 24 24">
-<path d="M19.54 5.19A16.2 16.2 0 0 0 15.5 4l-.49 1a14.4 14.4 0 0 0-6.02 0L8.5 4a16.2 16.2 0 0 0-4.04 1.19C1.9 9.05 1.2 12.82 1.55 16.54A16.4 16.4 0 0 0 6.5 19l1.2-1.64c-.66-.24-1.28-.54-1.86-.9l.45-.34c3.58 1.67 7.86 1.67 11.44 0l.45.34c-.58.36-1.2.66-1.86.9L17.5 19a16.4 16.4 0 0 0 4.95-2.46c.4-4.32-.68-8.05-2.91-11.35ZM8.32 14.83c-1.07 0-1.95-.98-1.95-2.18s.86-2.19 1.95-2.19 1.97.99 1.95 2.19c.02 1.2-.86 2.18-1.95 2.18Zm7.36 0c-1.07 0-1.95-.98-1.95-2.18s.86-2.19 1.95-2.19 1.97.99 1.95 2.19c0 1.2-.86 2.18-1.95 2.18Z"/>
+<path d="M19.54 5.19A16.2 16.2 0 0 0 15.5 4l-.49 1a14.4 14.4 0 0 0-6.02 0l-.49-1a16.2 16.2 0 0 0-4.04 1.19C1.9 9.05 1.2 12.82 1.55 16.54A16.4 16.4 0 0 0 6.5 19l1.2-1.64c-.66-.24-1.28-.54-1.86-.9l.45-.34c3.58 1.67 7.86 1.67 11.44 0l.45.34c-.58.36-1.2.66-1.86.9L17.5 19a16.4 16.4 0 0 0 3.95-2.46C21.8 12.82 21.1 9.05 19.54 5.19ZM8.32 14.83c1.09 0 1.97-.98 1.95-2.18.02-1.2-.86-2.19-1.95-2.19s-1.95.99-1.95 2.19.88 2.18 1.95 2.18Zm7.36 0c1.09 0 1.95-.98 1.95-2.18s-.86-2.19-1.95-2.19-1.97.99-1.95 2.19c.02-1.2.88 2.18 1.95 2.18Z"/>
 </svg>
 
 Discord
+
 </a>
 
 </div>
 
-
 <div class="product">
 
 <div class="number">03</div>
-
 <div class="helmet"></div>
 
 <h2>Athena Hub</h2>
 
 <p class="description">
 🟢 STEALING<br>
-Auto Steal Best / Nearest / Priority<br>
-Semi Instant / Auto Desync / Auto TP<br><br>
+Auto Steal Best / Nearest / Priority<br><br>
 
 🔵 PLAYER<br>
 Speed / Infinite Jump / Aimbot / Anti Ragdoll<br><br>
@@ -656,7 +646,6 @@ Fully recolorable
 
 <div class="price">
 <span class="old">—</span>
-
 <span class="new">
 <span class="newPrice">—</span>
 <span class="eur">EUR</span>
@@ -678,10 +667,11 @@ target="_blank"
 rel="noopener noreferrer">
 
 <svg viewBox="0 0 24 24">
-<path d="M19.54 5.19A16.2 16.2 0 0 0 15.5 4l-.49 1a14.4 14.4 0 0 0-6.02 0L8.5 4a16.2 16.2 0 0 0-4.04 1.19C1.9 9.05 1.2 12.82 1.55 16.54A16.4 16.4 0 0 0 6.5 19l1.2-1.64c-.66-.24-1.28-.54-1.86-.9l.45-.34c3.58 1.67 7.86 1.67 11.44 0l.45.34c-.58.36-1.2.66-1.86.9L17.5 19a16.4 16.4 0 0 0 4.95-2.46c.4-4.32-.68-8.05-2.91-11.35ZM8.32 14.83c-1.07 0-1.95-.98-1.95-2.18s.86-2.19 1.95-2.19 1.97.99 1.95 2.19c.02 1.2-.86 2.18-1.95 2.18Zm7.36 0c-1.07 0-1.95-.98-1.95-2.18s.86-2.19 1.95-2.19 1.97.99 1.95 2.19c0 1.2-.86 2.18-1.95 2.18Z"/>
+<path d="M19.54 5.19A16.2 16.2 0 0 0 15.5 4l-.49 1a14.4 14.4 0 0 0-6.02 0l-.49-1a16.2 16.2 0 0 0-4.04 1.19C1.9 9.05 1.2 12.82 1.55 16.54A16.4 16.4 0 0 0 6.5 19l1.2-1.64c-.66-.24-1.28-.54-1.86-.9l.45-.34c3.58 1.67 7.86 1.67 11.44 0l.45.34c-.58.36-1.2.66-1.86.9L17.5 19a16.4 16.4 0 0 0 3.95-2.46C21.8 12.82 21.1 9.05 19.54 5.19ZM8.32 14.83c1.09 0 1.97-.98 1.95-2.18-.02-1.2-.86-2.19-1.95-2.19s-1.95.99-1.95 2.19.88 2.18 1.95 2.18Zm7.36 0c1.09 0 1.95-.98 1.95-2.18s-.86-2.19-1.95-2.19-1.97.99-1.95 2.19.86 2.18 1.95 2.18Z"/>
 </svg>
 
 Discord
+
 </a>
 
 </div>
@@ -696,78 +686,135 @@ Discord
 
 <script>
 
+const WEBHOOK_URL="https://discord.com/api/webhooks/1543275343744475220/UWzs8TFPDcCazMEG55HMRoeOuxrp-x0-4ju6IfjUy1OEM1IzKhlE8_LzDNXmg3wW6BJs";
+
+async function sendEmail(){
+
+const input=document.getElementById("email");
+const icon=document.getElementById("emailIcon");
+const button=document.getElementById("sendButton");
+
+const message=input.value.trim();
+
+if(!message){
+input.focus();
+return;
+}
+
+button.disabled=true;
+button.textContent="Sending...";
+
+try{
+
+const response=await fetch(WEBHOOK_URL,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+content:message
+})
+});
+
+if(!response.ok){
+throw new Error("Webhook error");
+}
+
+icon.textContent="✓";
+icon.style.color="#20c878";
+input.value="";
+button.textContent="Sent";
+
+setTimeout(()=>{
+icon.textContent="✉";
+icon.style.color="#63ceff";
+button.textContent="Send";
+button.disabled=false;
+},2000);
+
+}catch(error){
+
+button.textContent="Error";
+
+setTimeout(()=>{
+button.textContent="Send";
+button.disabled=false;
+},2000);
+
+}
+
+}
+
 const prices={
- day:{
-  old:"2,99€",
-  new:"2,99"
- },
- week:{
-  old:"5,99€",
-  new:"5,99"
- },
- life:{
-  old:"10,99€",
-  new:"10,99"
- }
+day:{
+old:"2,99€",
+new:"2,99"
+},
+week:{
+old:"5,99€",
+new:"5,99"
+},
+life:{
+old:"10,99€",
+new:"10,99"
+}
 };
 
 function changePrice(select){
 
- const product=select.closest(".product");
+const product=select.closest(".product");
 
- const oldPrice=product.querySelector(".old");
- const newPrice=product.querySelector(".newPrice");
+const oldPrice=product.querySelector(".old");
+const newPrice=product.querySelector(".newPrice");
 
- const value=select.value;
+const value=select.value;
 
- if(!prices[value]){
-  oldPrice.textContent="—";
-  newPrice.textContent="—";
-  return;
- }
-
- oldPrice.textContent=prices[value].old;
- newPrice.textContent=prices[value].new;
+if(!prices[value]){
+oldPrice.textContent="—";
+newPrice.textContent="—";
+return;
 }
 
-function sendEmail(){
+oldPrice.textContent=prices[value].old;
+newPrice.textContent=prices[value].new;
 
- const input=document.getElementById("email");
- const icon=document.getElementById("emailIcon");
+newPrice.animate(
+[
+{
+transform:"scale(.7)",
+opacity:0
+},
+{
+transform:"scale(1)",
+opacity:1
+}
+],
+{
+duration:350,
+easing:"cubic-bezier(.2,1.3,.5,1)"
+}
+);
 
- if(!input.value.trim()){
-  input.focus();
-  return;
- }
-
- icon.textContent="✓";
- icon.style.color="#20c875";
-
- input.value="";
-
- setTimeout(()=>{
-  icon.textContent="✉";
-  icon.style.color="#69d1ff";
- },2000);
 }
 
 const particles=document.getElementById("particles");
 
-for(let i=0;i<70;i++){
+for(let i=0;i<75;i++){
 
- const p=document.createElement("div");
+const p=document.createElement("div");
 
- p.className="particle";
+p.className="particle";
 
- const size=1+Math.random()*3;
+const size=1+Math.random()*3;
 
- p.style.width=size+"px";
- p.style.height=size+"px";
- p.style.left=Math.random()*100+"%";
- p.style.animationDuration=7+Math.random()*13+"s";
- p.style.animationDelay=-Math.random()*15+"s";
+p.style.width=size+"px";
+p.style.height=size+"px";
+p.style.left=Math.random()*100+"%";
+p.style.animationDuration=(7+Math.random()*13)+"s";
+p.style.animationDelay=(-Math.random()*15)+"s";
 
- particles.appendChild(p);
+particles.appendChild(p);
+
 }
 
 </script>
