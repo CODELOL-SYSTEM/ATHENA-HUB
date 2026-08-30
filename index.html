@@ -1,3 +1,4 @@
+````html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,11 +7,19 @@
 <title>ATHENA HUB</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+
+html{
+scroll-behavior:smooth
+}
 
 body{
 background:#03060b;
-color:white;
+color:#fff;
 font-family:Arial,sans-serif;
 overflow-x:hidden;
 }
@@ -20,7 +29,7 @@ position:fixed;
 inset:0;
 z-index:-2;
 background:
-radial-gradient(circle at 50% -10%,rgba(0,130,255,.3),transparent 38%),
+radial-gradient(circle at 50% -10%,rgba(0,130,255,.32),transparent 38%),
 radial-gradient(circle at 0 100%,rgba(0,70,255,.15),transparent 30%),
 #03060b;
 }
@@ -29,7 +38,7 @@ radial-gradient(circle at 0 100%,rgba(0,70,255,.15),transparent 30%),
 position:fixed;
 inset:0;
 z-index:-1;
-opacity:.13;
+opacity:.12;
 background-image:
 linear-gradient(rgba(50,150,255,.12) 1px,transparent 1px),
 linear-gradient(90deg,rgba(50,150,255,.12) 1px,transparent 1px);
@@ -53,9 +62,17 @@ animation:float linear infinite;
 }
 
 @keyframes float{
-from{transform:translateY(110vh);opacity:0}
-15%,85%{opacity:.8}
-to{transform:translateY(-10vh);opacity:0}
+from{
+transform:translateY(110vh);
+opacity:0
+}
+15%,85%{
+opacity:.8
+}
+to{
+transform:translateY(-10vh);
+opacity:0
+}
 }
 
 header{
@@ -85,6 +102,13 @@ height:7px;
 border-radius:50%;
 background:#38aaff;
 box-shadow:0 0 14px #168cff;
+animation:blink 2s infinite;
+}
+
+@keyframes blink{
+50%{
+opacity:.3
+}
 }
 
 .logo{
@@ -92,7 +116,13 @@ margin-top:20px;
 font-size:clamp(48px,10vw,88px);
 font-weight:900;
 letter-spacing:4px;
-background:linear-gradient(90deg,#fff,#80d9ff,#258cff,#fff);
+background:linear-gradient(
+90deg,
+#fff,
+#80d9ff,
+#258cff,
+#fff
+);
 background-size:300%;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -100,7 +130,9 @@ animation:shine 5s linear infinite;
 }
 
 @keyframes shine{
-to{background-position:-300% center}
+to{
+background-position:-300% center
+}
 }
 
 .subtitle{
@@ -117,15 +149,22 @@ margin:auto;
 padding:55px 0 100px;
 }
 
+.topbar{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:35px;
+}
+
 .emailBox{
+flex:1;
 display:flex;
 align-items:center;
 gap:10px;
 padding:7px;
-margin-bottom:35px;
 border:1px solid rgba(100,170,255,.18);
 border-radius:15px;
-background:rgba(9,17,28,.95);
+background:#09111c;
 box-shadow:0 10px 40px rgba(0,0,0,.3);
 }
 
@@ -136,7 +175,6 @@ align-items:center;
 justify-content:center;
 font-size:20px;
 color:#69d1ff;
-transition:.3s;
 }
 
 .emailInput{
@@ -166,7 +204,28 @@ transition:.25s;
 
 .send:hover{
 transform:translateY(-2px);
-box-shadow:0 10px 30px rgba(32,200,117,.25);
+box-shadow:0 10px 30px rgba(32,200,117,.3);
+}
+
+.discord{
+width:55px;
+height:55px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:14px;
+background:#5865f2;
+color:white;
+text-decoration:none;
+font-size:27px;
+font-weight:900;
+box-shadow:0 10px 30px rgba(88,101,242,.3);
+transition:.25s;
+}
+
+.discord:hover{
+transform:translateY(-3px) scale(1.05);
+box-shadow:0 15px 40px rgba(88,101,242,.5);
 }
 
 .section{
@@ -198,7 +257,12 @@ position:relative;
 padding:38px;
 border:1px solid rgba(100,170,255,.17);
 border-radius:24px;
-background:linear-gradient(145deg,#0e1b2b,#050a11);
+background:
+linear-gradient(
+145deg,
+#0e1b2b,
+#050a11
+);
 box-shadow:0 25px 70px rgba(0,0,0,.45);
 overflow:visible;
 transition:.3s;
@@ -228,7 +292,12 @@ margin-bottom:23px;
 position:relative;
 border:2px solid #51c8ff;
 border-radius:45% 45% 35% 35%;
-background:linear-gradient(145deg,rgba(50,180,255,.18),rgba(5,30,55,.2));
+background:
+linear-gradient(
+145deg,
+rgba(50,180,255,.18),
+rgba(5,30,55,.2)
+);
 box-shadow:0 0 25px rgba(30,150,255,.4);
 animation:helmet 3s ease-in-out infinite;
 }
@@ -258,7 +327,9 @@ transform:rotate(-12deg);
 }
 
 @keyframes helmet{
-50%{transform:translateY(-7px) rotate(2deg)}
+50%{
+transform:translateY(-7px) rotate(2deg)
+}
 }
 
 h2{
@@ -287,15 +358,15 @@ padding:15px;
 border-radius:11px;
 border:1px solid rgba(70,170,255,.35);
 background:#08111d;
-color:white;
+color:#fff;
 font-weight:bold;
 outline:0;
 cursor:pointer;
 }
 
 .select option{
-background:white;
-color:black;
+background:#fff;
+color:#000;
 }
 
 .arrow{
@@ -311,7 +382,6 @@ margin:25px 0;
 }
 
 .old{
-position:relative;
 color:#737f91;
 font-size:21px;
 font-weight:bold;
@@ -358,8 +428,8 @@ font-size:11px;
 
 @media(max-width:650px){
 
-.product{
-padding:30px 22px;
+.topbar{
+align-items:stretch;
 }
 
 .emailBox{
@@ -373,6 +443,15 @@ min-width:130px;
 .send{
 height:45px;
 width:100%;
+}
+
+.discord{
+height:55px;
+min-width:55px;
+}
+
+.product{
+padding:30px 22px;
 }
 
 .select{
@@ -419,9 +498,13 @@ Une expérience simple, rapide et sécurisée.
 CONTACT
 </div>
 
+<div class="topbar">
+
 <div class="emailBox">
 
-<div class="emailIcon" id="emailIcon">✉</div>
+<div class="emailIcon" id="emailIcon">
+✉
+</div>
 
 <input
 id="email"
@@ -431,9 +514,22 @@ placeholder="Email"
 autocomplete="email"
 >
 
-<button class="send" onclick="sendEmail()">
+<button
+class="send"
+onclick="sendEmail()">
 Send
 </button>
+
+</div>
+
+<a
+class="discord"
+href="https://discord.gg/ywxNJyksh"
+target="_blank"
+rel="noopener noreferrer"
+title="Rejoindre Discord">
+☁
+</a>
 
 </div>
 
@@ -446,6 +542,7 @@ NOS PRODUITS
 <div class="product">
 
 <div class="number">01</div>
+
 <div class="helmet"></div>
 
 <h2>Autojoiner</h2>
@@ -470,11 +567,20 @@ AP spam nearest
 </div>
 
 <div class="price">
-<span class="old">—</span>
-<span class="new"><span class="newPrice">—</span> <span class="eur">EUR</span></span>
+
+<span class="old">
+—
+</span>
+
+<span class="new">
+<span class="newPrice">—</span>
+<span class="eur">EUR</span>
+</span>
+
 </div>
 
-<a class="paypal"
+<a
+class="paypal"
 href="https://www.paypal.me/athenahubscript"
 target="_blank"
 rel="noopener noreferrer">
@@ -483,9 +589,11 @@ Payer avec PayPal
 
 </div>
 
+
 <div class="product">
 
 <div class="number">02</div>
+
 <div class="helmet"></div>
 
 <h2>Auto Redeem</h2>
@@ -508,11 +616,20 @@ Lua for activate
 </div>
 
 <div class="price">
-<span class="old">—</span>
-<span class="new"><span class="newPrice">—</span> <span class="eur">EUR</span></span>
+
+<span class="old">
+—
+</span>
+
+<span class="new">
+<span class="newPrice">—</span>
+<span class="eur">EUR</span>
+</span>
+
 </div>
 
-<a class="paypal"
+<a
+class="paypal"
 href="https://www.paypal.me/athenahubscript"
 target="_blank"
 rel="noopener noreferrer">
@@ -521,14 +638,17 @@ Payer avec PayPal
 
 </div>
 
+
 <div class="product">
 
 <div class="number">03</div>
+
 <div class="helmet"></div>
 
 <h2>Athena Hub</h2>
 
 <p class="description">
+
 🟢 STEALING<br>
 Auto Steal Best / Nearest / Priority<br>
 Semi Instant / Auto Desync / Auto TP<br><br>
@@ -547,6 +667,7 @@ Self Ragdoll / Instant Reset / Allow / Disallow / Rejoin / Leave<br><br>
 
 ⚙️ EXTRAS<br>
 Fully recolorable
+
 </p>
 
 <div class="selectArea">
@@ -563,11 +684,20 @@ Fully recolorable
 </div>
 
 <div class="price">
-<span class="old">—</span>
-<span class="new"><span class="newPrice">—</span> <span class="eur">EUR</span></span>
+
+<span class="old">
+—
+</span>
+
+<span class="new">
+<span class="newPrice">—</span>
+<span class="eur">EUR</span>
+</span>
+
 </div>
 
-<a class="paypal"
+<a
+class="paypal"
 href="https://www.paypal.me/athenahubscript"
 target="_blank"
 rel="noopener noreferrer">
@@ -587,54 +717,879 @@ Payer avec PayPal
 <script>
 
 const prices={
-day:{old:"2,99€",new:"2,99"},
-week:{old:"5,99€",new:"5,99"},
-life:{old:"10,99€",new:"10,99"}
+
+day:{
+old:"2,99€",
+new:"2,99"
+},
+
+week:{
+old:"5,99€",
+new:"5,99"
+},
+
+life:{
+old:"10,99€",
+new:"10,99"
+}
+
 };
 
 function changePrice(select){
 
 const product=select.closest(".product");
-const oldPrice=product.querySelector(".old");
-const newPrice=product.querySelector(".newPrice");
 
-if(!prices[select.value]){
+const oldPrice=
+product.querySelector(".old");
+
+const newPrice=
+product.querySelector(".newPrice");
+
+const value=select.value;
+
+if(!prices[value]){
+
 oldPrice.textContent="—";
 newPrice.textContent="—";
+
 return;
 }
 
-oldPrice.textContent=prices[select.value].old;
-newPrice.textContent=prices[select.value].new;
+oldPrice.textContent=
+prices[value].old;
+
+newPrice.textContent=
+prices[value].new;
+
+newPrice.style.animation="none";
+
+void newPrice.offsetWidth;
+
+newPrice.style.animation=
+"price .6s ease";
+
 }
 
-/*
-WEBHOOK DISCORD
 
-Remplace cette URL par ton webhook
-MAIS pour un vrai site public utilise plutôt
-un serveur/proxy afin de ne pas exposer le webhook
+/*
+REMPLACE UNIQUEMENT CETTE VALEUR
+PAR TON NOUVEAU WEBHOOK DISCORD
+
+NE PAS UTILISER L'ANCIEN WEBHOOK
 */
 
-const WEBHOOK_URL="https://discord.com/api/webhooks/1543275343744475220/UWzs8TFPDcCazMEG55HMRoeOuxrp-x0-4ju6IfjUy1OEM1IzKhlE8_LzDNXmg3wW6BJs";
+const WEBHOOK_URL=
+"```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ATHENA HUB</title>
+
+<style>
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+
+html{
+scroll-behavior:smooth
+}
+
+body{
+background:#03060b;
+color:#fff;
+font-family:Arial,sans-serif;
+overflow-x:hidden;
+}
+
+.bg{
+position:fixed;
+inset:0;
+z-index:-2;
+background:
+radial-gradient(circle at 50% -10%,rgba(0,130,255,.32),transparent 38%),
+radial-gradient(circle at 0 100%,rgba(0,70,255,.15),transparent 30%),
+#03060b;
+}
+
+.grid{
+position:fixed;
+inset:0;
+z-index:-1;
+opacity:.12;
+background-image:
+linear-gradient(rgba(50,150,255,.12) 1px,transparent 1px),
+linear-gradient(90deg,rgba(50,150,255,.12) 1px,transparent 1px);
+background-size:50px 50px;
+}
+
+#particles{
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+z-index:0;
+}
+
+.particle{
+position:absolute;
+border-radius:50%;
+background:#58caff;
+box-shadow:0 0 15px #168cff;
+animation:float linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(110vh);
+opacity:0
+}
+15%,85%{
+opacity:.8
+}
+to{
+transform:translateY(-10vh);
+opacity:0
+}
+}
+
+header{
+position:relative;
+z-index:2;
+text-align:center;
+padding:75px 20px 65px;
+border-bottom:1px solid rgba(100,170,255,.14);
+}
+
+.badge{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:9px 16px;
+border:1px solid rgba(80,180,255,.35);
+border-radius:50px;
+color:#72d2ff;
+font-size:11px;
+font-weight:bold;
+letter-spacing:3px;
+}
+
+.dot{
+width:7px;
+height:7px;
+border-radius:50%;
+background:#38aaff;
+box-shadow:0 0 14px #168cff;
+animation:blink 2s infinite;
+}
+
+@keyframes blink{
+50%{
+opacity:.3
+}
+}
+
+.logo{
+margin-top:20px;
+font-size:clamp(48px,10vw,88px);
+font-weight:900;
+letter-spacing:4px;
+background:linear-gradient(
+90deg,
+#fff,
+#80d9ff,
+#258cff,
+#fff
+);
+background-size:300%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:shine 5s linear infinite;
+}
+
+@keyframes shine{
+to{
+background-position:-300% center
+}
+}
+
+.subtitle{
+margin:15px auto 0;
+color:#8793a6;
+font-size:14px;
+}
+
+main{
+position:relative;
+z-index:2;
+width:min(900px,calc(100% - 24px));
+margin:auto;
+padding:55px 0 100px;
+}
+
+.topbar{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:35px;
+}
+
+.emailBox{
+flex:1;
+display:flex;
+align-items:center;
+gap:10px;
+padding:7px;
+border:1px solid rgba(100,170,255,.18);
+border-radius:15px;
+background:#09111c;
+box-shadow:0 10px 40px rgba(0,0,0,.3);
+}
+
+.emailIcon{
+width:45px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+color:#69d1ff;
+}
+
+.emailInput{
+flex:1;
+min-width:0;
+background:transparent;
+border:0;
+outline:0;
+color:white;
+font-size:14px;
+}
+
+.emailInput::placeholder{
+color:#718096;
+}
+
+.send{
+border:0;
+border-radius:10px;
+padding:14px 25px;
+background:#20c875;
+color:#03130b;
+font-weight:900;
+cursor:pointer;
+transition:.25s;
+}
+
+.send:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 30px rgba(32,200,117,.3);
+}
+
+.discord{
+width:55px;
+height:55px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:14px;
+background:#5865f2;
+color:white;
+text-decoration:none;
+font-size:27px;
+font-weight:900;
+box-shadow:0 10px 30px rgba(88,101,242,.3);
+transition:.25s;
+}
+
+.discord:hover{
+transform:translateY(-3px) scale(1.05);
+box-shadow:0 15px 40px rgba(88,101,242,.5);
+}
+
+.section{
+display:flex;
+align-items:center;
+gap:14px;
+margin-bottom:25px;
+color:#7d899b;
+font-size:11px;
+font-weight:bold;
+letter-spacing:3px;
+}
+
+.section:after{
+content:"";
+height:1px;
+flex:1;
+background:rgba(100,170,255,.16);
+}
+
+.products{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+.product{
+position:relative;
+padding:38px;
+border:1px solid rgba(100,170,255,.17);
+border-radius:24px;
+background:
+linear-gradient(
+145deg,
+#0e1b2b,
+#050a11
+);
+box-shadow:0 25px 70px rgba(0,0,0,.45);
+overflow:visible;
+transition:.3s;
+}
+
+.product:hover{
+transform:translateY(-6px);
+border-color:rgba(50,165,255,.5);
+box-shadow:
+0 30px 90px rgba(0,0,0,.65),
+0 0 40px rgba(20,130,255,.12);
+}
+
+.number{
+position:absolute;
+top:23px;
+right:27px;
+color:rgba(100,190,255,.25);
+font-size:12px;
+font-weight:bold;
+}
+
+.helmet{
+width:76px;
+height:76px;
+margin-bottom:23px;
+position:relative;
+border:2px solid #51c8ff;
+border-radius:45% 45% 35% 35%;
+background:
+linear-gradient(
+145deg,
+rgba(50,180,255,.18),
+rgba(5,30,55,.2)
+);
+box-shadow:0 0 25px rgba(30,150,255,.4);
+animation:helmet 3s ease-in-out infinite;
+}
+
+.helmet:before{
+content:"";
+position:absolute;
+left:17px;
+top:13px;
+width:36px;
+height:46px;
+border-left:3px solid #9be4ff;
+border-right:3px solid #9be4ff;
+border-radius:0 0 20px 20px;
+}
+
+.helmet:after{
+content:"";
+position:absolute;
+width:55px;
+height:12px;
+left:8px;
+top:-10px;
+border-top:4px solid #67d1ff;
+border-radius:50%;
+transform:rotate(-12deg);
+}
+
+@keyframes helmet{
+50%{
+transform:translateY(-7px) rotate(2deg)
+}
+}
+
+h2{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.description{
+color:#8996a9;
+font-size:14px;
+line-height:1.65;
+margin-bottom:25px;
+}
+
+.selectArea{
+display:flex;
+align-items:center;
+gap:10px;
+position:relative;
+z-index:20;
+}
+
+.select{
+width:260px;
+padding:15px;
+border-radius:11px;
+border:1px solid rgba(70,170,255,.35);
+background:#08111d;
+color:#fff;
+font-weight:bold;
+outline:0;
+cursor:pointer;
+}
+
+.select option{
+background:#fff;
+color:#000;
+}
+
+.arrow{
+color:#68d1ff;
+font-size:21px;
+}
+
+.price{
+display:flex;
+align-items:center;
+gap:12px;
+margin:25px 0;
+}
+
+.old{
+color:#737f91;
+font-size:21px;
+font-weight:bold;
+}
+
+.new{
+font-size:38px;
+font-weight:900;
+}
+
+.eur{
+color:#7b8799;
+font-size:12px;
+font-weight:normal;
+}
+
+.paypal{
+display:inline-flex;
+width:220px;
+padding:16px;
+justify-content:center;
+align-items:center;
+border-radius:11px;
+background:#ffc439;
+color:#003087;
+text-decoration:none;
+font-weight:900;
+font-size:14px;
+transition:.25s;
+}
+
+.paypal:hover{
+transform:translateY(-3px) scale(1.02);
+box-shadow:0 14px 40px rgba(255,196,57,.35);
+}
+
+footer{
+border-top:1px solid rgba(100,170,255,.12);
+padding:30px;
+text-align:center;
+color:#667286;
+font-size:11px;
+}
+
+@media(max-width:650px){
+
+.topbar{
+align-items:stretch;
+}
+
+.emailBox{
+flex-wrap:wrap;
+}
+
+.emailInput{
+min-width:130px;
+}
+
+.send{
+height:45px;
+width:100%;
+}
+
+.discord{
+height:55px;
+min-width:55px;
+}
+
+.product{
+padding:30px 22px;
+}
+
+.select{
+width:100%;
+}
+
+.price{
+flex-wrap:wrap;
+}
+
+.paypal{
+width:100%;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+<div id="particles"></div>
+
+<header>
+
+<div class="badge">
+<span class="dot"></span>
+BOUTIQUE EN LIGNE
+</div>
+
+<div class="logo">
+ATHENA HUB
+</div>
+
+<p class="subtitle">
+Une expérience simple, rapide et sécurisée.
+</p>
+
+</header>
+
+<main>
+
+<div class="section">
+CONTACT
+</div>
+
+<div class="topbar">
+
+<div class="emailBox">
+
+<div class="emailIcon" id="emailIcon">
+✉
+</div>
+
+<input
+id="email"
+class="emailInput"
+type="email"
+placeholder="Email"
+autocomplete="email"
+>
+
+<button
+class="send"
+onclick="sendEmail()">
+Send
+</button>
+
+</div>
+
+<a
+class="discord"
+href="https://discord.gg/ywxNJyksh"
+target="_blank"
+rel="noopener noreferrer"
+title="Rejoindre Discord">
+☁
+</a>
+
+</div>
+
+<div class="section">
+NOS PRODUITS
+</div>
+
+<div class="products">
+
+<div class="product">
+
+<div class="number">01</div>
+
+<div class="helmet"></div>
+
+<h2>Autojoiner</h2>
+
+<p class="description">
+Quick panel / Lua autojoin / Drop brainrot /
+Auto grab / Invisible / AP spam owner /
+AP spam nearest
+</p>
+
+<div class="selectArea">
+
+<select class="select" onchange="changePrice(this)">
+<option value="">Select option</option>
+<option value="day">1 Day</option>
+<option value="week">1 Week</option>
+<option value="life">Lifetime</option>
+</select>
+
+<span class="arrow">→</span>
+
+</div>
+
+<div class="price">
+
+<span class="old">
+—
+</span>
+
+<span class="new">
+<span class="newPrice">—</span>
+<span class="eur">EUR</span>
+</span>
+
+</div>
+
+<a
+class="paypal"
+href="https://www.paypal.me/athenahubscript"
+target="_blank"
+rel="noopener noreferrer">
+Payer avec PayPal
+</a>
+
+</div>
+
+
+<div class="product">
+
+<div class="number">02</div>
+
+<div class="helmet"></div>
+
+<h2>Auto Redeem</h2>
+
+<p class="description">
+Lua for activate
+</p>
+
+<div class="selectArea">
+
+<select class="select" onchange="changePrice(this)">
+<option value="">Select option</option>
+<option value="day">1 Day</option>
+<option value="week">1 Week</option>
+<option value="life">Lifetime</option>
+</select>
+
+<span class="arrow">→</span>
+
+</div>
+
+<div class="price">
+
+<span class="old">
+—
+</span>
+
+<span class="new">
+<span class="newPrice">—</span>
+<span class="eur">EUR</span>
+</span>
+
+</div>
+
+<a
+class="paypal"
+href="https://www.paypal.me/athenahubscript"
+target="_blank"
+rel="noopener noreferrer">
+Payer avec PayPal
+</a>
+
+</div>
+
+
+<div class="product">
+
+<div class="number">03</div>
+
+<div class="helmet"></div>
+
+<h2>Athena Hub</h2>
+
+<p class="description">
+
+🟢 STEALING<br>
+Auto Steal Best / Nearest / Priority<br>
+Semi Instant / Auto Desync / Auto TP<br><br>
+
+🔵 PLAYER<br>
+Speed / Infinite Jump / Aimbot / Anti Ragdoll<br><br>
+
+🟣 VISUALS<br>
+Brainrot ESP / Player ESP / Base ESP / Mine ESP / Clone ESP<br><br>
+
+🔴 ADMIN<br>
+Auto Defense / Admin Panel / Admin Spammer<br><br>
+
+⚡ QUICK BUTTONS<br>
+Self Ragdoll / Instant Reset / Allow / Disallow / Rejoin / Leave<br><br>
+
+⚙️ EXTRAS<br>
+Fully recolorable
+
+</p>
+
+<div class="selectArea">
+
+<select class="select" onchange="changePrice(this)">
+<option value="">Select option</option>
+<option value="day">1 Day</option>
+<option value="week">1 Week</option>
+<option value="life">Lifetime</option>
+</select>
+
+<span class="arrow">→</span>
+
+</div>
+
+<div class="price">
+
+<span class="old">
+—
+</span>
+
+<span class="new">
+<span class="newPrice">—</span>
+<span class="eur">EUR</span>
+</span>
+
+</div>
+
+<a
+class="paypal"
+href="https://www.paypal.me/athenahubscript"
+target="_blank"
+rel="noopener noreferrer">
+Payer avec PayPal
+</a>
+
+</div>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 ATHENA HUB · TOUS DROITS RÉSERVÉS
+</footer>
+
+<script>
+
+const prices={
+
+day:{
+old:"2,99€",
+new:"2,99"
+},
+
+week:{
+old:"5,99€",
+new:"5,99"
+},
+
+life:{
+old:"10,99€",
+new:"10,99"
+}
+
+};
+
+function changePrice(select){
+
+const product=select.closest(".product");
+
+const oldPrice=
+product.querySelector(".old");
+
+const newPrice=
+product.querySelector(".newPrice");
+
+const value=select.value;
+
+if(!prices[value]){
+
+oldPrice.textContent="—";
+newPrice.textContent="—";
+
+return;
+}
+
+oldPrice.textContent=
+prices[value].old;
+
+newPrice.textContent=
+prices[value].new;
+
+newPrice.style.animation="none";
+
+void newPrice.offsetWidth;
+
+newPrice.style.animation=
+"price .6s ease";
+
+}
+
+
+/*
+REMPLACE UNIQUEMENT CETTE VALEUR
+PAR TON NOUVEAU WEBHOOK DISCORD
+
+NE PAS UTILISER L'ANCIEN WEBHOOK
+*/
+
+const WEBHOOK_URL=
+"https://discord.com/api/webhooks/1543275343744475220/UWzs8TFPDcCazMEG55HMRoeOuxrp-x0-4ju6IfjUy1OEM1IzKhlE8_LzDNXmg3wW6BJs";
+
 
 async function sendEmail(){
 
-const input=document.getElementById("email");
-const icon=document.getElementById("emailIcon");
-const email=input.value.trim();
+const input=
+document.getElementById("email");
+
+const icon=
+document.getElementById("emailIcon");
+
+const button=
+document.querySelector(".send");
+
+const email=
+input.value.trim();
 
 if(!email){
+
 input.focus();
+
 return;
 }
 
 if(!email.includes("@")){
+
 input.focus();
+
 return;
 }
-
-const button=document.querySelector(".send");
 
 button.disabled=true;
 button.textContent="Sending...";
@@ -642,13 +1597,58 @@ button.textContent="Sending...";
 try{
 
 await fetch(WEBHOOK_URL,{
+
 method:"POST",
+
 headers:{
 "Content-Type":"application/json"
 },
+
 body:JSON.stringify({
-content:"📩 Nouvel email reçu\nEmail : "+email
+
+content:"",
+
+embeds:[{
+
+title:"📩 NOUVEL EMAIL",
+
+description:
+"Un nouvel email vient d'être envoyé depuis ATHENA HUB",
+
+color:39167,
+
+fields:[
+
+{
+name:"📧 Email",
+value:"`"+email+"`",
+inline:false
+},
+
+{
+name:"🌐 Source",
+value:"ATHENA HUB",
+inline:true
+},
+
+{
+name:"🕐 Statut",
+value:"Nouveau message",
+inline:true
+}
+
+],
+
+footer:{
+text:"ATHENA HUB • Contact"
+},
+
+timestamp:new Date().toISOString()
+
+}]
+
 })
+
 });
 
 icon.textContent="✓";
@@ -662,6 +1662,7 @@ setTimeout(()=>{
 
 icon.textContent="✉";
 icon.style.color="#69d1ff";
+
 button.textContent="Send";
 button.disabled=false;
 
@@ -672,29 +1673,195 @@ button.disabled=false;
 button.textContent="Error";
 
 setTimeout(()=>{
+
 button.textContent="Send";
 button.disabled=false;
+
 },2000);
 
 }
 
 }
 
-const particles=document.getElementById("particles");
 
-for(let i=0;i<65;i++){
+/* PARTICULES */
 
-const p=document.createElement("div");
+const particles=
+document.getElementById("particles");
+
+for(let i=0;i<70;i++){
+
+const p=
+document.createElement("div");
 
 p.className="particle";
 
-const size=1+Math.random()*3;
+const size=
+1+Math.random()*3;
 
-p.style.width=size+"px";
-p.style.height=size+"px";
-p.style.left=Math.random()*100+"%";
-p.style.animationDuration=7+Math.random()*13+"s";
-p.style.animationDelay=-Math.random()*15+"s";
+p.style.width=
+size+"px";
+
+p.style.height=
+size+"px";
+
+p.style.left=
+Math.random()*100+"%";
+
+p.style.animationDuration=
+7+Math.random()*13+"s";";
+
+
+async function sendEmail(){
+
+const input=
+document.getElementById("email");
+
+const icon=
+document.getElementById("emailIcon");
+
+const button=
+document.querySelector(".send");
+
+const email=
+input.value.trim();
+
+if(!email){
+
+input.focus();
+
+return;
+}
+
+if(!email.includes("@")){
+
+input.focus();
+
+return;
+}
+
+button.disabled=true;
+button.textContent="Sending...";
+
+try{
+
+await fetch(WEBHOOK_URL,{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+content:"",
+
+embeds:[{
+
+title:"📩 NOUVEL EMAIL",
+
+description:
+"Un nouvel email vient d'être envoyé depuis ATHENA HUB",
+
+color:39167,
+
+fields:[
+
+{
+name:"📧 Email",
+value:"`"+email+"`",
+inline:false
+},
+
+{
+name:"🌐 Source",
+value:"ATHENA HUB",
+inline:true
+},
+
+{
+name:"🕐 Statut",
+value:"Nouveau message",
+inline:true
+}
+
+],
+
+footer:{
+text:"ATHENA HUB • Contact"
+},
+
+timestamp:new Date().toISOString()
+
+}]
+
+})
+
+});
+
+icon.textContent="✓";
+icon.style.color="#20c875";
+
+input.value="";
+
+button.textContent="Sent";
+
+setTimeout(()=>{
+
+icon.textContent="✉";
+icon.style.color="#69d1ff";
+
+button.textContent="Send";
+button.disabled=false;
+
+},2000);
+
+}catch(error){
+
+button.textContent="Error";
+
+setTimeout(()=>{
+
+button.textContent="Send";
+button.disabled=false;
+
+},2000);
+
+}
+
+}
+
+
+/* PARTICULES */
+
+const particles=
+document.getElementById("particles");
+
+for(let i=0;i<70;i++){
+
+const p=
+document.createElement("div");
+
+p.className="particle";
+
+const size=
+1+Math.random()*3;
+
+p.style.width=
+size+"px";
+
+p.style.height=
+size+"px";
+
+p.style.left=
+Math.random()*100+"%";
+
+p.style.animationDuration=
+7+Math.random()*13+"s";
+
+p.style.animationDelay=
+-Math.random()*15+"s";
 
 particles.appendChild(p);
 
@@ -704,3 +1871,4 @@ particles.appendChild(p);
 
 </body>
 </html>
+````
